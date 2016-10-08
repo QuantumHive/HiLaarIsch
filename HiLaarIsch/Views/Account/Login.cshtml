@@ -1,0 +1,12 @@
+﻿@model HiLaarIsch.Contract.DTOs.UserView[]
+
+<h2>Login</h2>
+
+<div>
+    <ul>
+        @foreach(var user in Model)
+        {
+            <li>@user.Username</li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>HiLaarIsch</title>
+</head>
+<body>
+    <div id="hello">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render(Bundles.jQuery)
+    <script>
+        $(function ()
+        {
+            console.log('hello world!');
+
+        });
+    </script>
+</body>
+</html>

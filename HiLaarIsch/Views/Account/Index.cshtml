@@ -1,0 +1,10 @@
+﻿@model IEnumerable<HiLaarIsch.Contract.DTOs.UserView>
+
+<div>
+    <ul>
+        @foreach(var user in Model)
+        {
+            <li>@user.Username</li>
+        }
+    </ul>
+</div>

@@ -1,1 +1,21 @@
 ﻿<h2>Login</h2>
+
+<form id="login-form" action="/Account/Login" method="post">
+    <fieldset>
+        <legend>Login</legend>
+
+        <div>
+            <label for="email">E-mail:</label>
+            <input id="email" type="email" name="email" autocomplete="email" form="login-form" required autofocus />
+        </div>
+
+        <div>
+            <label for="password">Wachtwoord:</label>
+            <input id="password" type="password" name="password" form="login-form" required />
+        </div>
+
+        <div>
+            <button type="submit" form="login-form">Login</button>
+        </div>
+    </fieldset>
+</form>

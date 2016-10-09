@@ -32,5 +32,11 @@ namespace HiLaarIsch.Controllers
         {
             return this.View();
         }
+
+        [HttpPost, Route("Login")]
+        public ActionResult Login(string email, string password)
+        {
+            return this.View();
+        }
     }
 }

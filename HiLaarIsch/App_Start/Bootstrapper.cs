@@ -17,6 +17,9 @@ using HiLaarIsch.Domain;
 using HiLaarIsch.BusinessLayer.QueryHandlers;
 using System.Web.Routing;
 using Microsoft.Owin;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
+using System.Web;
 
 namespace HiLaarIsch
 {
@@ -108,6 +111,13 @@ namespace HiLaarIsch
             {
                 //TODO: usermanager configuration
             });
+
+            container.RegisterPerWebRequest<SignInManager<IdentityUser, Guid>>();
+            container.RegisterPerWebRequest(() =>
+                container.IsVerifying
+                ? new OwinContext().Authentication
+                : HttpContext.Current.GetOwinContext().Authentication);
+
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

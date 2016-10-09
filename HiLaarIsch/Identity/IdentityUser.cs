@@ -2,15 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using HiLaarIsch.Contract.DTOs;
 using Microsoft.AspNet.Identity;
 
 namespace HiLaarIsch.Identity
 {
     public class IdentityUser : IUser<Guid>
     {
-        public IdentityUser(Guid id)
+        public IdentityUser(UserView user)
         {
-            this.Id = id;
+            this.Id = user.Id;
+            this.UserName = user.Username;
         }
 
         public Guid Id { get; }

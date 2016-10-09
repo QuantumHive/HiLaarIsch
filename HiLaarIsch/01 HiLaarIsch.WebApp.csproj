@@ -170,7 +170,9 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
-    <Compile Include="Identity\UserStore.cs" />
+    <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />
+    <Compile Include="Identity\UserStore\UserEmailStore.partial.cs" />
+    <Compile Include="Identity\UserStore\UserStore.partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

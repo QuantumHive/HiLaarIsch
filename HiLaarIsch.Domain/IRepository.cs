@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace HiLaarIsch.Domain
 {
@@ -6,5 +7,6 @@ namespace HiLaarIsch.Domain
         where TEntity : class
     {
         IQueryable<TEntity> Entities { get; }
+        TEntity GetById(Guid id);
     }
 }

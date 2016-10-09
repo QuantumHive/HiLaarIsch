@@ -36,6 +36,8 @@
   <ItemGroup>
     <Compile Include="DTOs\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Queries\Users\GetPasswordHashByUserIdQuery.cs" />
+    <Compile Include="Queries\Users\GetUserByEmailQuery.cs" />
     <Compile Include="Queries\GetAllUsersQuery.cs" />
   </ItemGroup>
   <ItemGroup>

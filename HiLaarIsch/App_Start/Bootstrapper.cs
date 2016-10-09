@@ -16,6 +16,7 @@ using System.Configuration;
 using HiLaarIsch.Domain;
 using HiLaarIsch.BusinessLayer.QueryHandlers;
 using System.Web.Routing;
+using Microsoft.Owin;
 
 namespace HiLaarIsch
 {
@@ -111,6 +112,7 @@ namespace HiLaarIsch
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                LoginPath = new PathString("/Account/Login"),
                 //TODO: cookie options
             });
         }

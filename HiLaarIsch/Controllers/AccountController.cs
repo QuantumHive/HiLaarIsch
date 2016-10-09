@@ -8,6 +8,7 @@ using QuantumHive.Core;
 
 namespace HiLaarIsch.Controllers
 {
+    [RoutePrefix("Account")]
     public class AccountController : Controller
     {
         private readonly IQueryProcessor queryProcessor;

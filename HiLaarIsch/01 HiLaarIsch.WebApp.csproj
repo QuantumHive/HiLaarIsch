@@ -166,8 +166,6 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Layouts\_Layout-Mobile.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="bower.json" />
-    <Content Include="package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

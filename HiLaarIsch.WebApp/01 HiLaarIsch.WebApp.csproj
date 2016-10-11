@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\global.css" />
     <Content Include="Content\signin.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +180,7 @@
     <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserEmailStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserStore.partial.cs" />
+    <Compile Include="Helpers\Partials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -193,6 +195,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Layouts\_Layout-Mobile.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Shared\_NavigationBar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

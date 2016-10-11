@@ -8,8 +8,17 @@
     <title>HiLaarIsch</title>
 
     @Styles.Render(Bundles.Styles.bootstrap)
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Styles.Render(Bundles.Styles.global)
+    }
 </head>
 <body>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.Partial(Partials.Shared.NavigationBar)
+    }
+
     <div class="container-fluid">
         @RenderBody()
     </div>

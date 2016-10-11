@@ -17,6 +17,7 @@ namespace HiLaarIsch
         public static class Styles
         {
             public const string bootstrap = @"~/bundles/styles/bootstrap";
+            public const string global = @"~/bundles/styles/global";
             public const string signin = @"~/bundles/styles/signin";
         }
     }
@@ -51,9 +52,11 @@ namespace HiLaarIsch
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             var bootstrap = new StyleBundle(Bundles.Styles.bootstrap, Cdns.bootstrapCss).Include(@"~/Content/bootstrap.css");
+            var global = new StyleBundle(Bundles.Styles.global).Include(@"~/Content/global.css");
             var signin = new StyleBundle(Bundles.Styles.signin).Include(@"~/Content/signin.css");
 
             bundles.Add(bootstrap);
+            bundles.Add(global);
             bundles.Add(signin);
         }
     }

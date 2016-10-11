@@ -10,7 +10,12 @@
 
 @if (Model.Any())
 {
-
+    <ul class="list-group">
+        @foreach (var item in Model.OrderBy(m => m.Firstname).ThenBy(m => m.Surname))
+        {
+            <li class="list-group-item">@item.Firstname @item.Surname</li>
+        }
+    </ul>
 }
 else
 {

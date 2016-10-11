@@ -40,6 +40,7 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpPost, Route("new")]
+        [ValidateAntiForgeryToken]
         public ActionResult New(CustomerModel model)
         {
             this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));

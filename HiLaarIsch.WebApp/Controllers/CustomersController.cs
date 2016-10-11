@@ -9,6 +9,7 @@ using QuantumHive.Core;
 
 namespace HiLaarIsch.Controllers
 {
+    [Authorize]
     [RoutePrefix("customers")]
     public class CustomersController : Controller
     {
@@ -19,14 +20,19 @@ namespace HiLaarIsch.Controllers
         {
             this.queryProcessor = queryProcessor;
         }
-
-        [Authorize]
+        
         [Route("~/")]
         [HttpGet, Route]
         public ActionResult Index()
         {
             var customers = this.queryProcessor.Process(new GetAllModelsQuery<CustomerView>());
             return this.View(customers);
+        }
+
+        [HttpGet, Route("new")]
+        public ActionResult New()
+        {
+            return this.View();
         }
     }
 }

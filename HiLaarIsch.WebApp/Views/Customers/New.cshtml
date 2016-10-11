@@ -1,0 +1,43 @@
+﻿<div class="page-header">
+    <a class="btn btn-default pull-left" role="button" href="/">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+    </a>
+    <h3 class="text-center">Nieuwe Klant</h3>
+</div>
+
+<form class="form-horizontal" action="customers/new" method="post">
+    <fieldset>
+        <legend>Klant gegevens</legend>
+
+        <div class="form-group">
+            <label for="first-name" class="hidden-xs col-sm-2 control-label">Voornaam</label>
+            <div class="col-xs-12 col-sm-10">
+                <input type="text" class="form-control" id="first-name" placeholder="Voornaam">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sur-name" class="hidden-xs col-sm-2 control-label">Achternaam</label>
+            <div class="col-xs-12 col-sm-10">
+                <input type="text" class="form-control" id="sur-name" placeholder="Achternaam">
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Gebruiker gegevens</legend>
+
+        <div class="form-group">
+            <label for="email" class="hidden-xs col-sm-2 control-label">E-mail</label>
+            <div class="col-xs-12 col-sm-10">
+                <input type="email" class="form-control" id="email" placeholder="E-mail">
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10 col-xs-12">
+            <button type="submit" class="btn btn-primary">Aanmaken</button>
+        </div>
+    </div>
+</form>

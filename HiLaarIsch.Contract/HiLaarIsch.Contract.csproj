@@ -34,6 +34,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\CreateModelCommand.cs" />
+    <Compile Include="DTOs\Customers\CustomerModel.cs" />
     <Compile Include="DTOs\Customers\CustomerView.cs" />
     <Compile Include="DTOs\Users\UserView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -41,9 +43,7 @@
     <Compile Include="Queries\Users\GetUserByEmailQuery.cs" />
     <Compile Include="Queries\GetAllModelsQuery.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\QuantumHive.Core\QuantumHive.Core.csproj">
       <Project>{bb3a33f7-772a-4ba7-98e5-efb4ac1bd9c0}</Project>

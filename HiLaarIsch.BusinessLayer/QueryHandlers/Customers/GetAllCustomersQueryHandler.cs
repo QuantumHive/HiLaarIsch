@@ -22,8 +22,8 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers
                 select new CustomerView
                 {
                     Id = customer.Id,
-                    FirstName = customer.Firstname,
-                    SurName = customer.Surname,
+                    Firstname = customer.Firstname,
+                    Surname = customer.Surname,
                 };
 
             return customers.ToArray();

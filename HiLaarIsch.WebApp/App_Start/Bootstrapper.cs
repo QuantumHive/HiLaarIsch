@@ -20,6 +20,7 @@ using Microsoft.Owin;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Web;
+using HiLaarIsch.BusinessLayer.CommandHandlers;
 
 namespace HiLaarIsch
 {
@@ -88,7 +89,7 @@ namespace HiLaarIsch
 
         private static void RegisterCommandHandlers(this Container container)
         {
-            //container.Register(typeof(ICommandHandler<>), new[] { typeof(TODO).Assembly }, Lifestyle.Scoped);
+            container.Register(typeof(ICommandHandler<>), new[] { typeof(CreateNewCustomerCommandHandler).Assembly });
 
             container.RegisterDecorator(typeof(ICommandHandler<>), typeof(LifetimeScopeCommandHandlerProxy<>), Lifestyle.Singleton);
         }

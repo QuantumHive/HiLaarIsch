@@ -8,7 +8,17 @@ namespace HiLaarIsch
 {
     public static class Bundles
     {
-        public const string jQuery = @"~/bundles/jquery";
+        public static class Scripts
+        {
+            public const string jQuery = @"~/bundles/scripts/jquery";
+            public const string bootstrap = @"~/bundles/scripts/bootstrap";
+        }
+        
+        public static class Styles
+        {
+            public const string bootstrap = @"~/bundles/styles/bootstrap";
+            public const string signin = @"~/bundles/styles/signin";
+        }
     }
 
     public static class BundleConfig
@@ -16,6 +26,8 @@ namespace HiLaarIsch
         private class Cdns
         {
             public const string jQuery = @"https://code.jquery.com/jquery-3.1.1.min.js";
+            public const string bootstrapJs = @"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js";
+            public const string bootstrapCss = @"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
         }
 
         public static void ConfigureAndRegisterBundles()
@@ -29,13 +41,20 @@ namespace HiLaarIsch
 
         private static void RegisterScriptBundles(BundleCollection bundles)
         {
-            var jquery = new ScriptBundle(Bundles.jQuery, Cdns.jQuery).Include("~/scripts/jquery-{version}.js");
+            var jquery = new ScriptBundle(Bundles.Scripts.jQuery, Cdns.jQuery).Include(@"~/Scripts/jquery-{version}.js");
+            var bootstrap = new ScriptBundle(Bundles.Scripts.bootstrap, Cdns.bootstrapJs).Include(@"~/Scripts/bootstrap.js");
+
             bundles.Add(jquery);
+            bundles.Add(bootstrap);
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
+            var bootstrap = new StyleBundle(Bundles.Styles.bootstrap, Cdns.bootstrapCss).Include(@"~/Content/bootstrap.css");
+            var signin = new StyleBundle(Bundles.Styles.signin).Include(@"~/Content/signin.css");
 
+            bundles.Add(bootstrap);
+            bundles.Add(signin);
         }
     }
 }

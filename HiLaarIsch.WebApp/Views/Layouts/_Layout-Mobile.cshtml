@@ -2,14 +2,19 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>HiLaarIsch</title>
+
+    @Styles.Render(Bundles.Styles.bootstrap)
 </head>
 <body>
-    <div>
+    <div class="container-fluid">
         @RenderBody()
     </div>
 
-    @Scripts.Render(Bundles.jQuery)
+    @Scripts.Render(Bundles.Scripts.jQuery)
+    @Scripts.Render(Bundles.Scripts.bootstrap)
 </body>
 </html>

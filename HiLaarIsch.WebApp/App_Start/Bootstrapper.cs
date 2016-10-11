@@ -79,7 +79,7 @@ namespace HiLaarIsch
 
         private static void RegisterQueryHandlers(this Container container)
         {
-            container.Register(typeof(IQueryHandler<,>), new [] { typeof(GetAllUsersQueryHandler).Assembly });
+            container.Register(typeof(IQueryHandler<,>), new [] { typeof(GetAllCustomersQueryHandler).Assembly });
 
             container.RegisterDecorator(typeof(IQueryHandler<,>), typeof(LifetimeScopeQueryHandlerProxy<,>), Lifestyle.Singleton);
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using HiLaarIsch.Contract.Queries;
 using HiLaarIsch.Identity;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -12,39 +11,31 @@ using QuantumHive.Core;
 
 namespace HiLaarIsch.Controllers
 {
-    [RoutePrefix("Account")]
+    [RoutePrefix("account")]
     public class AccountController : Controller
     {
-        private readonly IQueryProcessor queryProcessor;
         private readonly SignInManager<IdentityUser, Guid> signInManager;
         private readonly UserManager<IdentityUser, Guid> userManager;
 
         public AccountController(
-            IQueryProcessor queryProcessor,
             SignInManager<IdentityUser, Guid> signInManager,
             UserManager<IdentityUser, Guid> userManager)
         {
-            this.queryProcessor = queryProcessor;
             this.signInManager = signInManager;
             this.userManager = userManager;
         }
 
-        [Authorize]
-        [Route("~/")]
-        [HttpGet, Route("Users")]
-        public ActionResult Index()
-        {
-            var users = this.queryProcessor.Process(new GetAllUsersQuery());
-            return this.View(users);
-        }
-
-        [HttpGet, Route("Login")]
+        [HttpGet, Route("login")]
         public ActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return this.Redirect("/"); //TODO: clean redirect
+            }
             return this.View();
         }
 
-        [HttpPost, Route("Login")]
+        [HttpPost, Route("login")]
         public ActionResult Login(string email, string password)
         {
             var user = this.userManager.FindByEmail(email);

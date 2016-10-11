@@ -157,7 +157,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\global.css" />
-    <Content Include="Content\signin.css" />
+    <Content Include="Content\login.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -176,6 +176,7 @@
     <Compile Include="App_Start\Configuration\BundleConfiguration.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
     <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserEmailStore.partial.cs" />
@@ -194,8 +195,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Layouts\_Layout-Mobile.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Shared\_NavigationBar.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

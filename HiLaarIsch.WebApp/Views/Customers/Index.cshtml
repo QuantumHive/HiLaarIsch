@@ -1,0 +1,20 @@
+﻿@using HiLaarIsch.Contract.DTOs
+@model CustomerView[]
+
+<div class="page-header">
+    <h3>
+        <span>Klanten</span>
+        <a class="btn btn-success pull-right" role="button" href="customers/new">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+    </h3>
+</div>
+
+@if (Model.Any())
+{
+
+}
+else
+{
+    <div class="alert alert-danger" role="alert">Geen resultaten</div>
+}

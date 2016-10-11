@@ -18,7 +18,7 @@ namespace HiLaarIsch
         {
             public const string bootstrap = @"~/bundles/styles/bootstrap";
             public const string global = @"~/bundles/styles/global";
-            public const string signin = @"~/bundles/styles/signin";
+            public const string login = @"~/bundles/styles/signin";
         }
     }
 
@@ -53,11 +53,11 @@ namespace HiLaarIsch
         {
             var bootstrap = new StyleBundle(Bundles.Styles.bootstrap, Cdns.bootstrapCss).Include(@"~/Content/bootstrap.css");
             var global = new StyleBundle(Bundles.Styles.global).Include(@"~/Content/global.css");
-            var signin = new StyleBundle(Bundles.Styles.signin).Include(@"~/Content/signin.css");
+            var login = new StyleBundle(Bundles.Styles.login).Include(@"~/Content/login.css");
 
             bundles.Add(bootstrap);
             bundles.Add(global);
-            bundles.Add(signin);
+            bundles.Add(login);
         }
     }
 }

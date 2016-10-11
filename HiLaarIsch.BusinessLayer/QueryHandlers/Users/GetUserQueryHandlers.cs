@@ -4,7 +4,7 @@ using HiLaarIsch.Contract.Queries;
 using HiLaarIsch.Domain;
 using QuantumHive.Core;
 
-namespace HiLaarIsch.BusinessLayer.QueryHandlers
+namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
 {
     public class GetUserQueryHandlers :
         IQueryHandler<GetUserByEmailQuery, UserView>,

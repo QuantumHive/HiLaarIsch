@@ -27,7 +27,7 @@ namespace HiLaarIsch.BusinessLayer.CommandHandlers
                 Email = command.Model.Email,
                 Username = "",
                 EmailConfirmed = false,
-                PasswordHash = "AGZG5lrJspk34rI/vq/I/0r1NDNdKwpNrVsB2DF9rwmVlInUY8MBbsaktHJsu2uiAg==", //temporary empty password
+                PasswordHash = "ADvVwRre5wxBC3PiOAl78Je3qdGzaOhod+IEqd0FBY8oql10ELc4ESJmmJtJ3R0LTQ==", //temporary admin password
                 Role = 0,
             };
 

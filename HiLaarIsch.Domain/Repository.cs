@@ -29,6 +29,11 @@ namespace HiLaarIsch.Domain
             return entity;
         }
 
+        public void Add(TEntity entity)
+        {
+            this.DbSet.Add(entity);
+        }
+
         private DbSet<TEntity> DbSet => this.databaseContext.Set<TEntity>();
     }
 }

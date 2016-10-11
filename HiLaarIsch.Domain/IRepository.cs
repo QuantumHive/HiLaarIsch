@@ -8,5 +8,6 @@ namespace HiLaarIsch.Domain
     {
         IQueryable<TEntity> Entities { get; }
         TEntity GetById(Guid id);
+        void Add(TEntity entity);
     }
 }

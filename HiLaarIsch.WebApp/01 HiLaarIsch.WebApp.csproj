@@ -49,6 +49,14 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
       <Private>True</Private>
@@ -224,6 +232,10 @@
     <ProjectReference Include="..\QuantumHive.Core\QuantumHive.Core.csproj">
       <Project>{bb3a33f7-772a-4ba7-98e5-efb4ac1bd9c0}</Project>
       <Name>QuantumHive.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QuantumHive.EntityFramework\QuantumHive.EntityFramework.csproj">
+      <Project>{a7223248-64f5-4a60-b2cb-c01aa4d04021}</Project>
+      <Name>QuantumHive.EntityFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuantumHive.SimpleInjector\QuantumHive.SimpleInjector.csproj">
       <Project>{c82f6e7c-6cc3-43d8-ba35-230b42dc48f5}</Project>

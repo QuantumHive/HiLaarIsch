@@ -21,6 +21,8 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using System.Web;
 using HiLaarIsch.BusinessLayer.CommandHandlers;
+using QuantumHive.EntityFramework.Decorators;
+using System.Data.Entity;
 
 namespace HiLaarIsch
 {
@@ -91,12 +93,16 @@ namespace HiLaarIsch
         {
             container.Register(typeof(ICommandHandler<>), new[] { typeof(CreateNewCustomerCommandHandler).Assembly });
 
+            container.RegisterDecorator(typeof(ICommandHandler<>), typeof(SaveChangesCommandHandlerDecorator<>));
             container.RegisterDecorator(typeof(ICommandHandler<>), typeof(LifetimeScopeCommandHandlerProxy<>), Lifestyle.Singleton);
         }
 
         private static void RegisterDataServices(this Container container, string connectionString)
         {
-            container.Register(() => new HiLaarIschEntities(connectionString), Lifestyle.Scoped);
+            var databaseContextRegistration = Lifestyle.Scoped.CreateRegistration(() => new HiLaarIschEntities(connectionString), container);
+
+            container.AddRegistration(typeof(HiLaarIschEntities), databaseContextRegistration);
+            container.AddRegistration(typeof(DbContext), databaseContextRegistration);
 
             container.Register(typeof(IRepository<>), typeof(Repository<>));
         }

@@ -25,3 +25,6 @@ ALTER TABLE [dbo].[Customers] WITH CHECK ADD CONSTRAINT [FK_Customers_Users] FOR
 GO
 ALTER TABLE [dbo].[Customers] CHECK CONSTRAINT [FK_Customers_Users]
 GO
+
+INSERT INTO [dbo].[Users] VALUES ('1f88d96d-ae68-4a25-9e92-2e27bbaf750f', 'admin', 'AGtWGj6m/ICb16LNfGINdZTceQH9xdE9l9QbFKhuv0DaoDI2Ja/AeVCCK8BZey3I9g==', 'admin@managearnhem.nl', 1, NULL, 1)
+GO

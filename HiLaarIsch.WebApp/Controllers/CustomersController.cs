@@ -54,7 +54,7 @@ namespace HiLaarIsch.Controllers
             return this.View(model);
         }
 
-        [HttpPatch, Route("edit")]
+        [HttpPost, Route("edit")]
         public ActionResult Edit(CustomerModel model)
         {
             //TODO: edit command handler

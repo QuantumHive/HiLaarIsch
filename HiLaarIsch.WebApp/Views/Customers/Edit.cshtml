@@ -8,7 +8,7 @@
     <h3 class="text-center">Bewerk Klant</h3>
 </div>
 
-<form action="edit" method="post" class="form-horizontal">
+<form action="/customers/edit" method="post" class="form-horizontal">
     @Html.AntiForgeryToken()
 
     @Html.HiddenFor(m => m.Id)
@@ -23,7 +23,9 @@
         $(function ()
         {
             var grouplevel = @((int)Model.GroupLevel);
-            $("input[name='grouplevel'][value='"+grouplevel+"']").trigger("click");
+            $("input[name='@nameof(CustomerModel.GroupLevel)'][value='"+grouplevel+"']")
+                .closest("label.btn")
+                .trigger("click");
         });
     </script>
 }

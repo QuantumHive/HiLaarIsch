@@ -12,7 +12,8 @@ namespace HiLaarIsch.Identity
         public IdentityUser(UserView user)
         {
             this.Id = user.Id;
-            this.UserName = user.Username;
+            //we don't have usernames in our application, but the interfaces forces us to implement it
+            this.UserName = string.Empty;
         }
 
         public Guid Id { get; }

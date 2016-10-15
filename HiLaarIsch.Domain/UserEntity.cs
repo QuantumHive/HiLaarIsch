@@ -14,21 +14,12 @@ namespace HiLaarIsch.Domain
     
     public partial class UserEntity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserEntity()
-        {
-            this.Customers = new HashSet<CustomerEntity>();
-        }
-    
         public System.Guid Id { get; set; }
-        public string Username { get; set; }
         public string PasswordHash { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
-        public Nullable<System.Guid> SecurityStamp { get; set; }
         public byte Role { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CustomerEntity> Customers { get; set; }
+        public virtual CustomerEntity Customer { get; set; }
     }
 }

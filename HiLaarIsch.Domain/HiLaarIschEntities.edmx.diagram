@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="a9bc7e012a41422f9c10a3dbe420fe5f" Name="Diagram1" >
-        <EntityTypeShape EntityType="HiLaarIschModel.CustomerEntity" Width="1.5" PointX="3" PointY="1.125" />
-        <EntityTypeShape EntityType="HiLaarIschModel.UserEntity" Width="1.5" PointX="0.75" PointY="1" />
-        <AssociationConnector Association="HiLaarIschModel.FK_Customers_Users" />
+        <EntityTypeShape EntityType="HiLaarIsch.CustomerEntity" Width="1.625" PointX="3.25" PointY="1" />
+        <EntityTypeShape EntityType="HiLaarIsch.UserEntity" Width="1.625" PointX="0.75" PointY="1.125" />
+        <AssociationConnector Association="HiLaarIsch.FK_Customers_Users" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -6,21 +6,14 @@ using QuantumHive.Core;
 
 namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
 {
-    public class GetUserQueryHandlers :
-        IQueryHandler<GetUserByEmailQuery, UserView>,
-        IQueryHandler<GetPasswordHashByUserIdQuery, string>
+    public class GetUserByEmailQueryHandler : IQueryHandler<GetUserByEmailQuery, UserView>
     {
         private readonly IRepository<UserEntity> userRepository;
 
-        public GetUserQueryHandlers(IRepository<UserEntity> userRepository)
+        public GetUserByEmailQueryHandler(
+            IRepository<UserEntity> userRepository)
         {
             this.userRepository = userRepository;
-        }
-
-        public string Handle(GetPasswordHashByUserIdQuery query)
-        {
-            var user = this.userRepository.GetById(query.UserId);
-            return user.PasswordHash;
         }
 
         public UserView Handle(GetUserByEmailQuery query)
@@ -31,7 +24,6 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
                 select new UserView
                 {
                     Id = user.Id,
-                    Username = user.Username,
                 };
 
             return result.SingleOrDefault();

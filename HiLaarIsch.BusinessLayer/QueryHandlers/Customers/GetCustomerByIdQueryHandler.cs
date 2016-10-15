@@ -23,7 +23,7 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Customers
                 Id = customer.Id,
                 Firstname = customer.Firstname,
                 Surname = customer.Surname,
-                Email = customer.Users.Email,
+                Email = customer.User.Email,
             };
         }
     }

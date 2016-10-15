@@ -31,7 +31,7 @@ namespace HiLaarIsch.Controllers
         [HttpGet, Route("login")]
         public ActionResult Login()
         {
-            if (User.Identity.IsAuthenticated)
+            if (this.User.Identity.IsAuthenticated)
             {
                 return this.Redirect("/"); //TODO: clean redirect
             }

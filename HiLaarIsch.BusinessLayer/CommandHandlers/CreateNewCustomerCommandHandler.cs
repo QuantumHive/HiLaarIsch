@@ -25,7 +25,6 @@ namespace HiLaarIsch.BusinessLayer.CommandHandlers
             {
                 Id = Guid.NewGuid(),
                 Email = command.Model.Email,
-                Username = "",
                 EmailConfirmed = false,
                 PasswordHash = "ADvVwRre5wxBC3PiOAl78Je3qdGzaOhod+IEqd0FBY8oql10ELc4ESJmmJtJ3R0LTQ==", //temporary admin password
                 Role = 0,
@@ -36,9 +35,7 @@ namespace HiLaarIsch.BusinessLayer.CommandHandlers
                 Id = Guid.NewGuid(),
                 Firstname = command.Model.Firstname,
                 Surname = command.Model.Surname,
-                DateOfBirth = DateTime.Now.AddYears(-20),
-                Users = user,
-                Gender = false,
+                User = user,
             };
 
             this.customerRepository.Add(customer);

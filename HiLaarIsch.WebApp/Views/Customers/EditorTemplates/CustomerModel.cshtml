@@ -2,44 +2,66 @@
 @model CustomerModel
 
 <fieldset>
-    <legend>Klant gegevens</legend>
-
+    <legend>Gebruiker gegevens</legend>
     <div class="form-group">
-        <label for="first-name" class="hidden-xs col-sm-2 control-label">Voornaam</label>
+        <label for="email" class="hidden-xs col-sm-2 control-label">E-mail</label>
         <div class="col-xs-12 col-sm-10">
-            <input name="firstname" type="text" class="form-control" id="first-name" placeholder="Voornaam" value="@Model.Firstname">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="sur-name" class="hidden-xs col-sm-2 control-label">Achternaam</label>
-        <div class="col-xs-12 col-sm-10">
-            <input name="surname" type="text" class="form-control" id="sur-name" placeholder="Achternaam" value="@Model.Surname">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="btn-group btn-group-justified" data-toggle="buttons">
-            <label class="btn btn-default active">
-                <input type="radio" name="grouplevel" id="shetland-class" autocomplete="off" value="1" checked> Shetten les
-            </label>
-            <label class="btn btn-default">
-                <input type="radio" name="grouplevel" id="children-class" autocomplete="off" value="2"> Kinder les
-            </label>
-            <label class="btn btn-default">
-                <input type="radio" name="grouplevel" id="adult-class" autocomplete="off" value="3"> Volwassen les
-            </label>
+            <input name="email" type="email" class="form-control" id="email" placeholder="E-mail" value="@Model.Email">
         </div>
     </div>
 </fieldset>
 
 <fieldset>
-    <legend>Gebruiker gegevens</legend>
+    <legend>Klant gegevens</legend>
 
     <div class="form-group">
-        <label for="email" class="hidden-xs col-sm-2 control-label">E-mail</label>
+        <label for="firstname" class="hidden-xs col-sm-2 control-label">Voornaam</label>
         <div class="col-xs-12 col-sm-10">
-            <input name="email" type="email" class="form-control" id="email" placeholder="E-mail" value="@Model.Email">
+            <input name="firstname" type="text" class="form-control" id="firstname" placeholder="Voornaam" value="@Model.Firstname">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="surname" class="hidden-xs col-sm-2 control-label">Achternaam</label>
+        <div class="col-xs-12 col-sm-10">
+            <input name="surname" type="text" class="form-control" id="surname" placeholder="Achternaam" value="@Model.Surname">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-12">
+            <div class="btn-group btn-group-justified" data-toggle="buttons">
+                <label class="btn btn-default">
+                    <input type="radio" name="grouplevel" id="shetland-class" autocomplete="off" value="1"> Shetten les
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="grouplevel" id="children-class" autocomplete="off" value="2"> Kinder les
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" name="grouplevel" id="adult-class" autocomplete="off" value="3"> Volwassen les
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="phonenumber" class="hidden-xs col-sm-2 control-label">Telefoon</label>
+        <div class="col-xs-12 col-sm-10">
+            <input name="phonenumber" type="tel" class="form-control" id="phonenumber" placeholder="Telefoonnummer" value="@Model.PhoneNumber">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="emergencynumber" class="hidden-xs col-sm-2 control-label">Noodnummer</label>
+        <div class="col-xs-12 col-sm-10">
+            <input name="emergencynumber" type="tel" class="form-control" id="emergencynumber" placeholder="Noodnummer" value="@Model.EmergencyNumber">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="address" class="hidden-xs col-sm-2 control-label">Adres gegevens</label>
+        <div class="col-xs-12 col-sm-10">
+            <textarea name="address" class="form-control" id="address" placeholder="Adres gegevens" value="@Model.Address" rows="5"></textarea>
         </div>
     </div>
 </fieldset>

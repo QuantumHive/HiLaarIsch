@@ -15,9 +15,17 @@
     @Html.HiddenFor(m => m.Id)
     @Html.EditorForModel()
 
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10 col-xs-12">
-            <button type="submit" class="btn btn-primary">Opslaan</button>
-        </div>
-    </div>
+    <button type="submit" class="btn btn-primary btn-lg btn-block">Klant wijzigen</button>
+}
+
+
+@section scripts
+{
+    <script>
+        $(function ()
+        {
+            var grouplevel = @((int)Model.GroupLevel);
+            $("input[name='grouplevel'][value='"+grouplevel+"']").trigger("click");
+        });
+    </script>
 }

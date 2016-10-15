@@ -21,9 +21,13 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Customers
             return new CustomerModel
             {
                 Id = customer.Id,
+                Email = customer.User.Email,
                 Firstname = customer.Firstname,
                 Surname = customer.Surname,
-                Email = customer.User.Email,
+                GroupLevel = customer.GroupLevel,
+                PhoneNumber = customer.PhoneNumber,
+                EmergencyNumber = customer.EmergencyNumber,
+                Address = customer.Address,
             };
         }
     }

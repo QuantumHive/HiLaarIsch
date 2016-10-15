@@ -15,7 +15,7 @@ namespace HiLaarIsch.Identity
         public Task<IdentityUser> FindByEmailAsync(string email)
         {
             var user = this.queryProcessor.Process(new GetUserByEmailQuery(email));
-            return this.StartNewTask(this.MapToIdentityUser(user));
+            return this.StartNewTask(() => new IdentityUser(user));
         }
 
         public Task<string> GetEmailAsync(IdentityUser user)

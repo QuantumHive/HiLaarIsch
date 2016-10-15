@@ -49,18 +49,6 @@ namespace HiLaarIsch.Identity
             //nothing to dispose thanks to our great architecture!
         }
 
-        private Func<IdentityUser> MapToIdentityUser(UserView userView)
-        {
-            if(userView == null)
-            {
-                return null;
-            }
-            else
-            {
-                return () => new IdentityUser(userView);
-            }
-        }
-
         private Task<TResult> StartNewTask<TResult>(Func<TResult> function)
             => Task<TResult>.Factory.StartNew(function);
     }

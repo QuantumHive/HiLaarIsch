@@ -36,7 +36,7 @@ namespace HiLaarIsch.Controllers
         [HttpGet, Route("new")]
         public ActionResult New()
         {
-            return this.View();
+            return this.View(new CustomerModel());
         }
 
         [HttpPost, Route("new")]
@@ -44,6 +44,20 @@ namespace HiLaarIsch.Controllers
         public ActionResult New(CustomerModel model)
         {
             this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
+            return this.Redirect("/"); //TODO: clean redirect
+        }
+
+        [HttpGet, Route("edit/{customerId}")]
+        public ActionResult Edit(Guid customerId)
+        {
+            var model = this.queryProcessor.Process(new GetModelByIdQuery<CustomerModel>(customerId));
+            return this.View(model);
+        }
+
+        [HttpPatch, Route("edit")]
+        public ActionResult Edit(CustomerModel model)
+        {
+            //TODO: edit command handler
             return this.Redirect("/"); //TODO: clean redirect
         }
     }

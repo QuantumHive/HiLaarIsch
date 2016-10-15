@@ -10,14 +10,17 @@
 
 @if (Model.Any())
 {
-    <ul class="list-group">
+    <div class="list-group">
         @foreach (var item in Model.OrderBy(m => m.Firstname).ThenBy(m => m.Surname))
         {
-            <li class="list-group-item">@item.Firstname @item.Surname</li>
+            <a class="list-group-item" type="button" role="button" href="customers/edit/@item.Id">
+                @item.Firstname @item.Surname
+                <span class="glyphicon glyphicon-pencil pull-right"></span>
+            </a>
         }
-    </ul>
+    </div>
 }
 else
 {
-    <div class="alert alert-danger" role="alert">No results</div>
+    <div class="alert alert-danger" role="alert">Geen resultaten</div>
 }

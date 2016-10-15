@@ -16,13 +16,16 @@ namespace HiLaarIsch.Controllers
     {
         private readonly IQueryProcessor queryProcessor;
         private readonly ICommandHandler<CreateModelCommand<CustomerModel>> createHandler;
+        private readonly ICommandHandler<UpdateModelCommand<CustomerModel>> updateHandler;
 
         public CustomersController(
             IQueryProcessor queryProcessor,
-            ICommandHandler<CreateModelCommand<CustomerModel>> createHandler)
+            ICommandHandler<CreateModelCommand<CustomerModel>> createHandler,
+            ICommandHandler<UpdateModelCommand<CustomerModel>> updateHandler)
         {
             this.queryProcessor = queryProcessor;
             this.createHandler = createHandler;
+            this.updateHandler = updateHandler;
         }
         
         [Route("~/")]
@@ -57,7 +60,7 @@ namespace HiLaarIsch.Controllers
         [HttpPost, Route("edit")]
         public ActionResult Edit(CustomerModel model)
         {
-            //TODO: edit command handler
+            this.updateHandler.Handle(new UpdateModelCommand<CustomerModel>(model, model.Id));
             return this.Redirect("/"); //TODO: clean redirect
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace HiLaarIsch.Components
 {
-    public enum GroupRole
+    public enum GroupLevel : byte
     {
         //0 reserved
         Shetlander = 0,

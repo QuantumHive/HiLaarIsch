@@ -18,7 +18,7 @@ namespace HiLaarIsch.Domain
         public string PasswordHash { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
-        public byte Role { get; set; }
+        public HiLaarIsch.Components.Role Role { get; set; }
     
         public virtual CustomerEntity Customer { get; set; }
     }

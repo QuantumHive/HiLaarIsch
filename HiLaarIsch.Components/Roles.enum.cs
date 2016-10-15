@@ -1,6 +1,6 @@
 ﻿namespace HiLaarIsch.Components
 {
-    public enum Role
+    public enum Role : byte
     {
         //0 reserved
         Admin = 1,

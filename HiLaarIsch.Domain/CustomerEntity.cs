@@ -20,7 +20,7 @@ namespace HiLaarIsch.Domain
         public string Address { get; set; }
         public string PhoneNumber { get; set; }
         public string EmergencyNumber { get; set; }
-        public byte GroupLevel { get; set; }
+        public HiLaarIsch.Components.GroupLevel GroupLevel { get; set; }
     
         public virtual UserEntity User { get; set; }
     }

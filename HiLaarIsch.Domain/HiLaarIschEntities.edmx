@@ -70,7 +70,7 @@
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EmergencyNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="GroupLevel" Type="Byte" Nullable="false" />
+          <Property Name="GroupLevel" Type="HiLaarIsch.GroupLevel" Nullable="false" />
           <NavigationProperty Name="User" Relationship="HiLaarIsch.FK_Customers_Users" FromRole="Customers" ToRole="Users" />
         </EntityType>
         <EntityType Name="UserEntity">
@@ -81,13 +81,15 @@
           <Property Name="PasswordHash" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
-          <Property Name="Role" Type="Byte" Nullable="false" />
+          <Property Name="Role" Type="HiLaarIsch.Role" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="HiLaarIsch.FK_Customers_Users" FromRole="Users" ToRole="Customers" />
         </EntityType>
         <Association Name="FK_Customers_Users">
           <End Type="HiLaarIsch.UserEntity" Role="Users" Multiplicity="1" />
           <End Type="HiLaarIsch.CustomerEntity" Role="Customers" Multiplicity="0..1" />
         </Association>
+        <EnumType Name="Role" a:ExternalTypeName="HiLaarIsch.Components.Role" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" UnderlyingType="Byte" />
+        <EnumType Name="GroupLevel" a:ExternalTypeName="HiLaarIsch.Components.GroupLevel" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" UnderlyingType="Byte" />
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

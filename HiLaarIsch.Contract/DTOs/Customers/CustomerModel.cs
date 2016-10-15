@@ -1,4 +1,5 @@
 ﻿using System;
+using HiLaarIsch.Components;
 
 namespace HiLaarIsch.Contract.DTOs
 {
@@ -8,5 +9,6 @@ namespace HiLaarIsch.Contract.DTOs
         public string Firstname { get; set; }
         public string Surname { get; set; }
         public string Email { get; set; }
+        public GroupLevel GroupLevel { get; set; }
     }
 }

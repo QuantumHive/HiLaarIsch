@@ -1,4 +1,5 @@
 ﻿using System;
+using HiLaarIsch.Components;
 using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Domain;
@@ -27,7 +28,7 @@ namespace HiLaarIsch.BusinessLayer.CommandHandlers
                 Email = command.Model.Email,
                 EmailConfirmed = false,
                 PasswordHash = "ADvVwRre5wxBC3PiOAl78Je3qdGzaOhod+IEqd0FBY8oql10ELc4ESJmmJtJ3R0LTQ==", //temporary admin password
-                Role = 0,
+                Role = Role.Customer,
             };
 
             var customer = new CustomerEntity
@@ -35,6 +36,7 @@ namespace HiLaarIsch.BusinessLayer.CommandHandlers
                 Id = Guid.NewGuid(),
                 Firstname = command.Model.Firstname,
                 Surname = command.Model.Surname,
+                GroupLevel = command.Model.GroupLevel,
                 User = user,
             };
 

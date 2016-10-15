@@ -103,6 +103,12 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HiLaarIsch.Components\HiLaarIsch.Components.csproj">
+      <Project>{2cd293ef-a91b-48ab-9eb6-34b57ee59487}</Project>
+      <Name>HiLaarIsch.Components</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -46,6 +46,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\HiLaarIsch.Components\HiLaarIsch.Components.csproj">
+      <Project>{2cd293ef-a91b-48ab-9eb6-34b57ee59487}</Project>
+      <Name>HiLaarIsch.Components</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuantumHive.Core\QuantumHive.Core.csproj">
       <Project>{bb3a33f7-772a-4ba7-98e5-efb4ac1bd9c0}</Project>
       <Name>QuantumHive.Core</Name>

@@ -34,7 +34,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandlers\UpdateCustomerCommandHandler .cs" />
     <Compile Include="CommandHandlers\CreateNewCustomerCommandHandler.cs" />
+    <Compile Include="Extensions\Domain\CustomerExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandlers\Customers\GetAllCustomersQueryHandler.cs" />
     <Compile Include="QueryHandlers\Customers\GetCustomerByIdQueryHandler.cs" />

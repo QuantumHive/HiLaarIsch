@@ -39,6 +39,7 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpPost, Route("login")]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
         {
             var user = this.userManager.FindByEmail(email);

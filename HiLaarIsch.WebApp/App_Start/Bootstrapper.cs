@@ -23,6 +23,7 @@ using System.Web;
 using HiLaarIsch.BusinessLayer.CommandHandlers;
 using QuantumHive.EntityFramework.Decorators;
 using System.Data.Entity;
+using Microsoft.Owin.Security.DataProtection;
 
 namespace HiLaarIsch
 {
@@ -45,7 +46,7 @@ namespace HiLaarIsch
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 
-            app.CreatePerOwinContext(() => container.GetInstance<UserManager<IdentityUser, Guid>>());
+            app.CreatePerOwinContext(container.GetInstance<UserManager<IdentityUser, Guid>>);
 
             return container;
         }
@@ -121,6 +122,12 @@ namespace HiLaarIsch
                     AllowOnlyAlphanumericUserNames = false,
                     RequireUniqueEmail = true,
                 };
+
+                var dataProtector = app.GetDataProtectionProvider().Create(purposes: "Identity Data Protection");
+                userManager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser, Guid>(dataProtector)
+                {
+                    TokenLifespan = TimeSpan.FromDays(3),
+                };
             });
 
             container.RegisterPerWebRequest<SignInManager<IdentityUser, Guid>>();
@@ -133,7 +140,7 @@ namespace HiLaarIsch
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/Account/Login"),
+                LoginPath = new PathString("/account/login"),
                 //TODO: cookie options
             });
         }

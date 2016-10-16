@@ -26,7 +26,8 @@ namespace HiLaarIsch.Identity
 
         public Task<IdentityUser> FindByIdAsync(Guid userId)
         {
-            throw new NotImplementedException();
+            var user = this.queryProcessor.Process(new GetModelByIdQuery<UserView>(userId));
+            return Task.FromResult(new IdentityUser(user.Id, user.Email));
         }
 
         // Same as IUserEmailStore.FindByEmailAsync(string email).

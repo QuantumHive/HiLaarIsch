@@ -57,6 +57,13 @@ namespace HiLaarIsch.Controllers
             if(result == IdentityResult.Success)
             {
                 this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
+
+                var user = this.userManager.FindByEmail(model.Email);
+                var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
+                var passwordToken = this.userManager.GeneratePasswordResetToken(user.Id);
+
+                //TODO send email
+
                 return this.Redirect("/"); //TODO: clean redirect
             }
 

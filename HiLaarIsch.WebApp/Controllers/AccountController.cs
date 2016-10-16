@@ -61,11 +61,12 @@ namespace HiLaarIsch.Controllers
         }
 
         [Authorize]
+        [HttpGet, Route("logoff")]
         [ValidateAntiForgeryToken]
         public ActionResult Logoff()
         {
             this.authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return this.Redirect("account/login");
+            return this.Redirect("/"); //TODO: clean redirect
         }
     }
 }

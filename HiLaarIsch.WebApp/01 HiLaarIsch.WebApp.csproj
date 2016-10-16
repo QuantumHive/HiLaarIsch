@@ -187,6 +187,11 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
+    <Compile Include="Filters\ActionFilters\Global\RouteValuesTransferStateAttribute.cs" />
+    <Compile Include="Filters\ActionFilters\ImportModelStateAttribute.cs" />
+    <Compile Include="Filters\ActionFilters\ModelStateTransfer.cs" />
+    <Compile Include="Filters\ActionFilters\ValidateModelStateAttribute.cs" />
+    <Compile Include="Helpers\TempDataKeys.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
     <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserEmailStore.partial.cs" />

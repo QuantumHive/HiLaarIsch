@@ -24,6 +24,7 @@ using HiLaarIsch.BusinessLayer.CommandHandlers;
 using QuantumHive.EntityFramework.Decorators;
 using System.Data.Entity;
 using Microsoft.Owin.Security.DataProtection;
+using HiLaarIsch.Filters.ActionFilters.Global;
 
 namespace HiLaarIsch
 {
@@ -75,6 +76,8 @@ namespace HiLaarIsch
             RouteTable.Routes.MapMvcAttributeRoutes();
 
             BundleConfig.ConfigureAndRegisterBundles();
+
+            GlobalFilters.Filters.Add(new RouteValuesTransferStateAttribute());
         }
 
         private static void RegisterServices(this Container container)

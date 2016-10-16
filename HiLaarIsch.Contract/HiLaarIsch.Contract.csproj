@@ -45,6 +45,7 @@
     <Compile Include="Queries\Users\GetPasswordHashByUserIdQuery.cs" />
     <Compile Include="Queries\Users\GetUserByEmailQuery.cs" />
     <Compile Include="Queries\GetAllModelsQuery.cs" />
+    <Compile Include="Queries\Users\UserExistsQuery.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

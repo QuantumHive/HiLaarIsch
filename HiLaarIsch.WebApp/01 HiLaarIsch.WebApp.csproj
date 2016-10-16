@@ -185,11 +185,13 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
     <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserEmailStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserStore.partial.cs" />
     <Compile Include="Helpers\Partials.cs" />
+    <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -215,9 +217,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\HiLaarIsch.BusinessLayer\HiLaarIsch.BusinessLayer.csproj">
       <Project>{ba8bb8bb-0e14-447e-a00d-cce4448cf19a}</Project>

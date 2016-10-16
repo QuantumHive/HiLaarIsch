@@ -60,7 +60,6 @@ namespace HiLaarIsch.Controllers
 
                 var user = this.userManager.FindByEmail(model.Email);
                 var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
-                var passwordToken = this.userManager.GeneratePasswordResetToken(user.Id);
 
                 //TODO send email
 

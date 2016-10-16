@@ -19,7 +19,6 @@ namespace HiLaarIsch.Identity
             return Task.FromResult(user == null ? null : new IdentityUser(user.Id, email));
         }
 
-        //TODO: check identity framework calls
         public Task<string> GetEmailAsync(IdentityUser user)
         {
             var email = string.Empty;
@@ -32,8 +31,7 @@ namespace HiLaarIsch.Identity
             }
             else
             {
-                //for all other calls, we actually need to retrieve the user
-                //TODO: implement handler
+                //[assumption] for all other calls, we actually need to retrieve the user
                 var result = this.queryProcessor.Process(new GetModelByIdQuery<UserView>(user.Id));
                 email = result.Email;
             }

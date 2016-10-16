@@ -12,15 +12,33 @@ namespace HiLaarIsch.Identity
 {
     public partial class UserStore : IUserEmailStore<IdentityUser, Guid>
     {
+        // Returns null if the user with the associated email does not exists.
         public Task<IdentityUser> FindByEmailAsync(string email)
         {
-            var user = this.queryProcessor.Process(new GetUserByEmailQuery(email));
-            return this.StartNewTask(() => new IdentityUser(user));
+            var user = this.queryProcessor.Process(new GetUserByEmailQuery(email, throwIfNotExists: false));
+            return Task.FromResult(user == null ? null : new IdentityUser(user.Id, email));
         }
 
+        //TODO: check identity framework calls
         public Task<string> GetEmailAsync(IdentityUser user)
         {
-            throw new NotImplementedException();
+            var email = string.Empty;
+
+            //if user id is empty, a new user needs to be created
+            if(user.Id == Guid.Empty)
+            {
+                //we will return the email provided, because Identity validates on non-empty email on creation
+                email = user.UserName;
+            }
+            else
+            {
+                //for all other calls, we actually need to retrieve the user
+                //TODO: implement handler
+                var result = this.queryProcessor.Process(new GetModelByIdQuery<UserView>(user.Id));
+                email = result.Email;
+            }
+
+            return Task.FromResult(email);
         }
 
         public Task<bool> GetEmailConfirmedAsync(IdentityUser user)

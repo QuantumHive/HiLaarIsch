@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Contract.Queries;
+using HiLaarIsch.Identity;
+using Microsoft.AspNet.Identity;
 using QuantumHive.Core;
 
 namespace HiLaarIsch.Controllers
@@ -17,15 +19,18 @@ namespace HiLaarIsch.Controllers
         private readonly IQueryProcessor queryProcessor;
         private readonly ICommandHandler<CreateModelCommand<CustomerModel>> createHandler;
         private readonly ICommandHandler<UpdateModelCommand<CustomerModel>> updateHandler;
+        private readonly UserManager<IdentityUser, Guid> userManager;
 
         public CustomersController(
             IQueryProcessor queryProcessor,
             ICommandHandler<CreateModelCommand<CustomerModel>> createHandler,
-            ICommandHandler<UpdateModelCommand<CustomerModel>> updateHandler)
+            ICommandHandler<UpdateModelCommand<CustomerModel>> updateHandler,
+            UserManager<IdentityUser, Guid> userManager)
         {
             this.queryProcessor = queryProcessor;
             this.createHandler = createHandler;
             this.updateHandler = updateHandler;
+            this.userManager = userManager;
         }
         
         [Route("~/")]
@@ -46,8 +51,16 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult New(CustomerModel model)
         {
-            this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
-            return this.Redirect("/"); //TODO: clean redirect
+            var newUser = IdentityUser.CreateNewUser(model.Email);
+            var result = this.userManager.Create(newUser);
+
+            if(result == IdentityResult.Success)
+            {
+                this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
+                return this.Redirect("/"); //TODO: clean redirect
+            }
+
+            return this.Redirect("/new"); //TODO: validate / export / import - model
         }
 
         [HttpGet, Route("edit/{customerId}")]

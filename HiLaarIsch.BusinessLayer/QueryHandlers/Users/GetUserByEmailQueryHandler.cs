@@ -26,7 +26,7 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
                     Id = user.Id,
                 };
 
-            return result.Single();
+            return query.ThrowIfNotExistis ? result.Single() : result.SingleOrDefault();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using HiLaarIsch.Contract.Commands;
+﻿using System.Linq;
+using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Domain;
 using QuantumHive.Core;
@@ -20,8 +21,13 @@ namespace HiLaarIsch.BusinessLayer.CommandHandlers
 
         public void Handle(CreateModelCommand<CustomerModel> command)
         {
-            var user = UserEntity.CreateNewUser(command.Model.Email);
-            var customer = user.CreateNewCustomer();
+            var newUser =
+                from user in this.userRepository.Entities
+                where user.Email == command.Model.Email
+                where !user.EmailConfirmed
+                select user;
+
+            var customer = newUser.Single().CreateNewCustomer();
 
             command.Model.Map(customer);
 

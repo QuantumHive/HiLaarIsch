@@ -116,7 +116,11 @@ namespace HiLaarIsch
             container.RegisterPerWebRequest(() => new UserManager<IdentityUser, Guid>(container.GetInstance<IUserStore<IdentityUser, Guid>>()));
             container.RegisterInitializer<UserManager<IdentityUser, Guid>>(userManager =>
             {
-                //TODO: usermanager configuration
+                userManager.UserValidator = new UserValidator<IdentityUser, Guid>(userManager)
+                {
+                    AllowOnlyAlphanumericUserNames = false,
+                    RequireUniqueEmail = true,
+                };
             });
 
             container.RegisterPerWebRequest<SignInManager<IdentityUser, Guid>>();

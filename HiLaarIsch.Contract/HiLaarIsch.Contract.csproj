@@ -38,6 +38,7 @@
     <Compile Include="Commands\UpdateModelCommand.cs" />
     <Compile Include="DTOs\Customers\CustomerModel.cs" />
     <Compile Include="DTOs\Customers\CustomerView.cs" />
+    <Compile Include="DTOs\Users\UserModel.cs" />
     <Compile Include="DTOs\Users\UserView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries\GetModelByIdQuery.cs" />

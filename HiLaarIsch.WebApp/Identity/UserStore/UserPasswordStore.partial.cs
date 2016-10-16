@@ -15,7 +15,7 @@ namespace HiLaarIsch.Identity
         public Task<string> GetPasswordHashAsync(IdentityUser user)
         {
             var hash = this.queryProcessor.Process(new GetPasswordHashByUserIdQuery(user.Id));
-            return this.StartNewTask(() => hash);
+            return Task.FromResult(hash);
         }
 
         public Task<bool> HasPasswordAsync(IdentityUser user)

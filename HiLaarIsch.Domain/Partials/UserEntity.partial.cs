@@ -12,7 +12,7 @@ namespace HiLaarIsch.Domain
                 Id = Guid.NewGuid(), //TODO: CCC
                 Email = email,
                 EmailConfirmed = false,
-                PasswordHash = "ADvVwRre5wxBC3PiOAl78Je3qdGzaOhod+IEqd0FBY8oql10ELc4ESJmmJtJ3R0LTQ==", //temporary admin password
+                PasswordHash = null,
                 Role = Role.Customer,
             };
 

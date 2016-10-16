@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Contract.Queries;
+using HiLaarIsch.Filters;
 using HiLaarIsch.Identity;
 using Microsoft.AspNet.Identity;
 using QuantumHive.Core;
@@ -42,12 +43,14 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpGet, Route("new")]
+        [ImportModelState]
         public ActionResult New()
         {
             return this.View(new CustomerModel());
         }
 
         [HttpPost, Route("new")]
+        [ValidateModelState]
         [ValidateAntiForgeryToken]
         public ActionResult New(CustomerModel model)
         {
@@ -61,15 +64,16 @@ namespace HiLaarIsch.Controllers
                 var user = this.userManager.FindByEmail(model.Email);
                 var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
 
-                //TODO send email
+                //TODO: send email
 
                 return this.Redirect("/customers"); //TODO: clean redirect
             }
 
-            return this.Redirect("/new"); //TODO: validate / export / import - model
+            return this.Redirect("/new"); //TODO: export invalid email
         }
 
         [HttpGet, Route("edit/{customerId}")]
+        [ImportModelState]
         public ActionResult Edit(Guid customerId)
         {
             var model = this.queryProcessor.Process(new GetModelByIdQuery<CustomerModel>(customerId));
@@ -77,6 +81,8 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpPost, Route("edit")]
+        [ValidateModelState]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(CustomerModel model)
         {
             this.updateHandler.Handle(new UpdateModelCommand<CustomerModel>(model, model.Id));

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HiLaarIsch.Filters;
 using HiLaarIsch.Identity;
 using HiLaarIsch.Models;
 using Microsoft.AspNet.Identity;
@@ -75,6 +76,7 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpGet, Route("confirm/{userid}/{mailtoken}")]
+        [ImportModelState]
         public ActionResult Confirm(Guid userid, string mailtoken)
         {
             //TODO: prefer extension method on the usermanager somehow for userexists
@@ -88,10 +90,12 @@ namespace HiLaarIsch.Controllers
                 };
                 return this.View(model);
             }
+
             return this.RedirectToRoot();
         }
 
         [HttpPost, Route("confirm")]
+        [ValidateModelState]
         [ValidateAntiForgeryToken]
         public ActionResult Confirm(ResetPasswordViewModel model)
         {

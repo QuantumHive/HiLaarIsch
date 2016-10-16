@@ -37,7 +37,7 @@ namespace HiLaarIsch.Controllers
         {
             if (this.User.Identity.IsAuthenticated)
             {
-                return this.Redirect("/"); //TODO: clean redirect
+                return this.RedirectToRoot();
             }
             return this.View();
         }
@@ -62,7 +62,7 @@ namespace HiLaarIsch.Controllers
 
             this.signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
 
-            return this.Redirect("/"); //TODO: clean redirect
+            return this.RedirectToRoot();
         }
 
         [Authorize]
@@ -71,7 +71,7 @@ namespace HiLaarIsch.Controllers
         public ActionResult Logoff()
         {
             this.authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return this.Redirect("/"); //TODO: clean redirect
+            return this.RedirectToRoot();
         }
 
         [HttpGet, Route("confirm/{userid}/{mailtoken}")]
@@ -88,7 +88,7 @@ namespace HiLaarIsch.Controllers
                 };
                 return this.View(model);
             }
-            return this.Redirect("/"); //TODO: clean redirect
+            return this.RedirectToRoot();
         }
 
         [HttpPost, Route("confirm")]
@@ -109,7 +109,7 @@ namespace HiLaarIsch.Controllers
                 }
             }
 
-            return this.Redirect("/"); //TODO: clean redirect
+            return this.RedirectToRoot();
         }
     }
 }

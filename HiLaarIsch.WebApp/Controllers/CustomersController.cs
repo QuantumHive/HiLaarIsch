@@ -63,7 +63,7 @@ namespace HiLaarIsch.Controllers
 
                 //TODO send email
 
-                return this.Redirect("/"); //TODO: clean redirect
+                return this.Redirect("/customers"); //TODO: clean redirect
             }
 
             return this.Redirect("/new"); //TODO: validate / export / import - model
@@ -80,7 +80,7 @@ namespace HiLaarIsch.Controllers
         public ActionResult Edit(CustomerModel model)
         {
             this.updateHandler.Handle(new UpdateModelCommand<CustomerModel>(model, model.Id));
-            return this.Redirect("/"); //TODO: clean redirect
+            return this.Redirect("/customers"); //TODO: clean redirect
         }
     }
 }

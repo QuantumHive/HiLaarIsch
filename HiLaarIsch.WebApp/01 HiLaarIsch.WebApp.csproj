@@ -185,6 +185,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Identity\IdentityUser.cs" />
     <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />

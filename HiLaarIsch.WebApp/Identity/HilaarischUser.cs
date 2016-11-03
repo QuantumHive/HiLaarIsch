@@ -7,6 +7,12 @@ using Microsoft.AspNet.Identity;
 
 namespace HiLaarIsch.Identity
 {
+    public class HilaarischUser
+    {
+        public Guid Id { get; set; }
+        public string Email { get; set; }
+    }
+
     public class IdentityUser : IUser<Guid>
     {
         public IdentityUser(Guid id, string email)

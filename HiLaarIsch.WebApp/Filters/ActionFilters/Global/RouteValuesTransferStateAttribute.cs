@@ -9,6 +9,8 @@ namespace HiLaarIsch.Filters.ActionFilters.Global
     /// </summary>
     public class RouteValuesTransferStateAttribute : ActionFilterAttribute
     {
+        //TODO: skip on json results etc
+
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
             filterContext.Controller.TempData[TempDataKeys.RouteValuesTransferState] = filterContext.RouteData;

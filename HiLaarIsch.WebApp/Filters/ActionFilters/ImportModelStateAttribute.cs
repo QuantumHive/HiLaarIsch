@@ -15,7 +15,7 @@ namespace HiLaarIsch.Filters
         public override void OnActionExecuted(ActionExecutedContext filterContext)
         {
             var modelstate = this.GetModelState(filterContext) as ModelStateDictionary;
-
+            //TODO: merging with invalid model
             if(modelstate != null)
             {
                 if (this.IsViewResult(filterContext))

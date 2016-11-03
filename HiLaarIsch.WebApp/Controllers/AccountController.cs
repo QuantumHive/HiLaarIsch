@@ -18,14 +18,14 @@ namespace HiLaarIsch.Controllers
     {
         private readonly IQueryProcessor queryProcessor;
         private readonly IAuthenticationManager authenticationManager;
-        private readonly SignInManager<IdentityUser, Guid> signInManager;
-        private readonly UserManager<IdentityUser, Guid> userManager;
+        private readonly SignInManager signInManager;
+        private readonly UserManager userManager;
 
         public AccountController(
             IQueryProcessor queryProcessor,
             IAuthenticationManager authenticationManager,
-            SignInManager<IdentityUser, Guid> signInManager,
-            UserManager<IdentityUser, Guid> userManager)
+            SignInManager signInManager,
+            UserManager userManager)
         {
             this.queryProcessor = queryProcessor;
             this.authenticationManager = authenticationManager;
@@ -61,7 +61,7 @@ namespace HiLaarIsch.Controllers
                 return this.View();
             }
 
-            this.signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+            this.signInManager.SignIn(user);
 
             return this.RedirectToRoot();
         }
@@ -75,45 +75,46 @@ namespace HiLaarIsch.Controllers
             return this.RedirectToRoot();
         }
 
-        [HttpGet, Route("confirm/{userid}/{mailtoken}")]
-        [ImportModelState]
-        public ActionResult Confirm(Guid userid, string mailtoken)
-        {
-            //TODO: prefer extension method on the usermanager somehow for userexists
-            if (!string.IsNullOrWhiteSpace(mailtoken)
-                && this.userManager.VerifyUserToken(userid, "Confirmation", mailtoken))
-            {
-                var model = new ResetPasswordViewModel
-                {
-                    UserId = userid,
-                    MailToken = mailtoken,
-                };
-                return this.View(model);
-            }
+        //TODO
+        //[HttpGet, Route("confirm/{userid}/{mailtoken}")]
+        //[ImportModelState]
+        //public ActionResult Confirm(Guid userid, string mailtoken)
+        //{
+        //    //TODO: prefer extension method on the usermanager somehow for userexists
+        //    if (!string.IsNullOrWhiteSpace(mailtoken)
+        //        && this.userManager.VerifyUserToken(userid, "Confirmation", mailtoken))
+        //    {
+        //        var model = new ResetPasswordViewModel
+        //        {
+        //            UserId = userid,
+        //            MailToken = mailtoken,
+        //        };
+        //        return this.View(model);
+        //    }
 
-            return this.RedirectToRoot();
-        }
+        //    return this.RedirectToRoot();
+        //}
 
-        [HttpPost, Route("confirm")]
-        [ValidateModelState]
-        [ValidateAntiForgeryToken]
-        public ActionResult Confirm(ResetPasswordViewModel model)
-        {
-            var result = this.userManager.ConfirmEmail(model.UserId, model.MailToken);
+        //[HttpPost, Route("confirm")]
+        //[ValidateModelState]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Confirm(ResetPasswordViewModel model)
+        //{
+        //    var result = this.userManager.ConfirmEmail(model.UserId, model.MailToken);
 
-            if (result.Succeeded)
-            {
-                //TODO: passwordvalidator test for space
-                var passwordToken = this.userManager.GeneratePasswordResetToken(model.UserId);
-                result = this.userManager.ResetPassword(model.UserId, passwordToken, model.NewPassword);
+        //    if (result.Succeeded)
+        //    {
+        //        //TODO: passwordvalidator test for space
+        //        var passwordToken = this.userManager.GeneratePasswordResetToken(model.UserId);
+        //        result = this.userManager.ResetPassword(model.UserId, passwordToken, model.NewPassword);
 
-                if (result.Succeeded)
-                {
-                    //TODO: signin
-                }
-            }
+        //        if (result.Succeeded)
+        //        {
+        //            //TODO: signin
+        //        }
+        //    }
 
-            return this.RedirectToRoot();
-        }
+        //    return this.RedirectToRoot();
+        //}
     }
 }

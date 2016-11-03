@@ -192,7 +192,9 @@
     <Compile Include="Filters\ActionFilters\ModelStateTransfer.cs" />
     <Compile Include="Filters\ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="Helpers\TempDataKeys.cs" />
-    <Compile Include="Identity\IdentityUser.cs" />
+    <Compile Include="Identity\HilaarischUser.cs" />
+    <Compile Include="Identity\SignInManager.cs" />
+    <Compile Include="Identity\UserManager.cs" />
     <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserEmailStore.partial.cs" />
     <Compile Include="Identity\UserStore\UserStore.partial.cs" />

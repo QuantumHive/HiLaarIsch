@@ -24,6 +24,8 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
                 select new UserView
                 {
                     Id = user.Id,
+                    Email = user.Email,
+                    EmailConfirmed = user.EmailConfirmed,
                 };
 
             return query.ThrowIfNotExistis ? result.Single() : result.SingleOrDefault();

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using HiLaarIsch.Contract.Commands;
@@ -20,13 +21,13 @@ namespace HiLaarIsch.Controllers
         private readonly IQueryProcessor queryProcessor;
         private readonly ICommandHandler<CreateModelCommand<CustomerModel>> createHandler;
         private readonly ICommandHandler<UpdateModelCommand<CustomerModel>> updateHandler;
-        private readonly UserManager<IdentityUser, Guid> userManager;
+        private readonly UserManager userManager;
 
         public CustomersController(
             IQueryProcessor queryProcessor,
             ICommandHandler<CreateModelCommand<CustomerModel>> createHandler,
             ICommandHandler<UpdateModelCommand<CustomerModel>> updateHandler,
-            UserManager<IdentityUser, Guid> userManager)
+            UserManager userManager)
         {
             this.queryProcessor = queryProcessor;
             this.createHandler = createHandler;
@@ -54,15 +55,25 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult New(CustomerModel model)
         {
-            var newUser = IdentityUser.CreateNewUser(model.Email);
-            var result = this.userManager.Create(newUser);
-
-            if(result == IdentityResult.Success)
+            //TODO: refactor to validator class
+            var valid = true;
+            try
             {
+                var m = new MailAddress(model.Email);
+            }
+            catch (FormatException)
+            {
+                valid = false;
+            }
+            //TODO: check if email exists
+            if (valid)
+            {
+                this.userManager.CreateUser(model.Email);
                 this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
 
                 var user = this.userManager.FindByEmail(model.Email);
-                var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
+                //TODO:
+                //var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
 
                 //TODO: send email
 

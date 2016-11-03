@@ -47,8 +47,6 @@ namespace HiLaarIsch
 
             DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
 
-            app.CreatePerOwinContext(container.GetInstance<UserManager<IdentityUser, Guid>>);
-
             return container;
         }
 
@@ -114,31 +112,21 @@ namespace HiLaarIsch
         private static void RegisterOwinIdentityServices(this Container container, IAppBuilder app)
         {
             container.RegisterSingleton<IAppBuilder>(app);
+            container.RegisterSingleton<IPasswordHasher, PasswordHasher>();
+            container.RegisterPerWebRequest<UserManager>();
 
-            container.RegisterPerWebRequest<IUserStore<IdentityUser, Guid>, UserStore>();
+            //TODO:
+            //var dataProtector = app.GetDataProtectionProvider().Create(purposes: "Identity Data Protection");
+            //var dataProtectorTokenProvider = new DataProtectorTokenProvider<IdentityUser, Guid>(dataProtector)
+            //{
+            //    TokenLifespan = TimeSpan.FromDays(3),
+            //};
 
-            container.RegisterPerWebRequest(() => new UserManager<IdentityUser, Guid>(container.GetInstance<IUserStore<IdentityUser, Guid>>()));
-            container.RegisterInitializer<UserManager<IdentityUser, Guid>>(userManager =>
-            {
-                userManager.UserValidator = new UserValidator<IdentityUser, Guid>(userManager)
-                {
-                    AllowOnlyAlphanumericUserNames = false,
-                    RequireUniqueEmail = true,
-                };
-
-                var dataProtector = app.GetDataProtectionProvider().Create(purposes: "Identity Data Protection");
-                userManager.UserTokenProvider = new DataProtectorTokenProvider<IdentityUser, Guid>(dataProtector)
-                {
-                    TokenLifespan = TimeSpan.FromDays(3),
-                };
-            });
-
-            container.RegisterPerWebRequest<SignInManager<IdentityUser, Guid>>();
+            container.RegisterPerWebRequest<SignInManager>();
             container.RegisterPerWebRequest(() =>
                 container.IsVerifying
                 ? new OwinContext().Authentication
                 : HttpContext.Current.GetOwinContext().Authentication);
-
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

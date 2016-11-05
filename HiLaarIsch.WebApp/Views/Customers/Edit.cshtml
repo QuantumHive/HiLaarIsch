@@ -1,7 +1,7 @@
 ﻿@using HiLaarIsch.Contract.DTOs
 @model CustomerModel
 
-<form action="/customers/edit" method="post" class="form-horizontal">
+<form action="/customers/edit" method="post">
     @Html.AntiForgeryToken()
 
     @Html.HiddenFor(m => m.Id)

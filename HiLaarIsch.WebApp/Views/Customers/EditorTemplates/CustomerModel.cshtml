@@ -3,11 +3,9 @@
 
 <fieldset>
     <legend>Gebruiker gegevens</legend>
+
     <div class="form-group">
-        <label for="email" class="hidden-xs col-sm-2 control-label">E-mail</label>
-        <div class="col-xs-12 col-sm-10">
-            <input name="@nameof(CustomerModel.Email)" type="email" class="form-control" id="email" value="@Model.Email" placeholder="E-mail">
-        </div>
+        <input name="@nameof(CustomerModel.Email)" type="email" class="form-control" id="email" value="@Model.Email" placeholder="E-mail">
     </div>
 </fieldset>
 
@@ -15,53 +13,36 @@
     <legend>Klant gegevens</legend>
 
     <div class="form-group">
-        <label for="firstname" class="hidden-xs col-sm-2 control-label">Voornaam</label>
-        <div class="col-xs-12 col-sm-10">
-            <input name="@nameof(CustomerModel.Firstname)" type="text" class="form-control" id="firstname" value="@Model.Firstname" placeholder="Voornaam">
+        <input name="@nameof(CustomerModel.Firstname)" type="text" class="form-control" id="firstname" value="@Model.Firstname" placeholder="Voornaam">
+    </div>
+
+    <div class="form-group">
+        <input name="@nameof(CustomerModel.Surname)" type="text" class="form-control" id="surname" value="@Model.Surname" placeholder="Achternaam">
+    </div>
+
+    <div class="form-group">
+        <div class="btn-group btn-group-justified" data-toggle="buttons">
+            <label class="btn btn-default">
+                <input name="@nameof(CustomerModel.GroupLevel)" type="radio" id="shetland-class" value="1" autocomplete="off"> Shetten les
+            </label>
+            <label class="btn btn-default">
+                <input name="@nameof(CustomerModel.GroupLevel)" type="radio" id="children-class" value="2" autocomplete="off"> Kinder les
+            </label>
+            <label class="btn btn-default">
+                <input name="@nameof(CustomerModel.GroupLevel)" type="radio" id="adult-class" value="3" autocomplete="off"> Volwassen les
+            </label>
         </div>
     </div>
 
     <div class="form-group">
-        <label for="surname" class="hidden-xs col-sm-2 control-label">Achternaam</label>
-        <div class="col-xs-12 col-sm-10">
-            <input name="@nameof(CustomerModel.Surname)" type="text" class="form-control" id="surname" value="@Model.Surname" placeholder="Achternaam">
-        </div>
+        <input name="@nameof(CustomerModel.PhoneNumber)" type="tel" class="form-control" id="phonenumber" value="@Model.PhoneNumber" placeholder="Telefoonnummer" >
     </div>
 
     <div class="form-group">
-        <div class="col-xs-12">
-            <div class="btn-group btn-group-justified" data-toggle="buttons">
-                <label class="btn btn-default">
-                    <input name="@nameof(CustomerModel.GroupLevel)" type="radio" id="shetland-class" value="1" autocomplete="off"> Shetten les
-                </label>
-                <label class="btn btn-default">
-                    <input name="@nameof(CustomerModel.GroupLevel)" type="radio" id="children-class" value="2" autocomplete="off"> Kinder les
-                </label>
-                <label class="btn btn-default">
-                    <input name="@nameof(CustomerModel.GroupLevel)" type="radio" id="adult-class" value="3" autocomplete="off"> Volwassen les
-                </label>
-            </div>
-        </div>
+        <input name="@nameof(CustomerModel.EmergencyNumber)" type="tel" class="form-control" id="emergencynumber" value="@Model.EmergencyNumber" placeholder="Noodnummer">
     </div>
 
     <div class="form-group">
-        <label for="phonenumber" class="hidden-xs col-sm-2 control-label">Telefoon</label>
-        <div class="col-xs-12 col-sm-10">
-            <input name="@nameof(CustomerModel.PhoneNumber)" type="tel" class="form-control" id="phonenumber" value="@Model.PhoneNumber" placeholder="Telefoonnummer" >
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="emergencynumber" class="hidden-xs col-sm-2 control-label">Noodnummer</label>
-        <div class="col-xs-12 col-sm-10">
-            <input name="@nameof(CustomerModel.EmergencyNumber)" type="tel" class="form-control" id="emergencynumber" value="@Model.EmergencyNumber" placeholder="Noodnummer">
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label for="address" class="hidden-xs col-sm-2 control-label">Adres gegevens</label>
-        <div class="col-xs-12 col-sm-10">
-            <textarea name="@nameof(CustomerModel.Address)" class="form-control" id="address" value="@Model.Address" placeholder="Adres gegevens" rows="5">@Model.Address</textarea>
-        </div>
+        <textarea name="@nameof(CustomerModel.Address)" class="form-control" id="address" value="@Model.Address" placeholder="Adres gegevens" rows="5">@Model.Address</textarea>
     </div>
 </fieldset>

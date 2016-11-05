@@ -186,7 +186,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
-    <Compile Include="Extensions\IdentityExtensions.cs" />
     <Compile Include="Filters\ActionFilters\Global\RouteValuesTransferStateAttribute.cs" />
     <Compile Include="Filters\ActionFilters\ImportModelStateAttribute.cs" />
     <Compile Include="Filters\ActionFilters\ModelStateTransfer.cs" />
@@ -196,9 +195,6 @@
     <Compile Include="Identity\HilaarischUser.cs" />
     <Compile Include="Identity\SignInManager.cs" />
     <Compile Include="Identity\UserManager.cs" />
-    <Compile Include="Identity\UserStore\UserPasswordStore.partial.cs" />
-    <Compile Include="Identity\UserStore\UserEmailStore.partial.cs" />
-    <Compile Include="Identity\UserStore\UserStore.partial.cs" />
     <Compile Include="Helpers\Partials.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

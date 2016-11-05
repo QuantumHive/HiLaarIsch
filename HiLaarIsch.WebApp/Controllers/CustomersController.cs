@@ -66,14 +66,14 @@ namespace HiLaarIsch.Controllers
                 valid = false;
             }
             //TODO: check if email exists
+
             if (valid)
             {
                 this.userManager.CreateUser(model.Email);
                 this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
 
                 var user = this.userManager.FindByEmail(model.Email);
-                //TODO:
-                //var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
+                var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
 
                 //TODO: send email
 

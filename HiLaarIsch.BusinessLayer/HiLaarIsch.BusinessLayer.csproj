@@ -43,8 +43,6 @@
     <Compile Include="QueryHandlers\Customers\GetCustomerByIdQueryHandler.cs" />
     <Compile Include="QueryHandlers\Users\GetUserByEmailQueryHandler.cs" />
     <Compile Include="QueryHandlers\Users\GetPasswordHashByUserIdQueryHandler.cs" />
-    <Compile Include="QueryHandlers\Users\GetUserByIdQueryHandler.cs" />
-    <Compile Include="QueryHandlers\Users\UserExistsQueryHandler.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

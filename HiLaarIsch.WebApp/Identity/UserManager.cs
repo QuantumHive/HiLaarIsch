@@ -12,6 +12,7 @@ namespace HiLaarIsch.Identity
 {
     public class UserManager
     {
+        private const string EmailConfirmationPurpose = nameof(UserManager.EmailConfirmationPurpose);
         private readonly IQueryProcessor queryProcessor;
         private readonly IPasswordHasher passwordHasher;
         private readonly ICommandHandler<CreateModelCommand<UserModel>> createUserCommand;
@@ -47,6 +48,11 @@ namespace HiLaarIsch.Identity
             this.createUserCommand.Handle(new CreateModelCommand<UserModel>(model));
         }
 
+        public string GenerateEmailConfirmationToken(Guid userId)
+        {
+            return this.userTokenProvider.Generate(EmailConfirmationPurpose, userId);
+        }
+
         public void ConfirmEmail(Guid userId, string token)
         {
             //TODO: commandhandler that confirms email
@@ -55,7 +61,7 @@ namespace HiLaarIsch.Identity
 
         public bool VerifyEmailToken(Guid userId, string token)
         {
-            return this.userTokenProvider.Validate("Confirmation", token, userId);
+            return this.userTokenProvider.Validate(EmailConfirmationPurpose, token, userId);
         }
 
         public void ResetPassword(Guid userId, string password)

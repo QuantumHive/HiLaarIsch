@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Web;
 using System.Web.Mvc;
 using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Contract.Queries;
 using HiLaarIsch.Filters;
 using HiLaarIsch.Services;
-using Microsoft.AspNet.Identity;
 using QuantumHive.Core;
 
 namespace HiLaarIsch.Controllers
@@ -56,6 +52,7 @@ namespace HiLaarIsch.Controllers
         public ActionResult New(CustomerModel model)
         {
             //TODO: refactor to validator class
+            //TODO: check if email exists
             var valid = true;
             try
             {
@@ -65,7 +62,6 @@ namespace HiLaarIsch.Controllers
             {
                 valid = false;
             }
-            //TODO: check if email exists
 
             if (valid)
             {
@@ -77,10 +73,10 @@ namespace HiLaarIsch.Controllers
 
                 //TODO: send email
 
-                return this.Redirect("/customers"); //TODO: clean redirect
+                return this.Redirect("/customers");
             }
 
-            return this.Redirect("/new"); //TODO: export invalid email
+            return this.Redirect("/new");
         }
 
         [HttpGet, Route("edit/{customerId}")]
@@ -96,8 +92,9 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CustomerModel model)
         {
+            //TODO: notify user when email changed?
             this.updateHandler.Handle(new UpdateModelCommand<CustomerModel>(model, model.Id));
-            return this.Redirect("/customers"); //TODO: clean redirect
+            return this.Redirect("/customers");
         }
     }
 }

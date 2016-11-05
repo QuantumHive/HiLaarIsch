@@ -1,15 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Filters;
 using HiLaarIsch.Services;
 using HiLaarIsch.Models;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using QuantumHive.Core;
 
 namespace HiLaarIsch.Controllers
@@ -17,16 +11,13 @@ namespace HiLaarIsch.Controllers
     [RoutePrefix("account")]
     public class AccountController : Controller
     {
-        private readonly IQueryProcessor queryProcessor;
         private readonly IAuthenticationManager<UserView> authenticationManager;
         private readonly UserManager userManager;
 
         public AccountController(
-            IQueryProcessor queryProcessor,
             IAuthenticationManager<UserView> authenticationManager,
             UserManager userManager)
         {
-            this.queryProcessor = queryProcessor;
             this.authenticationManager = authenticationManager;
             this.userManager = userManager;
         }

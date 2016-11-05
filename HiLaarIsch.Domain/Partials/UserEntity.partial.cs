@@ -9,7 +9,7 @@ namespace HiLaarIsch.Domain
         {
             var user = new UserEntity
             {
-                Id = Guid.NewGuid(), //TODO: CCC
+                Id = Guid.NewGuid(),
                 Email = email,
                 EmailConfirmed = false,
                 PasswordHash = null,
@@ -23,7 +23,7 @@ namespace HiLaarIsch.Domain
         {
             var customer = new CustomerEntity
             {
-                Id = Guid.NewGuid(), //TODO: CCC
+                Id = Guid.NewGuid(),
                 User = this,
             };
             return customer;

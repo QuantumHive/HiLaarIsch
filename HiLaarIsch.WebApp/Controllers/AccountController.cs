@@ -61,7 +61,7 @@ namespace HiLaarIsch.Controllers
             return this.RedirectToRoot();
         }
 
-        [HttpGet, Route("confirm/{userid}/{mailtoken}")]
+        [HttpGet, Route("confirm", Name = "email-confirmation")]
         [ImportModelState]
         public ActionResult Confirm(Guid userid, string mailtoken)
         {

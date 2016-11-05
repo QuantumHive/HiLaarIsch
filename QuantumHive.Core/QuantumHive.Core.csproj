@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="IAuthenticationManager.cs" />
     <Compile Include="ICommandHandler.cs" />
+    <Compile Include="IMessageService.cs" />
     <Compile Include="IQuery.cs" />
     <Compile Include="IQueryHandler.cs" />
     <Compile Include="IQueryProcessor.cs" />

@@ -26,6 +26,7 @@ using Microsoft.Owin.Security.DataProtection;
 using HiLaarIsch.Filters.ActionFilters.Global;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Services;
+using System.IO;
 
 namespace HiLaarIsch
 {
@@ -81,6 +82,8 @@ namespace HiLaarIsch
 
         private static void RegisterServices(this Container container)
         {
+            var fakeMailServicePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "HiLaarIsch Email Confirmation.txt");
+            container.RegisterSingleton<IMessageService>(() => new FakeEmailService(fakeMailServicePath));
         }
 
         private static void RegisterQueryHandlers(this Container container)

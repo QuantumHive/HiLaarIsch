@@ -18,17 +18,20 @@ namespace HiLaarIsch.Services
         private readonly IPasswordHasher passwordHasher;
         private readonly ICommandHandler<CreateModelCommand<UserModel>> createUserCommand;
         private readonly DataProtectorTokenProvider userTokenProvider;
+        private readonly IMessageService messageService;
 
         public UserManager(
             IQueryProcessor queryProcessor,
             IPasswordHasher passwordHasher,
             ICommandHandler<CreateModelCommand<UserModel>> createUserCommand,
-            DataProtectorTokenProvider userTokenProvider)
+            DataProtectorTokenProvider userTokenProvider,
+            IMessageService messageService)
         {
             this.queryProcessor = queryProcessor;
             this.passwordHasher = passwordHasher;
             this.createUserCommand = createUserCommand;
             this.userTokenProvider = userTokenProvider;
+            this.messageService = messageService;
         }
 
         public UserView FindByEmail(string email)
@@ -69,6 +72,17 @@ namespace HiLaarIsch.Services
             var hash = this.passwordHasher.HashPassword(password);
             //TODO: commandhandler to set passwordhash
             throw new NotImplementedException();
+        }
+
+        public void SendEmail(string email, string subject, string body)
+        {
+            var message = new Message
+            {
+                Destination = email,
+                Subject = subject,
+                Body = body,
+            };
+            this.messageService.SendMessage(message);
         }
     }
 }

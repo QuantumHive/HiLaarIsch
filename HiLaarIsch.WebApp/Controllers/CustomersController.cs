@@ -71,7 +71,20 @@ namespace HiLaarIsch.Controllers
                 var user = this.userManager.FindByEmail(model.Email);
                 var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
 
-                //TODO: send email
+                var url = this.Url.RouteUrl("email-confirmation", new { userId = user.Id, mailToken }, this.Request.Url.Scheme);
+
+                var body =
+$@"Beste {model.Firstname},
+
+Ten behoeve van Stal van Laar (Manage Arnhem) is er een account voor je aangemaakt.
+Door op de onderstaande activatielink te klikken kun je je account activeren, eenmalig een wachtwoord instellen.
+{url}
+
+De activatielink vervalt na 3 dagen.
+
+Dit bericht is verstuurd door een automatisch systeem en antwoorden op deze mail worden doorgaans genegeerd.";
+
+                this.userManager.SendEmail(user.Email, "HiLaarIsch account activatie", body);
 
                 return this.Redirect("/customers");
             }

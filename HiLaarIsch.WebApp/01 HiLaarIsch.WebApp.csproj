@@ -193,6 +193,7 @@
     <Compile Include="Helpers\TempDataKeys.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />
     <Compile Include="Services\AuthenticationManager.cs" />
+    <Compile Include="Services\FakeEmailService.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Helpers\Partials.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />

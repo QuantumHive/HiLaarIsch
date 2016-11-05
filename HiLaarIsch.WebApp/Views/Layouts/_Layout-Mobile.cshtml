@@ -37,6 +37,15 @@
         @RenderBody()
     </div>
 
+    @if (User.Identity.IsAuthenticated)
+    {
+        <nav class="navbar navbar-inverse navbar-fixed-bottom">
+            <div class="container-fluid">
+                @RenderSection("commands", required: true)
+            </div>
+        </nav>
+    }
+
     @Scripts.Render(Bundles.Scripts.jQuery)
     @Scripts.Render(Bundles.Scripts.bootstrap)
     @RenderSection("scripts", required: false)

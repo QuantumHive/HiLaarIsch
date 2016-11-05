@@ -1,13 +1,6 @@
 ﻿@using HiLaarIsch.Contract.DTOs
 @model CustomerModel
 
-<div class="page-header">
-    <a class="btn btn-default pull-left" href="/">
-        <span class="glyphicon glyphicon-arrow-left"></span>
-    </a>
-    <h3 class="text-center">Bewerk Klant</h3>
-</div>
-
 <form action="/customers/edit" method="post" class="form-horizontal">
     @Html.AntiForgeryToken()
 
@@ -16,6 +9,11 @@
 
     <button type="submit" class="btn btn-primary btn-lg btn-block">Klant wijzigen</button>
 </form>
+
+@section commands
+{
+    @Html.Partial(Partials.Commands.Back, "customers")
+}
 
 @section scripts
 {

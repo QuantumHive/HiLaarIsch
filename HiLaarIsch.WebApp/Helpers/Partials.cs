@@ -11,5 +11,11 @@ namespace HiLaarIsch
         {
             public const string NavigationBar = @"_NavigationBar";
         }
+
+        public class Commands
+        {
+            public const string Add = @"~\Views\Shared\Commands\_Add.cshtml";
+            public const string Back = @"~\Views\Shared\Commands\_Back.cshtml";
+        }
     }
 }

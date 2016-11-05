@@ -1,19 +1,11 @@
 ﻿@using HiLaarIsch.Contract.DTOs
 @model CustomerView[]
-
-<div class="page-header">
-    <a class="btn btn-success pull-right" role="button" href="customers/new">
-        <span class="glyphicon glyphicon-plus"></span>
-    </a>
-    <h3 class="text-center">Klanten</h3>
-</div>
-
 @if (Model.Any())
 {
     <div class="list-group">
         @foreach (var item in Model.OrderBy(m => m.Firstname).ThenBy(m => m.Surname))
         {
-            <a class="list-group-item" type="button" href="customers/edit/@item.Id">
+            <a class="list-group-item" type="button" href="/customers/edit/@item.Id">
                 @item.Firstname @item.Surname
                 <span class="glyphicon glyphicon-pencil pull-right"></span>
             </a>
@@ -23,4 +15,9 @@
 else
 {
     <div class="alert alert-danger" role="alert">Geen resultaten</div>
+}
+
+@section commands
+{
+    @Html.Partial(Partials.Commands.Add, "customers/new")
 }

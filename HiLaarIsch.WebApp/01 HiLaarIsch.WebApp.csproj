@@ -214,6 +214,8 @@
     <Content Include="Views\Customers\New.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\EditorTemplates\CustomerModel.cshtml" />
+    <Content Include="Views\Shared\Commands\_Add.cshtml" />
+    <Content Include="Views\Shared\Commands\_Back.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

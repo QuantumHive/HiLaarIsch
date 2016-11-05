@@ -62,7 +62,7 @@ namespace HiLaarIsch.Controllers
         }
 
         [Authorize]
-        [HttpGet, Route("logoff")]
+        [HttpPost, Route("logoff")]
         [ValidateAntiForgeryToken]
         public ActionResult Logoff()
         {

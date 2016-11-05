@@ -16,7 +16,21 @@
 <body>
     @if (User.Identity.IsAuthenticated)
     {
-        @Html.Partial(Partials.Shared.NavigationBar)
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">HiLaarIsch</a>
+                </div>
+
+                @Html.Partial(Partials.Shared.NavigationBar)
+            </div>
+        </nav>
     }
 
     <div class="container-fluid">
@@ -27,4 +41,5 @@
     @Scripts.Render(Bundles.Scripts.bootstrap)
     @RenderSection("scripts", required: false)
 </body>
+
 </html>

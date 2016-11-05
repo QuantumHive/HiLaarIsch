@@ -25,7 +25,6 @@ namespace HiLaarIsch.Identity
 
         public Task SetPasswordHashAsync(IdentityUser user, string passwordHash)
         {
-            //TODO: next
             throw new NotImplementedException();
         }
     }

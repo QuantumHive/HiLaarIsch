@@ -112,15 +112,11 @@ namespace HiLaarIsch
         private static void RegisterOwinIdentityServices(this Container container, IAppBuilder app)
         {
             container.RegisterSingleton<IAppBuilder>(app);
-            container.RegisterSingleton<IPasswordHasher, PasswordHasher>();
-            container.RegisterPerWebRequest<UserManager>();
 
-            //TODO:
-            //var dataProtector = app.GetDataProtectionProvider().Create(purposes: "Identity Data Protection");
-            //var dataProtectorTokenProvider = new DataProtectorTokenProvider<IdentityUser, Guid>(dataProtector)
-            //{
-            //    TokenLifespan = TimeSpan.FromDays(3),
-            //};
+            container.RegisterSingleton<IPasswordHasher, PasswordHasher>();
+            container.RegisterSingleton<IDataProtector>(() => app.GetDataProtectionProvider().Create(purposes: "Identity Data Protection"));
+            container.RegisterSingleton<DataProtectorTokenProvider>();
+            container.RegisterSingleton<UserManager>();
 
             container.RegisterPerWebRequest<SignInManager>();
             container.RegisterPerWebRequest(() =>

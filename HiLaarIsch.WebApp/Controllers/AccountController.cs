@@ -75,25 +75,22 @@ namespace HiLaarIsch.Controllers
             return this.RedirectToRoot();
         }
 
-        //TODO
-        //[HttpGet, Route("confirm/{userid}/{mailtoken}")]
-        //[ImportModelState]
-        //public ActionResult Confirm(Guid userid, string mailtoken)
-        //{
-        //    //TODO: prefer extension method on the usermanager somehow for userexists
-        //    if (!string.IsNullOrWhiteSpace(mailtoken)
-        //        && this.userManager.VerifyUserToken(userid, "Confirmation", mailtoken))
-        //    {
-        //        var model = new ResetPasswordViewModel
-        //        {
-        //            UserId = userid,
-        //            MailToken = mailtoken,
-        //        };
-        //        return this.View(model);
-        //    }
+        [HttpGet, Route("confirm/{userid}/{mailtoken}")]
+        [ImportModelState]
+        public ActionResult Confirm(Guid userid, string mailtoken)
+        {
+            if (this.userManager.VerifyEmailToken(userid, mailtoken))
+            {
+                var model = new ResetPasswordViewModel
+                {
+                    UserId = userid,
+                    MailToken = mailtoken,
+                };
+                return this.View(model);
+            }
 
-        //    return this.RedirectToRoot();
-        //}
+            return this.RedirectToRoot();
+        }
 
         //[HttpPost, Route("confirm")]
         //[ValidateModelState]

@@ -15,15 +15,18 @@ namespace HiLaarIsch.Identity
         private readonly IQueryProcessor queryProcessor;
         private readonly IPasswordHasher passwordHasher;
         private readonly ICommandHandler<CreateModelCommand<UserModel>> createUserCommand;
+        private readonly DataProtectorTokenProvider userTokenProvider;
 
         public UserManager(
             IQueryProcessor queryProcessor,
             IPasswordHasher passwordHasher,
-            ICommandHandler<CreateModelCommand<UserModel>> createUserCommand)
+            ICommandHandler<CreateModelCommand<UserModel>> createUserCommand,
+            DataProtectorTokenProvider userTokenProvider)
         {
             this.queryProcessor = queryProcessor;
             this.passwordHasher = passwordHasher;
             this.createUserCommand = createUserCommand;
+            this.userTokenProvider = userTokenProvider;
         }
 
         public HilaarischUser FindByEmail(string email)
@@ -42,6 +45,11 @@ namespace HiLaarIsch.Identity
         {
             var model = new UserModel { Email = email };
             this.createUserCommand.Handle(new CreateModelCommand<UserModel>(model));
+        }
+
+        public bool VerifyEmailToken(Guid userId, string token)
+        {
+            return this.userTokenProvider.Validate("Confirmation", token, userId);
         }
 
         private HilaarischUser MapUser(UserView source)

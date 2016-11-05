@@ -2,14 +2,15 @@
 using HiLaarIsch.Contract.DTOs;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
+using QuantumHive.Core;
 
-namespace HiLaarIsch.Identity
+namespace HiLaarIsch.Services
 {
-    public class SignInManager
+    public class AuthenticationManager : IAuthenticationManager<UserView>
     {
         private readonly IAuthenticationManager authenticationManager;
 
-        public SignInManager(
+        public AuthenticationManager(
             IAuthenticationManager authenticationManager)
         {
             this.authenticationManager = authenticationManager;
@@ -21,6 +22,11 @@ namespace HiLaarIsch.Identity
 
             this.authenticationManager.SignOut();
             this.authenticationManager.SignIn(userIdentity);
+        }
+
+        public void SignOut()
+        {
+            this.authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
         }
 
         private class ClaimsIdentityFactory

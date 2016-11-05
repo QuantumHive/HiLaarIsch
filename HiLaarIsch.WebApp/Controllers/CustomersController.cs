@@ -8,7 +8,7 @@ using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Contract.Queries;
 using HiLaarIsch.Filters;
-using HiLaarIsch.Identity;
+using HiLaarIsch.Services;
 using Microsoft.AspNet.Identity;
 using QuantumHive.Core;
 

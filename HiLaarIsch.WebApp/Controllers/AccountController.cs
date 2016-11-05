@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Filters;
-using HiLaarIsch.Identity;
+using HiLaarIsch.Services;
 using HiLaarIsch.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -17,19 +18,16 @@ namespace HiLaarIsch.Controllers
     public class AccountController : Controller
     {
         private readonly IQueryProcessor queryProcessor;
-        private readonly IAuthenticationManager authenticationManager;
-        private readonly SignInManager signInManager;
+        private readonly IAuthenticationManager<UserView> authenticationManager;
         private readonly UserManager userManager;
 
         public AccountController(
             IQueryProcessor queryProcessor,
-            IAuthenticationManager authenticationManager,
-            SignInManager signInManager,
+            IAuthenticationManager<UserView> authenticationManager,
             UserManager userManager)
         {
             this.queryProcessor = queryProcessor;
             this.authenticationManager = authenticationManager;
-            this.signInManager = signInManager;
             this.userManager = userManager;
         }
 
@@ -58,7 +56,7 @@ namespace HiLaarIsch.Controllers
                 return this.View();
             }
 
-            this.signInManager.SignIn(user);
+            this.authenticationManager.SignIn(user);
 
             return this.RedirectToRoot();
         }
@@ -68,7 +66,7 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Logoff()
         {
-            this.authenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            this.authenticationManager.SignOut();
             return this.RedirectToRoot();
         }
 

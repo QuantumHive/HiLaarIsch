@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection;
 using System.Web.Mvc;
-using HiLaarIsch.Identity;
 using Microsoft.AspNet.Identity;
 using Owin;
 using QuantumHive.Core;
@@ -25,6 +24,8 @@ using QuantumHive.EntityFramework.Decorators;
 using System.Data.Entity;
 using Microsoft.Owin.Security.DataProtection;
 using HiLaarIsch.Filters.ActionFilters.Global;
+using HiLaarIsch.Contract.DTOs;
+using HiLaarIsch.Services;
 
 namespace HiLaarIsch
 {
@@ -118,7 +119,7 @@ namespace HiLaarIsch
             container.RegisterSingleton<DataProtectorTokenProvider>();
             container.RegisterSingleton<UserManager>();
 
-            container.RegisterPerWebRequest<SignInManager>();
+            container.RegisterPerWebRequest<IAuthenticationManager<UserView>, AuthenticationManager>();
             container.RegisterPerWebRequest(() =>
                 container.IsVerifying
                 ? new OwinContext().Authentication

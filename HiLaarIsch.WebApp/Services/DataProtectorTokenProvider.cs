@@ -7,7 +7,7 @@ using System.Text;
 using System.Web;
 using Microsoft.Owin.Security.DataProtection;
 
-namespace HiLaarIsch.Identity
+namespace HiLaarIsch.Services
 {
     public class DataProtectorTokenProvider
     {

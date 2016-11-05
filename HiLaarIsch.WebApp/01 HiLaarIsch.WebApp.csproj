@@ -191,9 +191,9 @@
     <Compile Include="Filters\ActionFilters\ModelStateTransfer.cs" />
     <Compile Include="Filters\ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="Helpers\TempDataKeys.cs" />
-    <Compile Include="Identity\DataProtectorTokenProvider.cs" />
-    <Compile Include="Identity\SignInManager.cs" />
-    <Compile Include="Identity\UserManager.cs" />
+    <Compile Include="Services\DataProtectorTokenProvider.cs" />
+    <Compile Include="Services\AuthenticationManager.cs" />
+    <Compile Include="Services\UserManager.cs" />
     <Compile Include="Helpers\Partials.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,7 +8,7 @@ using HiLaarIsch.Contract.Queries;
 using Microsoft.AspNet.Identity;
 using QuantumHive.Core;
 
-namespace HiLaarIsch.Identity
+namespace HiLaarIsch.Services
 {
     public class UserManager
     {

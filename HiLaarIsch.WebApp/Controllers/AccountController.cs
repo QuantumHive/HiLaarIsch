@@ -92,26 +92,22 @@ namespace HiLaarIsch.Controllers
             return this.RedirectToRoot();
         }
 
-        //[HttpPost, Route("confirm")]
-        //[ValidateModelState]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Confirm(ResetPasswordViewModel model)
-        //{
-        //    var result = this.userManager.ConfirmEmail(model.UserId, model.MailToken);
+        [HttpPost, Route("confirm")]
+        [ValidateModelState]
+        [ValidateAntiForgeryToken]
+        public ActionResult Confirm(ResetPasswordViewModel model)
+        {
+            if (this.userManager.VerifyEmailToken(model.UserId, model.MailToken))
+            {
+                this.userManager.ConfirmEmail(model.UserId, model.MailToken);
 
-        //    if (result.Succeeded)
-        //    {
-        //        //TODO: passwordvalidator test for space
-        //        var passwordToken = this.userManager.GeneratePasswordResetToken(model.UserId);
-        //        result = this.userManager.ResetPassword(model.UserId, passwordToken, model.NewPassword);
+                //TODO: passwordvalidator
+                this.userManager.ResetPassword(model.UserId, model.NewPassword);
 
-        //        if (result.Succeeded)
-        //        {
-        //            //TODO: signin
-        //        }
-        //    }
+                //TODO: signin
+            }
 
-        //    return this.RedirectToRoot();
-        //}
+            return this.RedirectToRoot();
+        }
     }
 }

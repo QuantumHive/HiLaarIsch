@@ -47,9 +47,22 @@ namespace HiLaarIsch.Identity
             this.createUserCommand.Handle(new CreateModelCommand<UserModel>(model));
         }
 
+        public void ConfirmEmail(Guid userId, string token)
+        {
+            //TODO: commandhandler that confirms email
+            throw new NotImplementedException();
+        }
+
         public bool VerifyEmailToken(Guid userId, string token)
         {
             return this.userTokenProvider.Validate("Confirmation", token, userId);
+        }
+
+        public void ResetPassword(Guid userId, string password)
+        {
+            var hash = this.passwordHasher.HashPassword(password);
+            //TODO: commandhandler to set passwordhash
+            throw new NotImplementedException();
         }
 
         private HilaarischUser MapUser(UserView source)

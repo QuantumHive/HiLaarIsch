@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using HiLaarIsch.Contract.DTOs;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin.Security;
 
@@ -14,7 +15,7 @@ namespace HiLaarIsch.Identity
             this.authenticationManager = authenticationManager;
         }
 
-        public void SignIn(HilaarischUser user)
+        public void SignIn(UserView user)
         {
             var userIdentity = ClaimsIdentityFactory.Create(user);
 
@@ -27,7 +28,7 @@ namespace HiLaarIsch.Identity
             private const string IdentityProviderClaimType = @"http://schemas.microsoft.com/accesscontrolservice/2010/07/claims/identityprovider";
             private const string DefaultIdentityProviderClaimValue = @"ASP.NET Identity";
 
-            public static ClaimsIdentity Create(HilaarischUser user)
+            public static ClaimsIdentity Create(UserView user)
             {
                 var id = new ClaimsIdentity(DefaultAuthenticationTypes.ApplicationCookie, ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
 

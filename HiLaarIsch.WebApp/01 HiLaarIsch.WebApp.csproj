@@ -192,7 +192,6 @@
     <Compile Include="Filters\ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="Helpers\TempDataKeys.cs" />
     <Compile Include="Identity\DataProtectorTokenProvider.cs" />
-    <Compile Include="Identity\HilaarischUser.cs" />
     <Compile Include="Identity\SignInManager.cs" />
     <Compile Include="Identity\UserManager.cs" />
     <Compile Include="Helpers\Partials.cs" />

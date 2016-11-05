@@ -13,6 +13,7 @@ namespace HiLaarIsch.Identity
     public class UserManager
     {
         private const string EmailConfirmationPurpose = nameof(UserManager.EmailConfirmationPurpose);
+
         private readonly IQueryProcessor queryProcessor;
         private readonly IPasswordHasher passwordHasher;
         private readonly ICommandHandler<CreateModelCommand<UserModel>> createUserCommand;
@@ -30,15 +31,14 @@ namespace HiLaarIsch.Identity
             this.userTokenProvider = userTokenProvider;
         }
 
-        public HilaarischUser FindByEmail(string email)
+        public UserView FindByEmail(string email)
         {
-            var user = this.queryProcessor.Process(new GetUserByEmailQuery(email, throwIfNotExists: false));
-            return user == null ? null : this.MapUser(user);
+            return this.queryProcessor.Process(new GetUserByEmailQuery(email, throwIfNotExists: false));
         }
 
-        public bool CheckPassword(HilaarischUser user, string password)
+        public bool CheckPassword(Guid userId, string password)
         {
-            var hash = this.queryProcessor.Process(new GetPasswordHashByUserIdQuery(user.Id));
+            var hash = this.queryProcessor.Process(new GetPasswordHashByUserIdQuery(userId));
             return this.passwordHasher.VerifyHashedPassword(hash, password) != PasswordVerificationResult.Failed;
         }
 
@@ -69,15 +69,6 @@ namespace HiLaarIsch.Identity
             var hash = this.passwordHasher.HashPassword(password);
             //TODO: commandhandler to set passwordhash
             throw new NotImplementedException();
-        }
-
-        private HilaarischUser MapUser(UserView source)
-        {
-            return new HilaarischUser
-            {
-                Id = source.Id,
-                Email = source.Email,
-            };
         }
     }
 }

@@ -47,17 +47,14 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
         {
-            //TODO email not confirmed
             var user = this.userManager.FindByEmail(email);
-            if(user == null)
+            if(user == null || !user.EmailConfirmed)
             {
-                //email does not exist
                 return this.View();
             }
 
-            if(!this.userManager.CheckPassword(user, password))
+            if(!this.userManager.CheckPassword(user.Id, password))
             {
-                //wrong password
                 return this.View();
             }
 

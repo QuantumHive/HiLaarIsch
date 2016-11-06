@@ -16,22 +16,22 @@ namespace HiLaarIsch.Services
 
         private readonly IQueryProcessor queryProcessor;
         private readonly IPasswordHasher passwordHasher;
-        private readonly ICommandHandler<CreateModelCommand<UserModel>> createUserCommand;
         private readonly DataProtectorTokenProvider userTokenProvider;
         private readonly IMessageService messageService;
+        private readonly CommandHandlers commandHandlers;
 
         public UserManager(
             IQueryProcessor queryProcessor,
             IPasswordHasher passwordHasher,
-            ICommandHandler<CreateModelCommand<UserModel>> createUserCommand,
             DataProtectorTokenProvider userTokenProvider,
-            IMessageService messageService)
+            IMessageService messageService,
+            CommandHandlers commandHandlers)
         {
             this.queryProcessor = queryProcessor;
             this.passwordHasher = passwordHasher;
-            this.createUserCommand = createUserCommand;
             this.userTokenProvider = userTokenProvider;
             this.messageService = messageService;
+            this.commandHandlers = commandHandlers;
         }
 
         public UserView FindByEmail(string email)
@@ -48,7 +48,7 @@ namespace HiLaarIsch.Services
         public void CreateUser(string email)
         {
             var model = new UserModel { Email = email };
-            this.createUserCommand.Handle(new CreateModelCommand<UserModel>(model));
+            this.commandHandlers.CreateUser.Handle(new CreateModelCommand<UserModel>(model));
         }
 
         public string GenerateEmailConfirmationToken(Guid userId)
@@ -83,6 +83,17 @@ namespace HiLaarIsch.Services
                 Body = body,
             };
             this.messageService.SendMessage(message);
+        }
+
+        public class CommandHandlers
+        {
+            public readonly ICommandHandler<CreateModelCommand<UserModel>> CreateUser;
+
+            public CommandHandlers(
+                ICommandHandler<CreateModelCommand<UserModel>> createUserCommandHandler)
+            {
+                this.CreateUser = createUserCommandHandler;
+            }
         }
     }
 }

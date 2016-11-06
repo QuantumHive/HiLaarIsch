@@ -84,6 +84,8 @@ namespace HiLaarIsch
         {
             var fakeMailServicePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "HiLaarIsch Email Confirmation.txt");
             container.RegisterSingleton<IMessageService>(() => new FakeEmailService(fakeMailServicePath));
+
+            container.RegisterSingleton<UserManager.CommandHandlers>();
         }
 
         private static void RegisterQueryHandlers(this Container container)

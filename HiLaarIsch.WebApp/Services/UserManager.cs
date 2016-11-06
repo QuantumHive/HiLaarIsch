@@ -39,13 +39,18 @@ namespace HiLaarIsch.Services
             return this.queryProcessor.Process(new GetUserByEmailQuery(email, throwIfNotExists: false));
         }
 
+        public UserView GetById(Guid userId)
+        {
+            return this.queryProcessor.Process(new GetModelByIdQuery<UserView>(userId));
+        }
+
         public bool CheckPassword(Guid userId, string password)
         {
             var hash = this.queryProcessor.Process(new GetPasswordHashByUserIdQuery(userId));
             return this.passwordHasher.VerifyHashedPassword(hash, password) != PasswordVerificationResult.Failed;
         }
 
-        public void CreateUser(string email)
+        public void Create(string email)
         {
             var model = new UserModel { Email = email };
             this.commandHandlers.CreateUser.Handle(new CreateModelCommand<UserModel>(model));

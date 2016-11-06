@@ -65,7 +65,7 @@ namespace HiLaarIsch.Controllers
 
             if (valid)
             {
-                this.userManager.CreateUser(model.Email);
+                this.userManager.Create(model.Email);
                 this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
 
                 var user = this.userManager.FindByEmail(model.Email);

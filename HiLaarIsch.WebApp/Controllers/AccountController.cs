@@ -64,8 +64,8 @@ namespace HiLaarIsch.Controllers
         [HttpGet, Route("confirm")]
         public ActionResult Confirm(Guid userId, string mailToken)
         {
-            if (!this.User.Identity.IsAuthenticated
-                //TODO && email confirmed?
+            var user = this.userManager.GetById(userId);
+            if (!this.User.Identity.IsAuthenticated && !user.EmailConfirmed
                 && this.userManager.VerifyEmailToken(userId, mailToken))
             {
                 var model = new ResetPasswordViewModel

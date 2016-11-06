@@ -36,6 +36,8 @@
   <ItemGroup>
     <Compile Include="Commands\CreateModelCommand.cs" />
     <Compile Include="Commands\UpdateModelCommand.cs" />
+    <Compile Include="Commands\Users\ConfirmEmailForUserCommand.cs" />
+    <Compile Include="Commands\Users\SetPasswordHashForUserCommand.cs" />
     <Compile Include="DTOs\Customers\CustomerModel.cs" />
     <Compile Include="DTOs\Customers\CustomerView.cs" />
     <Compile Include="DTOs\Users\UserModel.cs" />

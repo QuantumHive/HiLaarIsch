@@ -56,10 +56,9 @@ namespace HiLaarIsch.Services
             return this.userTokenProvider.Generate(EmailConfirmationPurpose, userId);
         }
 
-        public void ConfirmEmail(Guid userId, string token)
+        public void ConfirmEmail(Guid userId)
         {
-            //TODO: commandhandler that confirms email
-            throw new NotImplementedException();
+            this.commandHandlers.ConfirmEmail.Handle(new ConfirmEmailForUserCommand(userId));
         }
 
         public bool VerifyEmailToken(Guid userId, string token)
@@ -70,8 +69,7 @@ namespace HiLaarIsch.Services
         public void ResetPassword(Guid userId, string password)
         {
             var hash = this.passwordHasher.HashPassword(password);
-            //TODO: commandhandler to set passwordhash
-            throw new NotImplementedException();
+            this.commandHandlers.SetPasswordHash.Handle(new SetPasswordHashForUserCommand(userId, hash));
         }
 
         public void SendEmail(string email, string subject, string body)
@@ -88,11 +86,17 @@ namespace HiLaarIsch.Services
         public class CommandHandlers
         {
             public readonly ICommandHandler<CreateModelCommand<UserModel>> CreateUser;
+            public readonly ICommandHandler<ConfirmEmailForUserCommand> ConfirmEmail;
+            public readonly ICommandHandler<SetPasswordHashForUserCommand> SetPasswordHash;
 
             public CommandHandlers(
-                ICommandHandler<CreateModelCommand<UserModel>> createUserCommandHandler)
+                ICommandHandler<CreateModelCommand<UserModel>> createUserCommandHandler,
+                ICommandHandler<ConfirmEmailForUserCommand> confirmEmailCommandHandler,
+                ICommandHandler<SetPasswordHashForUserCommand> setPasswordHashCommandHandler)
             {
                 this.CreateUser = createUserCommandHandler;
+                this.ConfirmEmail = confirmEmailCommandHandler;
+                this.SetPasswordHash = setPasswordHashCommandHandler;
             }
         }
     }

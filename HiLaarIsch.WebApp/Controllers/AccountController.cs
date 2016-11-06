@@ -90,12 +90,9 @@ namespace HiLaarIsch.Controllers
 
             if (this.userManager.VerifyEmailToken(model.UserId, model.MailToken))
             {
-                this.userManager.ConfirmEmail(model.UserId, model.MailToken);
-
+                this.userManager.ConfirmEmail(model.UserId);
                 //TODO: passwordvalidator
                 this.userManager.ResetPassword(model.UserId, model.NewPassword);
-
-                //TODO: signin
             }
 
             return this.RedirectToRoot();

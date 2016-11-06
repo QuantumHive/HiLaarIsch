@@ -71,14 +71,14 @@ namespace HiLaarIsch.Controllers
                 var user = this.userManager.FindByEmail(model.Email);
                 var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
 
-                var url = this.Url.RouteUrl("email-confirmation", new { userId = user.Id, mailToken }, this.Request.Url.Scheme);
+                var confirmationUrl = this.Url.Action("confirm", "account", new { userId = user.Id, mailToken = mailToken }, this.Request.Url.Scheme);
 
                 var body =
 $@"Beste {model.Firstname},
 
 Ten behoeve van Stal van Laar (Manage Arnhem) is er een account voor je aangemaakt.
 Door op de onderstaande activatielink te klikken kun je je account activeren, eenmalig een wachtwoord instellen.
-{url}
+{confirmationUrl}
 
 De activatielink vervalt na 3 dagen.
 

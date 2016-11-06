@@ -61,16 +61,17 @@ namespace HiLaarIsch.Controllers
             return this.RedirectToRoot();
         }
 
-        [HttpGet, Route("confirm", Name = "email-confirmation")]
-        [ImportModelState]
-        public ActionResult Confirm(Guid userid, string mailtoken)
+        [HttpGet, Route("confirm")]
+        public ActionResult Confirm(Guid userId, string mailToken)
         {
-            if (this.userManager.VerifyEmailToken(userid, mailtoken))
+            if (!this.User.Identity.IsAuthenticated
+                //TODO && email confirmed?
+                && this.userManager.VerifyEmailToken(userId, mailToken))
             {
                 var model = new ResetPasswordViewModel
                 {
-                    UserId = userid,
-                    MailToken = mailtoken,
+                    UserId = userId,
+                    MailToken = mailToken,
                 };
                 return this.View(model);
             }
@@ -79,10 +80,14 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpPost, Route("confirm")]
-        [ValidateModelState]
         [ValidateAntiForgeryToken]
         public ActionResult Confirm(ResetPasswordViewModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.RedirectToAction("confirm", "account", new { userId = model.UserId, mailToken = model.MailToken });
+            }
+
             if (this.userManager.VerifyEmailToken(model.UserId, model.MailToken))
             {
                 this.userManager.ConfirmEmail(model.UserId, model.MailToken);

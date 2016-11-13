@@ -6,21 +6,21 @@ using QuantumHive.Core;
 
 namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
 {
-    public class GetUserByEmailQueryHandler : IQueryHandler<GetUserByEmailQuery, UserView>
+    public class GetUserByIdQueryHandler : IQueryHandler<GetModelByIdQuery<UserView>, UserView>
     {
         private readonly IRepository<UserEntity> userRepository;
 
-        public GetUserByEmailQueryHandler(
+        public GetUserByIdQueryHandler(
             IRepository<UserEntity> userRepository)
         {
             this.userRepository = userRepository;
         }
 
-        public UserView Handle(GetUserByEmailQuery query)
+        public UserView Handle(GetModelByIdQuery<UserView> query)
         {
             var result =
                 from user in this.userRepository.Entities
-                where user.Email == query.Email
+                where user.Id == query.Id
                 select user;
 
             return (query.ThrowIfNotExistis ? result.Single() : result.SingleOrDefault()).Map();

@@ -64,9 +64,8 @@ namespace HiLaarIsch.Controllers
         [HttpGet, Route("confirm")]
         public ActionResult Confirm(Guid userId, string mailToken)
         {
-            var user = this.userManager.GetById(userId);
-            if (!this.User.Identity.IsAuthenticated && !user.EmailConfirmed
-                && this.userManager.VerifyEmailToken(userId, mailToken))
+            if (this.ValidateUserForConfirmation(userId) &&
+                this.userManager.VerifyEmailToken(userId, mailToken))
             {
                 var model = new ResetPasswordViewModel
                 {
@@ -88,7 +87,8 @@ namespace HiLaarIsch.Controllers
                 return this.RedirectToAction("confirm", "account", new { userId = model.UserId, mailToken = model.MailToken });
             }
 
-            if (this.userManager.VerifyEmailToken(model.UserId, model.MailToken))
+            if (this.ValidateUserForConfirmation(model.UserId) &&
+                this.userManager.VerifyEmailToken(model.UserId, model.MailToken))
             {
                 this.userManager.ConfirmEmail(model.UserId);
                 //TODO: passwordvalidator
@@ -96,6 +96,22 @@ namespace HiLaarIsch.Controllers
             }
 
             return this.RedirectToRoot();
+        }
+
+        private bool ValidateUserForConfirmation(Guid userId)
+        {
+            if (this.User.Identity.IsAuthenticated)
+            {
+                return false;
+            }
+
+            var user = this.userManager.GetById(userId);
+            if(user == null || user.EmailConfirmed)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

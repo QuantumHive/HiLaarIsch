@@ -41,7 +41,7 @@ namespace HiLaarIsch.Services
 
         public UserView GetById(Guid userId)
         {
-            return this.queryProcessor.Process(new GetModelByIdQuery<UserView>(userId));
+            return this.queryProcessor.Process(new GetModelByIdQuery<UserView>(userId, throwIfNotExists: false));
         }
 
         public bool CheckPassword(Guid userId, string password)

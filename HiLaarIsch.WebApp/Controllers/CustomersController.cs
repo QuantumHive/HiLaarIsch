@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Mail;
 using System.Web.Mvc;
+using HiLaarIsch.Components;
 using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Contract.Queries;
@@ -11,6 +12,7 @@ using QuantumHive.Core;
 namespace HiLaarIsch.Controllers
 {
     [Authorize]
+    [AuthorizeRole(Role.Admin)]
     [RoutePrefix("customers")]
     public class CustomersController : Controller
     {

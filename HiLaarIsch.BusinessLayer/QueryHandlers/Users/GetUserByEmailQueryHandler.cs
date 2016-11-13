@@ -26,6 +26,7 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
                     Id = user.Id,
                     Email = user.Email,
                     EmailConfirmed = user.EmailConfirmed,
+                    Role = user.Role,
                 };
 
             return query.ThrowIfNotExistis ? result.Single() : result.SingleOrDefault();

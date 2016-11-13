@@ -186,10 +186,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
+    <Compile Include="Extensions\SecurityExtensions.cs" />
     <Compile Include="Filters\ActionFilters\Global\RouteValuesTransferStateAttribute.cs" />
     <Compile Include="Filters\ActionFilters\ImportModelStateAttribute.cs" />
     <Compile Include="Filters\ActionFilters\ModelStateTransfer.cs" />
     <Compile Include="Filters\ActionFilters\ValidateModelStateAttribute.cs" />
+    <Compile Include="Filters\AuthorizeRoleAttribute.cs" />
     <Compile Include="Helpers\TempDataKeys.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />
     <Compile Include="Services\AuthenticationManager.cs" />
@@ -230,6 +232,10 @@
     <ProjectReference Include="..\HiLaarIsch.BusinessLayer\HiLaarIsch.BusinessLayer.csproj">
       <Project>{ba8bb8bb-0e14-447e-a00d-cce4448cf19a}</Project>
       <Name>HiLaarIsch.BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiLaarIsch.Components\HiLaarIsch.Components.csproj">
+      <Project>{2CD293EF-A91B-48AB-9EB6-34B57EE59487}</Project>
+      <Name>HiLaarIsch.Components</Name>
     </ProjectReference>
     <ProjectReference Include="..\HiLaarIsch.Contract\HiLaarIsch.Contract.csproj">
       <Project>{b605c4c7-09ee-448a-99c2-e0d94f363ffe}</Project>

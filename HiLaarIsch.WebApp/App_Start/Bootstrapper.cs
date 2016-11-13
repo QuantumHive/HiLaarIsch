@@ -38,8 +38,8 @@ namespace HiLaarIsch
         {
             EntityFrameworkSqlProviderServicesFix.IncludeSqlProviderServicesInstance();
 
-            var connectionString = ConfigurationManager.ConnectionStrings["HiLaarIschEntities"].ConnectionString;
-            var container = Bootstrapper.GetInitializedContainer(app, connectionString);
+            var settings = Bootstrapper.GetApplicationSettings();
+            var container = Bootstrapper.GetInitializedContainer(app, settings);
 
             container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
             container.RegisterMvcIntegratedFilterProvider();
@@ -52,7 +52,15 @@ namespace HiLaarIsch
             return container;
         }
 
-        public static Container GetInitializedContainer(IAppBuilder app, string connectionString)
+        public static HiLaarIschSettings GetApplicationSettings()
+        {
+            return new HiLaarIschSettings(
+                connectionString: ConfigurationManager.ConnectionStrings["HiLaarIschEntities"].ConnectionString,
+                sendGridApiKey: ConfigurationManager.AppSettings["sendgrid-apikey"],
+                fromMailAddress: ConfigurationManager.AppSettings["fromMailAddress"]);
+        }
+
+        public static Container GetInitializedContainer(IAppBuilder app, HiLaarIschSettings settings)
         {
             var container = new Container();
 
@@ -61,10 +69,10 @@ namespace HiLaarIsch
                 new WebRequestLifestyle(),
                 new LifetimeScopeLifestyle());
 
-            container.RegisterServices();
+            container.RegisterServices(settings);
             container.RegisterQueryHandlers();
             container.RegisterCommandHandlers();
-            container.RegisterDataServices(connectionString);
+            container.RegisterDataServices(settings.ConnectionString);
             container.RegisterOwinIdentityServices(app);
 
             return container;
@@ -80,10 +88,15 @@ namespace HiLaarIsch
             GlobalFilters.Filters.Add(new RouteValuesTransferStateAttribute());
         }
 
-        private static void RegisterServices(this Container container)
+        private static void RegisterServices(this Container container, HiLaarIschSettings settings)
         {
+
+#if DEBUG
             var fakeMailServicePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "HiLaarIsch Email Confirmation.txt");
             container.RegisterSingleton<IMessageService>(() => new FakeEmailService(fakeMailServicePath));
+#else
+            container.RegisterSingleton<IMessageService>(() => new SendGridEmailService(settings.EmailAddresses.From, settings.ApiKeys.SendGrid));
+#endif
 
             container.RegisterSingleton<UserManager.CommandHandlers>();
         }

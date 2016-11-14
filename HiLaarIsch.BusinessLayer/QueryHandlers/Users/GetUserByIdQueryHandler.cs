@@ -18,12 +18,13 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Users
 
         public UserView Handle(GetModelByIdQuery<UserView> query)
         {
-            var result =
+            var users =
                 from user in this.userRepository.Entities
                 where user.Id == query.Id
                 select user;
 
-            return (query.ThrowIfNotExistis ? result.Single() : result.SingleOrDefault()).Map();
+            var result = query.ThrowIfNotExistis ? users.Single() : users.SingleOrDefault();
+            return result == null ? null : result.Map();
         }
     }
 }

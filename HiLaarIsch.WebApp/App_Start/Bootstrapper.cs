@@ -89,8 +89,6 @@ namespace HiLaarIsch
             RouteTable.Routes.MapMvcAttributeRoutes();
 
             BundleConfig.ConfigureAndRegisterBundles();
-
-            GlobalFilters.Filters.Add(new RouteValuesTransferStateAttribute());
         }
 
         private static void RegisterServices(this Container container, HiLaarIschSettings settings)

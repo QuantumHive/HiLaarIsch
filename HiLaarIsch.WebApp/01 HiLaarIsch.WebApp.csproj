@@ -201,10 +201,6 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\SecurityExtensions.cs" />
-    <Compile Include="Filters\ActionFilters\Global\RouteValuesTransferStateAttribute.cs" />
-    <Compile Include="Filters\ActionFilters\ImportModelStateAttribute.cs" />
-    <Compile Include="Filters\ActionFilters\ModelStateTransfer.cs" />
-    <Compile Include="Filters\ActionFilters\ValidateModelStateAttribute.cs" />
     <Compile Include="Filters\AuthorizeRoleAttribute.cs" />
     <Compile Include="Helpers\TempDataKeys.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />

@@ -82,20 +82,16 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Confirm(ResetPasswordViewModel model)
         {
-            if (!this.ModelState.IsValid)
-            {
-                return this.RedirectToAction("confirm", "account", new { userId = model.UserId, mailToken = model.MailToken });
-            }
-
-            if (this.ValidateUserForConfirmation(model.UserId) &&
+            if (this.ModelState.IsValid &&
+                this.ValidateUserForConfirmation(model.UserId) &&
                 this.userManager.VerifyEmailToken(model.UserId, model.MailToken))
             {
                 this.userManager.ConfirmEmail(model.UserId);
                 //TODO: passwordvalidator
                 this.userManager.ResetPassword(model.UserId, model.NewPassword);
+                return this.RedirectToRoot();
             }
-
-            return this.RedirectToRoot();
+            return this.View(model);
         }
 
         private bool ValidateUserForConfirmation(Guid userId)

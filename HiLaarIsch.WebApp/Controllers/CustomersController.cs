@@ -42,14 +42,12 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpGet, Route("new")]
-        [ImportModelState]
         public ActionResult New()
         {
             return this.View(new CustomerModel());
         }
 
         [HttpPost, Route("new")]
-        [ValidateModelState]
         [ValidateAntiForgeryToken]
         public ActionResult New(CustomerModel model)
         {
@@ -65,7 +63,7 @@ namespace HiLaarIsch.Controllers
                 valid = false;
             }
 
-            if (valid)
+            if (valid && ModelState.IsValid)
             {
                 this.userManager.Create(model.Email);
                 this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
@@ -91,11 +89,10 @@ Dit bericht is verstuurd door een automatisch systeem en antwoorden op deze mail
                 return this.Redirect("/customers");
             }
 
-            return this.Redirect("/new");
+            return this.View(model);
         }
 
         [HttpGet, Route("edit/{customerId}")]
-        [ImportModelState]
         public ActionResult Edit(Guid customerId)
         {
             var model = this.queryProcessor.Process(new GetModelByIdQuery<CustomerModel>(customerId));
@@ -103,13 +100,16 @@ Dit bericht is verstuurd door een automatisch systeem en antwoorden op deze mail
         }
 
         [HttpPost, Route("edit")]
-        [ValidateModelState]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CustomerModel model)
         {
-            //TODO: notify user when email changed?
-            this.updateHandler.Handle(new UpdateModelCommand<CustomerModel>(model, model.Id));
-            return this.Redirect("/customers");
+            if (ModelState.IsValid)
+            {
+                //TODO: notify user when email changed?
+                this.updateHandler.Handle(new UpdateModelCommand<CustomerModel>(model, model.Id));
+                return this.Redirect("/customers");
+            }
+            return this.View(model);
         }
     }
 }

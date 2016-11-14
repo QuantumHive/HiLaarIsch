@@ -8,12 +8,15 @@ namespace HiLaarIsch.Services
     public class SendGridEmailService : IMessageService
     {
         private const string contentType = @"text/plain";
-        private readonly string fromAddress;
+
+        private readonly IApplicationDeployment environment;
+        private readonly HiLaarIschSettings.EmailAddress emailAddresses;
         private readonly string apiKey;
 
-        public SendGridEmailService(string fromAddress, string apiKey)
+        public SendGridEmailService(IApplicationDeployment environment, HiLaarIschSettings.EmailAddress emails, string apiKey)
         {
-            this.fromAddress = fromAddress;
+            this.environment = environment;
+            this.emailAddresses = emails;
             this.apiKey = apiKey;
         }
 
@@ -27,8 +30,9 @@ namespace HiLaarIsch.Services
 
         private Mail PrepareMail(Message message)
         {
-            var from = new Email(this.fromAddress);
-            var to = new Email(message.Destination);
+            var from = new Email(this.emailAddresses.From);
+            var destination = this.environment.Phase == ApplicationPhase.Test ? this.emailAddresses.Test : message.Destination;
+            var to = new Email(destination);
             var content = new Content(contentType, message.Body);
 
             return new Mail(from, message.Subject, to, content);

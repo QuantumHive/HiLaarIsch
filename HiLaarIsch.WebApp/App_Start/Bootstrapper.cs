@@ -27,6 +27,7 @@ using HiLaarIsch.Filters.ActionFilters.Global;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Services;
 using System.IO;
+using QuantumHive.Core.Services;
 
 namespace HiLaarIsch
 {
@@ -54,10 +55,14 @@ namespace HiLaarIsch
 
         public static HiLaarIschSettings GetApplicationSettings()
         {
+            var applicationPhase = bool.Parse(ConfigurationManager.AppSettings["testEnvironment"]) ? ApplicationPhase.Test : ApplicationPhase.Production;
+
             return new HiLaarIschSettings(
                 connectionString: ConfigurationManager.ConnectionStrings["HiLaarIschEntities"].ConnectionString,
                 sendGridApiKey: ConfigurationManager.AppSettings["sendgrid-apikey"],
-                fromMailAddress: ConfigurationManager.AppSettings["fromMailAddress"]);
+                fromMailAddress: ConfigurationManager.AppSettings["fromEmailAddress"],
+                testMailAddress: ConfigurationManager.AppSettings["testEmailAddress"],
+                phase: applicationPhase);
         }
 
         public static Container GetInitializedContainer(IAppBuilder app, HiLaarIschSettings settings)
@@ -90,14 +95,13 @@ namespace HiLaarIsch
 
         private static void RegisterServices(this Container container, HiLaarIschSettings settings)
         {
-
+            container.RegisterSingleton<IApplicationDeployment>(() => new ApplicationDeployment(settings.ApplicationPhase));
 #if DEBUG
             var fakeMailServicePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "HiLaarIsch Email Confirmation.txt");
             container.RegisterSingleton<IMessageService>(() => new FakeEmailService(fakeMailServicePath));
 #else
-            container.RegisterSingleton<IMessageService>(() => new SendGridEmailService(settings.EmailAddresses.From, settings.ApiKeys.SendGrid));
+            container.RegisterSingleton<IMessageService>(() => new SendGridEmailService(container.GetInstance<IApplicationDeployment>(), settings.EmailAddresses, settings.ApiKeys.SendGrid));
 #endif
-
             container.RegisterSingleton<UserManager.CommandHandlers>();
         }
 

@@ -23,7 +23,6 @@ using HiLaarIsch.BusinessLayer.CommandHandlers;
 using QuantumHive.EntityFramework.Decorators;
 using System.Data.Entity;
 using Microsoft.Owin.Security.DataProtection;
-using HiLaarIsch.Filters.ActionFilters.Global;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Services;
 using System.IO;

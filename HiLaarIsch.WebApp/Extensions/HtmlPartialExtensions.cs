@@ -9,9 +9,14 @@ namespace HiLaarIsch
 {
     public static class HtmlPartialExtensions
     {
-        public static MvcHtmlString PartialAddCommand(this HtmlHelper helper, string route)
+        public static IHtmlString PartialAddCommand(this HtmlHelper helper, string route)
         {
             return helper.Partial(Partials.Commands.Add, route);
+        }
+
+        public static IHtmlString PartialBackCommand(this HtmlHelper helper, string route)
+        {
+            return helper.Partial(Partials.Commands.Back, route);
         }
     }
 }

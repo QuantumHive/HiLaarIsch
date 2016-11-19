@@ -10,11 +10,7 @@
     <button type="submit" class="btn btn-primary btn-lg btn-block">Klant wijzigen</button>
 </form>
 
-@section commands
-{
-    @Html.Partial(Partials.Commands.Back, "customers")
-}
-
+@section commands { @Html.PartialBackCommand("customers") }
 @section scripts
 {
     <script>

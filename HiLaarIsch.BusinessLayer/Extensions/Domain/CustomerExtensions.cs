@@ -9,7 +9,7 @@ namespace HiLaarIsch.BusinessLayer
         {
             destination.Firstname = source.Firstname;
             destination.Surname = source.Surname;
-            destination.GroupLevel = source.GroupLevel;
+            destination.Level = source.Level;
             destination.PhoneNumber = source.PhoneNumber;
             destination.EmergencyNumber = source.EmergencyNumber;
             destination.Address = source.Address;

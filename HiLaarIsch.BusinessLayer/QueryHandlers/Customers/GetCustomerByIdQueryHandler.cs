@@ -24,7 +24,7 @@ namespace HiLaarIsch.BusinessLayer.QueryHandlers.Customers
                 Email = customer.User.Email,
                 Firstname = customer.Firstname,
                 Surname = customer.Surname,
-                GroupLevel = customer.GroupLevel,
+                Level = customer.Level,
                 PhoneNumber = customer.PhoneNumber,
                 EmergencyNumber = customer.EmergencyNumber,
                 Address = customer.Address,

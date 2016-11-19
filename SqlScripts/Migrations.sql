@@ -29,4 +29,5 @@ GO
 INSERT INTO [dbo].[Users] VALUES ('1f88d96d-ae68-4a25-9e92-2e27bbaf750f', 'AGtWGj6m/ICb16LNfGINdZTceQH9xdE9l9QbFKhuv0DaoDI2Ja/AeVCCK8BZey3I9g==', 'admin@manegearnhem.nl', 1, 1)
 GO
 
-
+EXEC sp_rename 'Customers.GroupLevel' , 'Level', 'COLUMN'
+GO

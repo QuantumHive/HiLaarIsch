@@ -15,7 +15,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="EmergencyNumber" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="GroupLevel" Type="tinyint" Nullable="false" />
+          <Property Name="Level" Type="tinyint" Nullable="false" />
           <Property Name="FK_UserId" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
@@ -70,8 +70,8 @@
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EmergencyNumber" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="GroupLevel" Type="HiLaarIsch.GroupLevel" Nullable="false" />
           <NavigationProperty Name="User" Relationship="HiLaarIsch.FK_Customers_Users" FromRole="Customers" ToRole="Users" />
+          <Property Name="Level" Type="HiLaarIsch.Level" Nullable="false" />
         </EntityType>
         <EntityType Name="UserEntity">
           <Key>
@@ -89,7 +89,7 @@
           <End Type="HiLaarIsch.CustomerEntity" Role="Customers" Multiplicity="0..1" />
         </Association>
         <EnumType Name="Role" a:ExternalTypeName="HiLaarIsch.Components.Role" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" UnderlyingType="Byte" />
-        <EnumType Name="GroupLevel" a:ExternalTypeName="HiLaarIsch.Components.GroupLevel" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" UnderlyingType="Byte" />
+        <EnumType Name="Level" a:ExternalTypeName="HiLaarIsch.Components.Level" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" UnderlyingType="Byte" />
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -99,7 +99,7 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="HiLaarIsch.CustomerEntity">
               <MappingFragment StoreEntitySet="Customers">
-                <ScalarProperty Name="GroupLevel" ColumnName="GroupLevel" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="EmergencyNumber" ColumnName="EmergencyNumber" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Address" ColumnName="Address" />

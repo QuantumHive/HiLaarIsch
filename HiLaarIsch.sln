@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 HiLaarIsch.WebApp", "HiLaarIsch.WebApp\01 HiLaarIsch.WebApp.csproj", "{71553DA0-A4E9-4862-BBDF-0C6E3AC45871}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3DD40821-6902-4456-AFC2-8C6B4E27AC8F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScripts", "SqlScripts", "{3DD40821-6902-4456-AFC2-8C6B4E27AC8F}"
 	ProjectSection(SolutionItems) = preProject
 		SqlScripts\Migrations.sql = SqlScripts\Migrations.sql
 	EndProjectSection

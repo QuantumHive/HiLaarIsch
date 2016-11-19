@@ -1,6 +1,4 @@
-﻿@Styles.Render(Bundles.Styles.login)
-
-<form action="/account/login" method="post" class="form-login">
+﻿<form action="/account/login" method="post" class="form-login">
     @Html.AntiForgeryToken()
     <h2 class="form-login-heading">HiLaarIsch inloggen</h2>
 
@@ -9,3 +7,5 @@
 
     <button type="submit" class="btn btn-lg btn-primary btn-block">Login</button>
 </form>
+
+@section css { @Styles.Render(Bundles.Styles.login) }

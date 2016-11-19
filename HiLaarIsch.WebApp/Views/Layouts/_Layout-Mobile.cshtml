@@ -12,6 +12,7 @@
     {
         @Styles.Render(Bundles.Styles.global)
     }
+    @RenderSection("css", required: false)
 </head>
 <body>
     @if (User.Identity.IsAuthenticated)

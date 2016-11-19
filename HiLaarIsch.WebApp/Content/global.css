@@ -6,13 +6,3 @@ body {
     padding-top: 70px;
     padding-bottom: 70px;
 }
-
-.page-header .pull-left {
-    position: absolute;
-    left: 15px;
-}
-
-.page-header .pull-right {
-    position: absolute;
-    right: 15px;
-}

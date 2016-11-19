@@ -88,6 +88,8 @@ namespace HiLaarIsch
             RouteTable.Routes.MapMvcAttributeRoutes();
 
             BundleConfig.ConfigureAndRegisterBundles();
+
+            GlobalFilters.Filters.Add(new RequireHttpsAttribute());
         }
 
         private static void RegisterServices(this Container container, HiLaarIschSettings settings)

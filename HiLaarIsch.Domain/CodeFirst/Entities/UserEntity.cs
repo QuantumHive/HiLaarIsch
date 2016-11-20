@@ -11,7 +11,7 @@ namespace HiLaarIsch.Domain
         {
         }
 
-        [Key, Index("PK_UserId"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Index(IsUnique = true)]

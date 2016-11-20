@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Levels.enum.cs" />
+    <Compile Include="Enums\ClassLengths.enum.cs" />
+    <Compile Include="Enums\Days.enum.cs" />
+    <Compile Include="Enums\Levels.enum.cs" />
+    <Compile Include="Enums\ClassTypes.enum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roles.enum.cs" />
+    <Compile Include="Enums\Roles.enum.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,17 +3,12 @@
 namespace HiLaarIsch.Domain
 {
 
-    public class DropCreateDatabaseIfModelChangesWithoutMigrationTableInitializer
+    public class DropCreateDatabaseIfModelChangesInitializer
         : DropCreateDatabaseIfModelChanges<HiLaarischEntities>
     {
-        private const string dropMigrationHistoryTable =
-@"IF OBJECT_ID('[__MigrationHistory]', 'U') IS NOT NULL
-    DROP TABLE [__MigrationHistory]";
-
         public override void InitializeDatabase(HiLaarischEntities context)
         {
             base.InitializeDatabase(context);
-            context.Database.ExecuteSqlCommand(dropMigrationHistoryTable);
         }
 
         protected override void Seed(HiLaarischEntities context)

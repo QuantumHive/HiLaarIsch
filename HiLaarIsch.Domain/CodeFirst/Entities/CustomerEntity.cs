@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using HiLaarIsch.Components;
 
@@ -9,9 +10,10 @@ namespace HiLaarIsch.Domain
     {
         public CustomerEntity()
         {
+            this.Classes = new HashSet<CustomerClassEntity>();
         }
 
-        [Key, Index("PK_CustomerId"), DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Required]
@@ -37,5 +39,6 @@ namespace HiLaarIsch.Domain
         public Level Level { get; set; }
 
         public virtual UserEntity User { get; set; }
+        public virtual ICollection<CustomerClassEntity> Classes { get; set; }
     }
 }

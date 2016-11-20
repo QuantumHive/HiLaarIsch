@@ -125,7 +125,7 @@ namespace HiLaarIsch
             var databaseContextRegistration = Lifestyle.Scoped.CreateRegistration(() =>
             {
 #if DEBUG
-                Database.SetInitializer(new DropCreateDatabaseIfModelChangesWithoutMigrationTableInitializer());
+                Database.SetInitializer(new DropCreateDatabaseIfModelChangesInitializer());
 #endif
                 return new HiLaarischEntities(connectionString);
             }, container);

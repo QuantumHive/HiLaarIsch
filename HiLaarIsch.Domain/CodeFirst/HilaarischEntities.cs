@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using HiLaarIsch.Domain.CodeFirst.Configuration;
 
 namespace HiLaarIsch.Domain
@@ -12,10 +13,15 @@ namespace HiLaarIsch.Domain
 
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<CustomerEntity> Customers { get; set; }
+        public DbSet<ClassEntity> Classes { get; set; }
+        public DbSet<HorseEntity> Horses { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(CustomerConfiguration.Instance);
+            modelBuilder.Configurations.Add(CustomerClassConfiguration.Instance);
+            modelBuilder.Configurations.Add(HorseConfiguration.Instance);
+
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -19,6 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuantumHive.EntityFramework
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLaarIsch.Components", "HiLaarIsch.Components\HiLaarIsch.Components.csproj", "{2CD293EF-A91B-48AB-9EB6-34B57EE59487}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlScripts", "SqlScripts", "{B8CA4E58-BDA2-4E6B-A541-8048B5D814DD}"
+	ProjectSection(SolutionItems) = preProject
+		SqlScripts\ResetDatabase.sql = SqlScripts\ResetDatabase.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

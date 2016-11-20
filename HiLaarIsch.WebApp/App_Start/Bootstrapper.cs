@@ -56,7 +56,7 @@ namespace HiLaarIsch
             var applicationPhase = bool.Parse(ConfigurationManager.AppSettings["testEnvironment"]) ? ApplicationPhase.Test : ApplicationPhase.Production;
 
             return new HiLaarischSettings(
-                connectionString: ConfigurationManager.ConnectionStrings["HiLaarIschEntities"].ConnectionString,
+                connectionString: ConfigurationManager.ConnectionStrings["HiLaarischEntities"].ConnectionString,
                 sendGridApiKey: ConfigurationManager.AppSettings["sendgrid-apikey"],
                 fromMailAddress: ConfigurationManager.AppSettings["fromEmailAddress"],
                 testMailAddress: ConfigurationManager.AppSettings["testEmailAddress"],

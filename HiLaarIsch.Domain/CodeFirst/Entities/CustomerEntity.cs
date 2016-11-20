@@ -4,6 +4,7 @@ using HiLaarIsch.Components;
 
 namespace HiLaarIsch.Domain
 {
+    [Table("Customers")]
     public partial class CustomerEntity
     {
         public CustomerEntity()

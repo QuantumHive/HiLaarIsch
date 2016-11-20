@@ -8,9 +8,6 @@ namespace HiLaarIsch.Domain
         public HiLaarischEntities(string connectionString)
             : base(connectionString)
         {
-#if DEBUG
-            Database.SetInitializer(new CreateDatabaseIfNotExistsWithoutMigrationTableInitializer());
-#endif
         }
 
         public DbSet<UserEntity> Users { get; set; }

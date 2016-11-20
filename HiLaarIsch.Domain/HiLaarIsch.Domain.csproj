@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CodeFirst\Configuration\CustomerConfiguration.cs" />
-    <Compile Include="CodeFirst\CreateDatabaseIfNotExistsWithoutMigrationTableInitializer.cs" />
+    <Compile Include="CodeFirst\DropCreateDatabaseIfModelChangesWithoutMigrationTableInitializer.cs" />
     <Compile Include="CodeFirst\Entities\CustomerEntity.cs" />
     <Compile Include="CodeFirst\Entities\UserEntity.cs" />
     <Compile Include="CodeFirst\HilaarischEntities.cs" />

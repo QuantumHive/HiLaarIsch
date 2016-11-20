@@ -122,7 +122,13 @@ namespace HiLaarIsch
 
         private static void RegisterDataServices(this Container container, string connectionString)
         {
-            var databaseContextRegistration = Lifestyle.Scoped.CreateRegistration(() => new HiLaarischEntities(connectionString), container);
+            var databaseContextRegistration = Lifestyle.Scoped.CreateRegistration(() =>
+            {
+#if DEBUG
+                Database.SetInitializer(new DropCreateDatabaseIfModelChangesWithoutMigrationTableInitializer());
+#endif
+                return new HiLaarischEntities(connectionString);
+            }, container);
 
             container.AddRegistration(typeof(HiLaarischEntities), databaseContextRegistration);
             container.AddRegistration(typeof(DbContext), databaseContextRegistration);

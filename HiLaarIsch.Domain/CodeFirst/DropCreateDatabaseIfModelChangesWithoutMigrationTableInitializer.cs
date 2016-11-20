@@ -2,8 +2,9 @@
 
 namespace HiLaarIsch.Domain
 {
-    public class CreateDatabaseIfNotExistsWithoutMigrationTableInitializer
-        : CreateDatabaseIfNotExists<HiLaarischEntities>
+
+    public class DropCreateDatabaseIfModelChangesWithoutMigrationTableInitializer
+        : DropCreateDatabaseIfModelChanges<HiLaarischEntities>
     {
         private const string dropMigrationHistoryTable =
 @"IF OBJECT_ID('[__MigrationHistory]', 'U') IS NOT NULL

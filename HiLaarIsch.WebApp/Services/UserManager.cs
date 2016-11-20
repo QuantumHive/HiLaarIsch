@@ -39,12 +39,12 @@ namespace HiLaarIsch.Services
             return this.queryProcessor.Process(new GetUserByEmailQuery(email, throwIfNotExists: false));
         }
 
-        public UserView GetById(Guid userId)
+        public UserView GetById(int userId)
         {
             return this.queryProcessor.Process(new GetModelByIdQuery<UserView>(userId, throwIfNotExists: false));
         }
 
-        public bool CheckPassword(Guid userId, string password)
+        public bool CheckPassword(int userId, string password)
         {
             var hash = this.queryProcessor.Process(new GetPasswordHashByUserIdQuery(userId));
             return this.passwordHasher.VerifyHashedPassword(hash, password) != PasswordVerificationResult.Failed;
@@ -56,22 +56,22 @@ namespace HiLaarIsch.Services
             this.commandHandlers.CreateUser.Handle(new CreateModelCommand<UserModel>(model));
         }
 
-        public string GenerateEmailConfirmationToken(Guid userId)
+        public string GenerateEmailConfirmationToken(int userId)
         {
             return this.userTokenProvider.Generate(EmailConfirmationPurpose, userId);
         }
 
-        public void ConfirmEmail(Guid userId)
+        public void ConfirmEmail(int userId)
         {
             this.commandHandlers.ConfirmEmail.Handle(new ConfirmEmailForUserCommand(userId));
         }
 
-        public bool VerifyEmailToken(Guid userId, string token)
+        public bool VerifyEmailToken(int userId, string token)
         {
             return this.userTokenProvider.Validate(EmailConfirmationPurpose, token, userId);
         }
 
-        public void ResetPassword(Guid userId, string password)
+        public void ResetPassword(int userId, string password)
         {
             var hash = this.passwordHasher.HashPassword(password);
             this.commandHandlers.SetPasswordHash.Handle(new SetPasswordHashForUserCommand(userId, hash));

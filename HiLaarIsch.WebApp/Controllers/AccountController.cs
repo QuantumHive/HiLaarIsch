@@ -62,7 +62,7 @@ namespace HiLaarIsch.Controllers
         }
 
         [HttpGet, Route("confirm")]
-        public ActionResult Confirm(Guid userId, string mailToken)
+        public ActionResult Confirm(int userId, string mailToken)
         {
             if (this.ValidateUserForConfirmation(userId) &&
                 this.userManager.VerifyEmailToken(userId, mailToken))
@@ -94,7 +94,7 @@ namespace HiLaarIsch.Controllers
             return this.View(model);
         }
 
-        private bool ValidateUserForConfirmation(Guid userId)
+        private bool ValidateUserForConfirmation(int userId)
         {
             if (this.User.Identity.IsAuthenticated)
             {

@@ -10,7 +10,7 @@ namespace HiLaarIsch.Models
     public class ResetPasswordViewModel
     {
         [HiddenInput]
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         [HiddenInput]
         public string MailToken { get; set; }
 

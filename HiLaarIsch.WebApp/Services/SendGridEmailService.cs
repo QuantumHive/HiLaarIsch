@@ -10,10 +10,10 @@ namespace HiLaarIsch.Services
         private const string contentType = @"text/plain";
 
         private readonly IApplicationDeployment environment;
-        private readonly HiLaarIschSettings.EmailAddress emailAddresses;
+        private readonly HiLaarischSettings.EmailAddress emailAddresses;
         private readonly string apiKey;
 
-        public SendGridEmailService(IApplicationDeployment environment, HiLaarIschSettings.EmailAddress emails, string apiKey)
+        public SendGridEmailService(IApplicationDeployment environment, HiLaarischSettings.EmailAddress emails, string apiKey)
         {
             this.environment = environment;
             this.emailAddresses = emails;

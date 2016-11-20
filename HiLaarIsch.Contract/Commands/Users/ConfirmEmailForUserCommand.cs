@@ -1,14 +1,12 @@
-﻿using System;
-
-namespace HiLaarIsch.Contract.Commands
+﻿namespace HiLaarIsch.Contract.Commands
 {
     public class ConfirmEmailForUserCommand
     {
-        public ConfirmEmailForUserCommand(Guid userId)
+        public ConfirmEmailForUserCommand(int userId)
         {
             this.UserId = userId;
         }
 
-        public Guid UserId { get; }
+        public int UserId { get; }
     }
 }

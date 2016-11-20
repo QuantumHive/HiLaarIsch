@@ -1,11 +1,10 @@
-﻿using System;
-using HiLaarIsch.Components;
+﻿using HiLaarIsch.Components;
 
 namespace HiLaarIsch.Contract.DTOs
 {
     public class CustomerModel
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
 
         public string Email { get; set; }
 

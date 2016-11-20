@@ -1,4 +1,4 @@
-﻿namespace HiLaarIsch.Domain.Partials
+﻿namespace HiLaarIsch.Domain
 {
     public partial class CustomerEntity
     {

@@ -93,7 +93,7 @@ Dit bericht is verstuurd door een automatisch systeem en antwoorden op deze mail
         }
 
         [HttpGet, Route("edit/{customerId}")]
-        public ActionResult Edit(Guid customerId)
+        public ActionResult Edit(int customerId)
         {
             var model = this.queryProcessor.Process(new GetModelByIdQuery<CustomerModel>(customerId));
             return this.View(model);

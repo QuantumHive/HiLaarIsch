@@ -16,8 +16,6 @@ using HiLaarIsch.Domain;
 using HiLaarIsch.BusinessLayer.QueryHandlers;
 using System.Web.Routing;
 using Microsoft.Owin;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
 using System.Web;
 using HiLaarIsch.BusinessLayer.CommandHandlers;
 using QuantumHive.EntityFramework.Decorators;
@@ -27,6 +25,7 @@ using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Services;
 using System.IO;
 using QuantumHive.Core.Services;
+using HiLaarIsch.Domain.Services;
 
 namespace HiLaarIsch
 {
@@ -52,11 +51,11 @@ namespace HiLaarIsch
             return container;
         }
 
-        public static HiLaarIschSettings GetApplicationSettings()
+        public static HiLaarischSettings GetApplicationSettings()
         {
             var applicationPhase = bool.Parse(ConfigurationManager.AppSettings["testEnvironment"]) ? ApplicationPhase.Test : ApplicationPhase.Production;
 
-            return new HiLaarIschSettings(
+            return new HiLaarischSettings(
                 connectionString: ConfigurationManager.ConnectionStrings["HiLaarIschEntities"].ConnectionString,
                 sendGridApiKey: ConfigurationManager.AppSettings["sendgrid-apikey"],
                 fromMailAddress: ConfigurationManager.AppSettings["fromEmailAddress"],
@@ -64,7 +63,7 @@ namespace HiLaarIsch
                 phase: applicationPhase);
         }
 
-        public static Container GetInitializedContainer(IAppBuilder app, HiLaarIschSettings settings)
+        public static Container GetInitializedContainer(IAppBuilder app, HiLaarischSettings settings)
         {
             var container = new Container();
 
@@ -92,7 +91,7 @@ namespace HiLaarIsch
             GlobalFilters.Filters.Add(new RequireHttpsAttribute());
         }
 
-        private static void RegisterServices(this Container container, HiLaarIschSettings settings)
+        private static void RegisterServices(this Container container, HiLaarischSettings settings)
         {
             container.RegisterSingleton<IApplicationDeployment>(() => new ApplicationDeployment(settings.ApplicationPhase));
 #if DEBUG
@@ -123,9 +122,9 @@ namespace HiLaarIsch
 
         private static void RegisterDataServices(this Container container, string connectionString)
         {
-            var databaseContextRegistration = Lifestyle.Scoped.CreateRegistration(() => new HiLaarIschEntities(connectionString), container);
+            var databaseContextRegistration = Lifestyle.Scoped.CreateRegistration(() => new HiLaarischEntities(connectionString), container);
 
-            container.AddRegistration(typeof(HiLaarIschEntities), databaseContextRegistration);
+            container.AddRegistration(typeof(HiLaarischEntities), databaseContextRegistration);
             container.AddRegistration(typeof(DbContext), databaseContextRegistration);
 
             container.Register(typeof(IRepository<>), typeof(Repository<>));

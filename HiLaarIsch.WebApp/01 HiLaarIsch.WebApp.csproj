@@ -195,7 +195,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\Configuration\BundleConfiguration.cs" />
-    <Compile Include="App_Start\HiLaarIschSettings.cs" />
+    <Compile Include="App_Start\HiLaarischSettings.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />

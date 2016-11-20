@@ -6,9 +6,9 @@ using QuantumHive.Core;
 
 namespace HiLaarIsch
 {
-    public class HiLaarIschSettings
+    public class HiLaarischSettings
     {
-        public HiLaarIschSettings(
+        public HiLaarischSettings(
             string connectionString,
             string sendGridApiKey,
             string fromMailAddress,

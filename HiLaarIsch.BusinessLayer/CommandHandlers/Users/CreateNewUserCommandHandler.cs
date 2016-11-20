@@ -1,5 +1,4 @@
-﻿using System;
-using HiLaarIsch.Contract.Commands;
+﻿using HiLaarIsch.Contract.Commands;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Domain;
 using QuantumHive.Core;

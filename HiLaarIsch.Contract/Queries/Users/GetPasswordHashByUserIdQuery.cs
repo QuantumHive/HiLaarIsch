@@ -1,15 +1,14 @@
-﻿using System;
-using QuantumHive.Core;
+﻿using QuantumHive.Core;
 
 namespace HiLaarIsch.Contract.Queries
 {
     public class GetPasswordHashByUserIdQuery : IQuery<string>
     {
-        public GetPasswordHashByUserIdQuery(Guid userId)
+        public GetPasswordHashByUserIdQuery(int userId)
         {
             this.UserId = userId;
         }
 
-        public Guid UserId { get; }
+        public int UserId { get; }
     }
 }

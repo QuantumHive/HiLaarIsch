@@ -7,7 +7,7 @@ namespace HiLaarIsch.Domain
         where TEntity : class
     {
         IQueryable<TEntity> Entities { get; }
-        TEntity GetById(Guid id);
+        TEntity GetById(int id);
         void Add(TEntity entity);
     }
 }

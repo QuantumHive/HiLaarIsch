@@ -50,57 +50,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomerEntity.cs">
-      <DependentUpon>HiLaarIschEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HiLaarIschEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HiLaarIschEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HiLaarIschEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HiLaarIschEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="HiLaarIschEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HiLaarIschEntities.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="CodeFirst\Configuration\CustomerConfiguration.cs" />
+    <Compile Include="CodeFirst\Entities\CustomerEntity.cs" />
+    <Compile Include="CodeFirst\Entities\UserEntity.cs" />
+    <Compile Include="CodeFirst\HilaarischEntities.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Partials\CustomerEntity.partial.cs" />
-    <Compile Include="Partials\HiLaarIschEntities.cs" />
     <Compile Include="Partials\UserEntity.partial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityFrameworkSqlProviderServicesFix.cs" />
-    <Compile Include="Repository.cs" />
-    <Compile Include="UserEntity.cs">
-      <DependentUpon>HiLaarIschEntities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Services\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="HiLaarIschEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HiLaarIschEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="HiLaarIschEntities.edmx.diagram">
-      <DependentUpon>HiLaarIschEntities.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="HiLaarIschEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HiLaarIschEntities.edmx</DependentUpon>
-      <LastGenOutput>HiLaarIschEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="HiLaarIschEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HiLaarIschEntities.edmx</DependentUpon>
-      <LastGenOutput>HiLaarIschEntities.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -111,6 +74,7 @@
       <Name>HiLaarIsch.Components</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

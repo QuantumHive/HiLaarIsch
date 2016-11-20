@@ -22,7 +22,7 @@ namespace HiLaarIsch.Services
         public IDataProtector Protector { get; }
         public TimeSpan TokenLifespan { get; set; }
 
-        public string Generate(string purpose, Guid userId)
+        public string Generate(string purpose, int userId)
         {
             var ms = new MemoryStream();
             using (var writer = new BinaryWriter(ms, DefaultEncoding, true))
@@ -42,7 +42,7 @@ namespace HiLaarIsch.Services
             return Convert.ToBase64String(protectedBytes);
         }
 
-        public bool Validate(string purpose, string token, Guid userId)
+        public bool Validate(string purpose, string token, int userId)
         {
             var unprotectedData = Protector.Unprotect(Convert.FromBase64String(token));
             using (var reader = new BinaryReader(new MemoryStream(unprotectedData), DefaultEncoding, true))

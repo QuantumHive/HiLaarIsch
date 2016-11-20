@@ -16,8 +16,8 @@
     <script>
         $(function ()
         {
-            var grouplevel = @((int)Model.GroupLevel);
-            $("input[name='@nameof(CustomerModel.GroupLevel)'][value='"+grouplevel+"']")
+            var grouplevel = @((int)Model.Level);
+            $("input[name='@nameof(CustomerModel.Level)'][value='"+grouplevel+"']")
                 .closest("label.btn")
                 .trigger("click");
         });

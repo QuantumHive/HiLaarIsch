@@ -20,13 +20,8 @@ namespace QuantumHive.EntityFramework.Decorators
         {
             this.decoratee.Handle(command);
 
-            try
-            {
-                this.databaseContext.SaveChanges();
-            }
-            catch
-            {
-            }
+            //TODO: try/catch
+            this.databaseContext.SaveChanges();
         }
     }
 }

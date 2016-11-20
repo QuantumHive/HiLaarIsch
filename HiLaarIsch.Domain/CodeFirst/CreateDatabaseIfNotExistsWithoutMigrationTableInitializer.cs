@@ -5,7 +5,10 @@ namespace HiLaarIsch.Domain
     public class CreateDatabaseIfNotExistsWithoutMigrationTableInitializer
         : CreateDatabaseIfNotExists<HiLaarischEntities>
     {
-        private const string dropMigrationHistoryTable = @"DROP TABLE [__MigrationHistory]";
+        private const string dropMigrationHistoryTable =
+@"IF OBJECT_ID('[__MigrationHistory]', 'U') IS NOT NULL
+    DROP TABLE [__MigrationHistory]";
+
         public override void InitializeDatabase(HiLaarischEntities context)
         {
             base.InitializeDatabase(context);

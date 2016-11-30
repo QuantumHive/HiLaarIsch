@@ -6,11 +6,11 @@ using HiLaarIsch.Components;
 namespace HiLaarIsch.Domain
 {
     [Table("Customers")]
-    public partial class CustomerEntity
+    public partial class CustomerEntity : IEntity
     {
         public CustomerEntity()
         {
-            this.Classes = new HashSet<CustomerClassEntity>();
+            this.Classes = new HashSet<CustomerClassAssociation>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -39,6 +39,6 @@ namespace HiLaarIsch.Domain
         public Level Level { get; set; }
 
         public virtual UserEntity User { get; set; }
-        public virtual ICollection<CustomerClassEntity> Classes { get; set; }
+        public virtual ICollection<CustomerClassAssociation> Classes { get; set; }
     }
 }

@@ -55,11 +55,12 @@
     <Compile Include="CodeFirst\Configuration\HorseConfiguration.cs" />
     <Compile Include="CodeFirst\DropCreateDatabaseIfModelChangesInitializer.cs" />
     <Compile Include="CodeFirst\Entities\ClassEntity.cs" />
-    <Compile Include="CodeFirst\Entities\CustomerClassEntity.cs" />
+    <Compile Include="CodeFirst\Associations\CustomerClassAssociation.cs" />
     <Compile Include="CodeFirst\Entities\CustomerEntity.cs" />
     <Compile Include="CodeFirst\Entities\HorseEntity.cs" />
     <Compile Include="CodeFirst\Entities\UserEntity.cs" />
     <Compile Include="CodeFirst\HilaarischEntities.cs" />
+    <Compile Include="IEntity.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Partials\CustomerEntity.partial.cs" />
     <Compile Include="Partials\UserEntity.partial.cs" />

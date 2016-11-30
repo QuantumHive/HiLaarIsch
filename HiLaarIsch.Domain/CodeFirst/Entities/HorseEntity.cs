@@ -5,11 +5,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HiLaarIsch.Domain
 {
     [Table("Horses")]
-    public class HorseEntity
+    public class HorseEntity : IEntity
     {
         public HorseEntity()
         {
-            this.Classes = new HashSet<CustomerClassEntity>();
+            this.Classes = new HashSet<CustomerClassAssociation>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -18,6 +18,6 @@ namespace HiLaarIsch.Domain
         [Required, StringLength(100)]
         public string Name { get; set; }
 
-        public virtual ICollection<CustomerClassEntity> Classes { get; set; }
+        public virtual ICollection<CustomerClassAssociation> Classes { get; set; }
     }
 }

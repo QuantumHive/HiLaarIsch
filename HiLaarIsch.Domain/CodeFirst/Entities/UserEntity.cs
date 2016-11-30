@@ -5,7 +5,7 @@ using HiLaarIsch.Components;
 namespace HiLaarIsch.Domain
 {
     [Table("Users")]
-    public partial class UserEntity
+    public partial class UserEntity : IEntity
     {
         public UserEntity()
         {

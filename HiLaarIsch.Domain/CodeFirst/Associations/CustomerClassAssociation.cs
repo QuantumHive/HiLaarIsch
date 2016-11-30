@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HiLaarIsch.Domain
 {
     [Table("CustomerClasses")]
-    public class CustomerClassEntity
+    public class CustomerClassAssociation
     {
-        public CustomerClassEntity()
+        public CustomerClassAssociation()
         {
         }
 

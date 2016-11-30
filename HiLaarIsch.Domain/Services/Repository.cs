@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 
 namespace HiLaarIsch.Domain.Services
 {
     public class Repository<TEntity> : IRepository<TEntity>
-        where TEntity : class
+        where TEntity : class, IEntity
     {
         private readonly HiLaarischEntities databaseContext;
 
@@ -17,17 +15,7 @@ namespace HiLaarIsch.Domain.Services
 
         public IQueryable<TEntity> Entities => this.DbSet;
 
-        public TEntity GetById(int id)
-        {
-            var entity = this.DbSet.Find(id);
-
-            if(entity == null)
-            {
-                throw new KeyNotFoundException();
-            }
-
-            return entity;
-        }
+        public TEntity GetById(int id) => this.Entities.Single(m => m.Id == id);
 
         public void Add(TEntity entity)
         {

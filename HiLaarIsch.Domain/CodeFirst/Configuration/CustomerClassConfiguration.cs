@@ -2,7 +2,7 @@
 
 namespace HiLaarIsch.Domain.CodeFirst.Configuration
 {
-    public class CustomerClassConfiguration : EntityTypeConfiguration<CustomerClassEntity>
+    public class CustomerClassConfiguration : EntityTypeConfiguration<CustomerClassAssociation>
     {
         public CustomerClassConfiguration()
         {

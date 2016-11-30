@@ -7,11 +7,11 @@ using HiLaarIsch.Components;
 namespace HiLaarIsch.Domain
 {
     [Table("Classes")]
-    public class ClassEntity
+    public class ClassEntity : IEntity
     {
         public ClassEntity()
         {
-            this.Customers = new HashSet<CustomerClassEntity>();
+            this.Customers = new HashSet<CustomerClassAssociation>();
         }
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -27,6 +27,6 @@ namespace HiLaarIsch.Domain
 
         public TimeSpan Time { get; set; }
 
-        public virtual ICollection<CustomerClassEntity> Customers { get; set; }
+        public virtual ICollection<CustomerClassAssociation> Customers { get; set; }
     }
 }

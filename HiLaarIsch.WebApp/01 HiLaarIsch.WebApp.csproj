@@ -235,7 +235,7 @@
     <Content Include="HiLaarIsch.ruleset" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Layouts\_Layout-Mobile.cshtml" />
+    <Content Include="Views\Layouts\Mobile.cshtml" />
     <Content Include="Views\Shared\_NavigationBar.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\New.cshtml" />
@@ -245,6 +245,7 @@
     <Content Include="Views\Shared\Commands\_Back.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
+    <Content Include="Views\Layouts\Mobile-No-Authentication.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

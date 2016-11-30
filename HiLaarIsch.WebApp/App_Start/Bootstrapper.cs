@@ -67,10 +67,7 @@ namespace HiLaarIsch
         {
             var container = new Container();
 
-            container.Options.DefaultScopedLifestyle = Lifestyle.CreateHybrid(
-                () => container.GetCurrentLifetimeScope() == null,
-                new WebRequestLifestyle(),
-                new LifetimeScopeLifestyle());
+            container.Options.DefaultScopedLifestyle = new WebRequestLifestyle();
 
             container.RegisterServices(settings);
             container.RegisterQueryHandlers();
@@ -122,7 +119,8 @@ namespace HiLaarIsch
 
         private static void RegisterDataServices(this Container container, string connectionString)
         {
-            var databaseContextRegistration = Lifestyle.Scoped.CreateRegistration(() =>
+            var scopedLifestyle = new LifetimeScopeLifestyle();
+            var databaseContextRegistration = scopedLifestyle.CreateRegistration(() =>
             {
 #if DEBUG
                 Database.SetInitializer(new DropCreateDatabaseIfModelChangesInitializer());
@@ -145,9 +143,8 @@ namespace HiLaarIsch
             container.RegisterSingleton<DataProtectorTokenProvider>();
             container.RegisterSingleton<UserManager>();
 
-            container.RegisterPerWebRequest<IAuthenticationManager<UserView>, AuthenticationManager>();
-            container.RegisterPerWebRequest(() =>
-                container.IsVerifying
+            container.RegisterSingleton<IAuthenticationManager<UserView>, AuthenticationManager>();
+            container.RegisterSingleton(() => container.IsVerifying
                 ? new OwinContext().Authentication
                 : HttpContext.Current.GetOwinContext().Authentication);
 

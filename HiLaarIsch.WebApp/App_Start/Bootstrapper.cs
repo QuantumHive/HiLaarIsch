@@ -143,10 +143,10 @@ namespace HiLaarIsch
             container.RegisterSingleton<DataProtectorTokenProvider>();
             container.RegisterSingleton<UserManager>();
 
-            container.RegisterSingleton<IAuthenticationManager<UserView>, AuthenticationManager>();
-            container.RegisterSingleton(() => container.IsVerifying
+            container.Register<IAuthenticationManager<UserView>, AuthenticationManager>(Lifestyle.Scoped);
+            container.Register(() => container.IsVerifying
                 ? new OwinContext().Authentication
-                : HttpContext.Current.GetOwinContext().Authentication);
+                : HttpContext.Current.GetOwinContext().Authentication, Lifestyle.Scoped);
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {

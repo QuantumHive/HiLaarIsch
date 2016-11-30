@@ -29,7 +29,7 @@ namespace HiLaarIsch.Controllers
             {
                 return this.RedirectToRoot();
             }
-            return this.View();
+            return this.View(model: string.Empty);
         }
 
         [HttpPost, Route("login")]
@@ -39,12 +39,13 @@ namespace HiLaarIsch.Controllers
             var user = this.userManager.FindByEmail(email);
             if(user == null || !user.EmailConfirmed)
             {
-                return this.View();
+                
+                return this.View(model: email);
             }
 
             if(!this.userManager.CheckPassword(user.Id, password))
             {
-                return this.View();
+                return this.View(model: email);
             }
 
             this.authenticationManager.SignIn(user);

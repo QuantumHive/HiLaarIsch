@@ -7,48 +7,39 @@
 
     <title>HiLaarisch</title>
 
-    @Styles.Render(Bundles.Styles.bootstrap)
-    @if (User.Identity.IsAuthenticated)
-    {
-        @Styles.Render(Bundles.Styles.global)
-    }
+    @Styles.Render(Bundles.Styles.Bootstrap)
+    @Styles.Render(Bundles.Styles.Global)
     @RenderSection("css", required: false)
 </head>
 <body>
-    @if (User.Identity.IsAuthenticated)
-    {
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
 
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="/">HiLaarisch</a>
-                </div>
-
-                @Html.Partial(Partials.Shared.NavigationBar)
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">HiLaarisch</a>
             </div>
-        </nav>
-    }
+
+            @Html.Partial(Partials.Shared.NavigationBar)
+        </div>
+    </nav>
 
     <div class="container-fluid">
         @RenderBody()
     </div>
 
-    @if (User.Identity.IsAuthenticated)
-    {
-        <nav class="navbar navbar-inverse navbar-fixed-bottom">
-            <div class="container-fluid">
-                @RenderSection("commands", required: true)
-            </div>
-        </nav>
-    }
+    <nav class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container-fluid">
+            @RenderSection("commands", required: true)
+        </div>
+    </nav>
 
-    @Scripts.Render(Bundles.Scripts.jQuery)
-    @Scripts.Render(Bundles.Scripts.bootstrap)
+    @Scripts.Render(Bundles.Scripts.JQuery)
+    @Scripts.Render(Bundles.Scripts.Bootstrap)
     @RenderSection("scripts", required: false)
 </body>
 

@@ -11,20 +11,20 @@ namespace HiLaarIsch
         public static class Scripts
         {
             //lib
-            public const string jQuery = @"~/bundles/scripts/lib/jquery";
-            public const string bootstrap = @"~/bundles/scripts/lib/bootstrap";
-            public const string bootstrapValidator = @"~/bundles/scripts/lib/bootstrap-validator";
+            public const string JQuery = @"~/bundles/scripts/lib/jquery";
+            public const string Bootstrap = @"~/bundles/scripts/lib/bootstrap";
+            public const string BootstrapValidator = @"~/bundles/scripts/lib/bootstrap-validator";
             //app
         }
 
         public static class Styles
         {
             //lib
-            public const string bootstrap = @"~/bundles/styles/lib/bootstrap";
-            public const string fontAwesome = @"~/bundles/styles/lib/font-awesome";
+            public const string Bootstrap = @"~/bundles/styles/lib/bootstrap";
+            public const string FontAwesome = @"~/bundles/styles/lib/font-awesome";
             //app
-            public const string global = @"~/bundles/styles/global";
-            public const string login = @"~/bundles/styles/signin";
+            public const string Global = @"~/bundles/styles/global";
+            public const string Login = @"~/bundles/styles/signin";
         }
     }
 
@@ -33,20 +33,20 @@ namespace HiLaarIsch
         private static void RegisterScriptBundles(BundleCollection bundles)
         {
             //lib
-            bundles.RegisterScript(Bundles.Scripts.jQuery, Cdns.JQuery, @"~/Scripts/lib/jquery/jquery-{version}.js");
-            bundles.RegisterScript(Bundles.Scripts.bootstrap, Cdns.BootstrapJs, @"~/Scripts/lib/bootstrap/bootstrap-{version}.js");
-            bundles.RegisterScript(Bundles.Scripts.bootstrapValidator, Cdns.BootstrapValidator, @"~/Scripts/lib/1000hz-bootstrap-validator/validator-{version}.js");
+            bundles.RegisterScript(Bundles.Scripts.JQuery, Cdns.JQuery, @"~/Scripts/lib/jquery/jquery-{version}.js");
+            bundles.RegisterScript(Bundles.Scripts.Bootstrap, Cdns.BootstrapJs, @"~/Scripts/lib/bootstrap/bootstrap-{version}.js");
+            bundles.RegisterScript(Bundles.Scripts.BootstrapValidator, Cdns.BootstrapValidator, @"~/Scripts/lib/1000hz-bootstrap-validator/validator-{version}.js");
             //app
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)
         {
             //lib
-            bundles.RegisterStyle(Bundles.Styles.bootstrap, Cdns.BootstrapCss, @"~/Content/bootstrap-{version}.css");
-            bundles.RegisterScript(Bundles.Styles.fontAwesome, Cdns.FontAwesome, @"~/Content/font-awesome-{version}.css");
+            bundles.RegisterStyle(Bundles.Styles.Bootstrap, Cdns.BootstrapCss, @"~/Content/bootstrap-{version}.css");
+            bundles.RegisterScript(Bundles.Styles.FontAwesome, Cdns.FontAwesome, @"~/Content/font-awesome-{version}.css");
             //app
-            bundles.RegisterStyle(Bundles.Styles.global, @"~/Content/global.css");
-            bundles.RegisterStyle(Bundles.Styles.login, @"~/Content/login.css");
+            bundles.RegisterStyle(Bundles.Styles.Global, @"~/Content/global.css");
+            bundles.RegisterStyle(Bundles.Styles.Login, @"~/Content/login.css");
         }
 
         private class Cdns

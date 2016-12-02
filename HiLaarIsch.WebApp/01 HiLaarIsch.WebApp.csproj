@@ -214,6 +214,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\ClassesController.cs" />
+    <Compile Include="Controllers\HorsesController.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\HtmlPartialExtensions.cs" />
     <Compile Include="Extensions\SecurityExtensions.cs" />
@@ -248,6 +249,8 @@
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Layouts\Mobile-No-Authentication.cshtml" />
+    <Content Include="Views\Horses\Index.cshtml" />
+    <Content Include="Views\Horses\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

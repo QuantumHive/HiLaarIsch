@@ -1,0 +1,16 @@
+﻿@using HiLaarIsch.Contract.DTOs
+@model IEnumerable<HorseView>
+
+@if (Model.Any())
+{
+    <ul class="list-group">
+        @foreach (var horseView in Model)
+        {
+            <li class="list-group-item">@horseView.Name</li>
+        }    
+    </ul>
+}
+else
+{
+    <div class="alert alert-warning" role="alert">Geen resultaten</div>
+}

@@ -3,7 +3,7 @@
 namespace HiLaarIsch.Contract.Queries
 {
     public class GetAllModelsQuery<TModel> : IQuery<TModel[]>
-		where TModel : class, new()
+		where TModel : class
     {
     }
 }

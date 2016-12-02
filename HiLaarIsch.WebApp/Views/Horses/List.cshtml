@@ -1,12 +1,11 @@
-﻿@using HiLaarIsch.Contract.DTOs
-@model IEnumerable<HorseView>
+﻿@model IEnumerable<HorseView>
 
 @if (Model.Any())
 {
     <div class="list-group">
-        @foreach (var horseView in Model)
+        @foreach (var horseView in Model.OrderBy(m => m.Name))
         {
-            <a href="/horses/edit/@horseView.Id" class="list-group-item">@horseView.Name</a>
+            <a href="/horses/edit/@horseView.Id" class="list-group-item" type="button">@horseView.Name</a>
         }    
     </div>
 }

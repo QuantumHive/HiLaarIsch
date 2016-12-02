@@ -1,20 +1,7 @@
-﻿@using HiLaarIsch.Contract.DTOs
-@model CustomerView[]
-@if (Model.Any())
-{
-    <div class="list-group">
-        @foreach (var item in Model.OrderBy(m => m.Firstname).ThenBy(m => m.Surname))
-        {
-            <a class="list-group-item" type="button" href="/customers/edit/@item.Id">
-                @item.Firstname @item.Surname
-                <span class="glyphicon glyphicon-pencil pull-right"></span>
-            </a>
-        }
-    </div>
-}
-else
-{
-    @Html.PartialNoResults()
-}
+﻿<div id="index-container" data-source="customers"></div>
 
 @section commands { @Html.PartialAddCommand("customers/new") }
+@section scripts
+{
+    @Scripts.Render(Bundles.Scripts.ListLoader)
+}

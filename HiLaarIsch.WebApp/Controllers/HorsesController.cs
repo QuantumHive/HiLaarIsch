@@ -28,8 +28,8 @@ namespace HiLaarIsch.Controllers
         [HttpGet, Route("list")]
         public ActionResult List()
         {
-            var model = this.queryProcessor.Process(new GetAllModelsQuery<HorseView>());
-            return this.PartialView(model);
+            var horses = this.queryProcessor.Process(new GetAllModelsQuery<HorseView>());
+            return this.PartialView(horses);
         }
     }
 }

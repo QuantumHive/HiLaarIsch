@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace HiLaarIsch
 {
@@ -15,6 +11,7 @@ namespace HiLaarIsch
             public const string Bootstrap = "~/bundles/scripts/lib/bootstrap";
             public const string BootstrapValidator = "~/bundles/scripts/lib/bootstrap-validator";
             //app
+            public const string ListLoader = "~/bundles/scripts/app/load-list-ajax";
         }
 
         public static class Styles
@@ -40,6 +37,7 @@ namespace HiLaarIsch
             bundles.RegisterScript(Bundles.Scripts.JQuery, Cdns.JQuery, "~/Scripts/lib/jquery/jquery-{version}.js");
             bundles.RegisterScript(Bundles.Scripts.Bootstrap, Cdns.BootstrapJs, "~/Scripts/lib/bootstrap/bootstrap-{version}.js");
             //app
+            bundles.RegisterScript(Bundles.Scripts.ListLoader, "~/Scripts/app/load-list-ajax.js");
         }
 
         private static void RegisterStyleBundles(BundleCollection bundles)

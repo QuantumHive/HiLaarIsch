@@ -1,0 +1,17 @@
+﻿@model IEnumerable<CustomerView>
+
+@if (Model.Any())
+{
+    <div class="list-group">
+        @foreach (var customerView in Model.OrderBy(m => m.Firstname).ThenBy(m => m.Surname))
+        {
+            <a href="/customers/edit/@customerView.Id" class="list-group-item" type="button">
+                @customerView.Firstname @customerView.Surname
+            </a>
+        }
+    </div>
+}
+else
+{
+    @Html.PartialNoResults()
+}

@@ -37,8 +37,14 @@ namespace HiLaarIsch.Controllers
         [HttpGet, Route]
         public ActionResult Index()
         {
+            return this.View();
+        }
+
+        [HttpGet, Route("list")]
+        public ActionResult List()
+        {
             var customers = this.queryProcessor.Process(new GetAllModelsQuery<CustomerView>());
-            return this.View(customers);
+            return this.PartialView(customers);
         }
 
         [HttpGet, Route("new")]

@@ -1,18 +1,7 @@
-﻿<div id="index-container"></div>
+﻿<div id="index-container" data-source="horses"></div>
 
 @section commands { @Html.PartialAddCommand("horses/new") }
 @section scripts
 {
-    <script>
-        $(function() {
-            $.ajax({
-                url: "/horses/list",
-                cache: false,
-                method: "get",
-                success: function(data) {
-                    $("#index-container").html(data);
-                }
-            });
-        });
-    </script>
+    @Scripts.Render(Bundles.Scripts.ListLoader)
 }

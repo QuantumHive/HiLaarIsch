@@ -14,7 +14,7 @@
 }
 else
 {
-    <div class="alert alert-warning" role="alert">Geen resultaten</div>
+    @Html.PartialNoResults()
 }
 
 @section commands { @Html.PartialAddCommand("customers/new") }

@@ -251,6 +251,7 @@
     <Content Include="Views\Layouts\Mobile-No-Authentication.cshtml" />
     <Content Include="Views\Horses\Index.cshtml" />
     <Content Include="Views\Horses\List.cshtml" />
+    <Content Include="Views\Shared\NoResults.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -9,7 +9,8 @@ namespace HiLaarIsch
     {
         public class Shared
         {
-            public const string NavigationBar = @"NavigationBar";
+            public const string NavigationBar = "NavigationBar";
+            public const string NoResults = "NoResults";
         }
 
         public class Commands

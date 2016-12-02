@@ -3,12 +3,12 @@
 
 @if (Model.Any())
 {
-    <ul class="list-group">
+    <div class="list-group">
         @foreach (var horseView in Model)
         {
-            <li class="list-group-item">@horseView.Name</li>
+            <a href="/horses/edit/@horseView.Id" class="list-group-item">@horseView.Name</a>
         }    
-    </ul>
+    </div>
 }
 else
 {

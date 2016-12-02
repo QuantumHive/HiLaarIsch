@@ -176,14 +176,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\global.css" />
+    <Content Include="Content\app\global.css" />
     <Content Include="Content\bootstrap-3.3.7.css" />
     <Content Include="Content\bootstrap-3.3.7.min.css" />
     <Content Include="Content\font-awesome-4.7.0.css" />
     <Content Include="Content\font-awesome-4.7.0.min.css" />
-    <Content Include="Content\login.css" />
+    <Content Include="Content\app\login.css" />
+    <Content Include="Content\app\validation.css" />
     <Content Include="Fonts\fontawesome-webfont.svg" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\app\validator.js" />
     <Content Include="Scripts\lib\1000hz-bootstrap-validator\validator-0.11.5.js" />
     <Content Include="Scripts\lib\1000hz-bootstrap-validator\validator-0.11.5.min.js" />
     <Content Include="Scripts\lib\bootstrap\bootstrap-3.3.7.js" />
@@ -236,13 +238,13 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Layouts\Mobile.cshtml" />
-    <Content Include="Views\Shared\_NavigationBar.cshtml" />
+    <Content Include="Views\Shared\NavigationBar.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\New.cshtml" />
     <Content Include="Views\Customers\Edit.cshtml" />
     <Content Include="Views\Customers\EditorTemplates\CustomerModel.cshtml" />
-    <Content Include="Views\Shared\Commands\_Add.cshtml" />
-    <Content Include="Views\Shared\Commands\_Back.cshtml" />
+    <Content Include="Views\Shared\Commands\Add.cshtml" />
+    <Content Include="Views\Shared\Commands\Back.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
     <Content Include="Views\Layouts\Mobile-No-Authentication.cshtml" />

@@ -1,7 +1,7 @@
 ﻿@using HiLaarIsch.Contract.DTOs
 @model CustomerModel
 
-<form action="/customers/new" method="post" autocomplete="off">
+<form action="/customers/new" id="customer-form" method="post" autocomplete="off" data-toggle="validator">
     @Html.AntiForgeryToken()
 
     @Html.EditorForModel()
@@ -10,3 +10,7 @@
 </form>
 
 @section commands { @Html.PartialBackCommand("customers") }
+@section scripts
+{
+    @Scripts.Render(Bundles.Scripts.BootstrapValidator)
+}

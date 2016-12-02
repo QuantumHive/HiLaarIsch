@@ -5,7 +5,8 @@
     <legend>Gebruiker gegevens</legend>
 
     <div class="form-group">
-        <input name="@nameof(CustomerModel.Email)" type="email" class="form-control" id="email" value="@Model.Email" placeholder="E-mail">
+        <label for="email" class="control-label">E-mail</label>
+        <input name="@nameof(CustomerModel.Email)" type="email" class="form-control" id="email" value="@Model.Email" placeholder="klant@email.nl" required>
     </div>
 </fieldset>
 
@@ -13,36 +14,41 @@
     <legend>Klant gegevens</legend>
 
     <div class="form-group">
-        <input name="@nameof(CustomerModel.Firstname)" type="text" class="form-control" id="firstname" value="@Model.Firstname" placeholder="Voornaam">
+        <label for="firstname" class="control-label">Voornaam</label>
+        <input name="@nameof(CustomerModel.Firstname)" type="text" class="form-control" id="firstname" value="@Model.Firstname" placeholder="Jan" required maxlength="100" data-minlength="2">
     </div>
 
     <div class="form-group">
-        <input name="@nameof(CustomerModel.Surname)" type="text" class="form-control" id="surname" value="@Model.Surname" placeholder="Achternaam">
+        <label for="surname" class="control-label">Achternaam</label>
+        <input name="@nameof(CustomerModel.Surname)" type="text" class="form-control" id="surname" value="@Model.Surname" placeholder="de Boer" required maxlength="100" data-minlength="2">
     </div>
 
     <div class="form-group">
         <div class="btn-group btn-group-justified" data-toggle="buttons">
             <label class="btn btn-default">
-                <input name="@nameof(CustomerModel.Level)" type="radio" id="shetland-class" value="1"> Shetten les
+                <input name="@nameof(CustomerModel.Level)" type="radio" id="shetland-class" value="1" required> Shetten les
             </label>
             <label class="btn btn-default">
-                <input name="@nameof(CustomerModel.Level)" type="radio" id="children-class" value="2"> Kinder les
+                <input name="@nameof(CustomerModel.Level)" type="radio" id="children-class" value="2" required> Kinder les
             </label>
             <label class="btn btn-default">
-                <input name="@nameof(CustomerModel.Level)" type="radio" id="adult-class" value="3"> Volwassen les
+                <input name="@nameof(CustomerModel.Level)" type="radio" id="adult-class" value="3" required> Volwassen les
             </label>
         </div>
     </div>
 
     <div class="form-group">
-        <input name="@nameof(CustomerModel.PhoneNumber)" type="tel" class="form-control" id="phonenumber" value="@Model.PhoneNumber" placeholder="Telefoonnummer" >
+        <label for="phonenumber" class="control-label">Telefoonnummer</label>
+        <input name="@nameof(CustomerModel.PhoneNumber)" type="tel" class="form-control" id="phonenumber" value="@Model.PhoneNumber" placeholder="0123456789" data-minlength="10" maxlength="100">
     </div>
 
     <div class="form-group">
-        <input name="@nameof(CustomerModel.EmergencyNumber)" type="tel" class="form-control" id="emergencynumber" value="@Model.EmergencyNumber" placeholder="Noodnummer">
+        <label for="emergencynumber" class="control-label">Noodnummer</label>
+        <input name="@nameof(CustomerModel.EmergencyNumber)" type="tel" class="form-control" id="emergencynumber" value="@Model.EmergencyNumber" placeholder="0123456789" data-minlength="10" maxlength="100">
     </div>
 
     <div class="form-group">
-        <textarea name="@nameof(CustomerModel.Address)" class="form-control" id="address" value="@Model.Address" placeholder="Adres gegevens" rows="5">@Model.Address</textarea>
+        <label for="address" class="control-label">Adres gegevens</label>
+        <textarea name="@nameof(CustomerModel.Address)" class="form-control" id="address" value="@Model.Address" placeholder="Kerkstraat 1..." rows="5" maxlength="200">@Model.Address</textarea>
     </div>
 </fieldset>

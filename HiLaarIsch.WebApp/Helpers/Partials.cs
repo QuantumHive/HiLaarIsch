@@ -9,13 +9,13 @@ namespace HiLaarIsch
     {
         public class Shared
         {
-            public const string NavigationBar = @"_NavigationBar";
+            public const string NavigationBar = @"NavigationBar";
         }
 
         public class Commands
         {
-            public const string Add = @"~\Views\Shared\Commands\_Add.cshtml";
-            public const string Back = @"~\Views\Shared\Commands\_Back.cshtml";
+            public const string Add = @"~\Views\Shared\Commands\Add.cshtml";
+            public const string Back = @"~\Views\Shared\Commands\Back.cshtml";
         }
     }
 }

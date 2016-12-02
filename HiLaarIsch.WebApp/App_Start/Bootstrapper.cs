@@ -124,6 +124,8 @@ namespace HiLaarIsch
             {
 #if DEBUG
                 Database.SetInitializer(new DropCreateDatabaseIfModelChangesInitializer());
+#else
+                Database.SetInitializer<HiLaarischEntities>(null);
 #endif
                 return new HiLaarischEntities(connectionString);
             }, container);

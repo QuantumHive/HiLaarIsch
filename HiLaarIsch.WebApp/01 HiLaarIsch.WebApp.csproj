@@ -221,6 +221,7 @@
     <Compile Include="Extensions\HtmlPartialExtensions.cs" />
     <Compile Include="Extensions\SecurityExtensions.cs" />
     <Compile Include="Filters\AuthorizeRoleAttribute.cs" />
+    <Compile Include="Helpers\VersionManager.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />
     <Compile Include="Services\AuthenticationManager.cs" />
     <Compile Include="Services\FakeEmailService.cs" />

@@ -48,6 +48,7 @@ namespace HiLaarIsch
             //app
             bundles.RegisterStyle(Bundles.Styles.Global, 
                 "~/Content/app/global.css",
+                "~/Content/app/loader.css",
                 "~/Content/app/validation.css");
             bundles.RegisterStyle(Bundles.Styles.Login, "~/Content/app/login.css");
         }

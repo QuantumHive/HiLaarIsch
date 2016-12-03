@@ -177,6 +177,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\app\global.css" />
+    <Content Include="Content\app\loader.css" />
     <Content Include="Content\bootstrap-3.3.7.css" />
     <Content Include="Content\bootstrap-3.3.7.min.css" />
     <Content Include="Content\font-awesome-4.7.0.css" />

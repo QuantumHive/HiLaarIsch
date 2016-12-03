@@ -14,12 +14,12 @@ namespace HiLaarIsch.Controllers
     public class HorsesController : Controller
     {
         private readonly IQueryProcessor queryProcessor;
-        private readonly ICommandHandler<CreateModelCommand<HorseModel>> createHandler;
-        private readonly ICommandHandler<UpdateModelCommand<HorseModel>> updateHandler;
+        private readonly IPromptableMvcCommandHandler<CreateModelCommand<HorseModel>> createHandler;
+        private readonly IPromptableMvcCommandHandler<UpdateModelCommand<HorseModel>> updateHandler;
 
         public HorsesController(IQueryProcessor queryProcessor,
-            ICommandHandler<CreateModelCommand<HorseModel>> createHandler,
-            ICommandHandler<UpdateModelCommand<HorseModel>> updateHandler)
+            IPromptableMvcCommandHandler<CreateModelCommand<HorseModel>> createHandler,
+            IPromptableMvcCommandHandler<UpdateModelCommand<HorseModel>> updateHandler)
         {
             this.queryProcessor = queryProcessor;
             this.createHandler = createHandler;
@@ -49,12 +49,9 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult New(HorseModel horse)
         {
-            if (ModelState.IsValid)
-            {
-                this.createHandler.Handle(new CreateModelCommand<HorseModel>(horse));
-                return this.Redirect("/horses");
-            }
-            return this.View(horse);
+            return this.createHandler.Handle(new CreateModelCommand<HorseModel>(horse),
+                () => this.Redirect("/horses"),
+                e => this.View(horse));
         }
 
         [HttpGet, Route("edit/{horseId}")]
@@ -68,12 +65,9 @@ namespace HiLaarIsch.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(HorseModel horse)
         {
-            if (ModelState.IsValid)
-            {
-                this.updateHandler.Handle(new UpdateModelCommand<HorseModel>(horse, horse.Id));
-                return this.Redirect("/horses");
-            }
-            return this.View(horse);
+            return this.updateHandler.Handle(new UpdateModelCommand<HorseModel>(horse, horse.Id),
+                () => this.Redirect("/horses"),
+                e => this.View(horse));
         }
     }
 }

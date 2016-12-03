@@ -115,6 +115,8 @@ namespace HiLaarIsch
 
             container.RegisterDecorator(typeof(ICommandHandler<>), typeof(SaveChangesCommandHandlerDecorator<>));
             container.RegisterDecorator(typeof(ICommandHandler<>), typeof(LifetimeScopeCommandHandlerProxy<>), Lifestyle.Singleton);
+
+            container.RegisterSingleton(typeof(IPromptableMvcCommandHandler<>), typeof(PromptableMvcCommandHandler<>));
         }
 
         private static void RegisterDataServices(this Container container, string connectionString)

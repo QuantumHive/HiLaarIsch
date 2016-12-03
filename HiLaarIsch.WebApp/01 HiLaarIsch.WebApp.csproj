@@ -222,9 +222,11 @@
     <Compile Include="Extensions\SecurityExtensions.cs" />
     <Compile Include="Filters\AuthorizeRoleAttribute.cs" />
     <Compile Include="Helpers\VersionManager.cs" />
+    <Compile Include="IPromptableMvcCommandHandler.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />
     <Compile Include="Services\AuthenticationManager.cs" />
     <Compile Include="Services\FakeEmailService.cs" />
+    <Compile Include="Services\PromptableMvcCommandHandler.cs" />
     <Compile Include="Services\SendGridEmailService.cs" />
     <Compile Include="Services\UserManager.cs" />
     <Compile Include="Helpers\Partials.cs" />

@@ -31,5 +31,11 @@ namespace HiLaarIsch.Controllers
             var horses = this.queryProcessor.Process(new GetAllModelsQuery<HorseView>());
             return this.PartialView(horses);
         }
+
+        [HttpGet, Route("new")]
+        public ActionResult New()
+        {
+            return this.View();
+        }
     }
 }

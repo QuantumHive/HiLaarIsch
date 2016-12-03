@@ -255,6 +255,8 @@
     <Content Include="Views\Horses\List.cshtml" />
     <Content Include="Views\Shared\NoResults.cshtml" />
     <Content Include="Views\Customers\List.cshtml" />
+    <Content Include="Views\Horses\New.cshtml" />
+    <Content Include="Views\Shared\UnderConstruction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

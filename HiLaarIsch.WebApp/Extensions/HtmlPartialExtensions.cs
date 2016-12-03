@@ -19,5 +19,10 @@ namespace HiLaarIsch
         {
             return helper.Partial(Partials.Commands.Back, route);
         }
+
+        public static IHtmlString PartialUnderConstruction(this HtmlHelper helper)
+        {
+            return helper.Partial(Partials.Shared.UnderConstruction);
+        }
     }
 }

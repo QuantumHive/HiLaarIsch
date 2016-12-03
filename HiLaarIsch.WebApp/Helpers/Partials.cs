@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace HiLaarIsch
+﻿namespace HiLaarIsch
 {
     public class Partials
     {
@@ -11,6 +6,7 @@ namespace HiLaarIsch
         {
             public const string NavigationBar = "NavigationBar";
             public const string NoResults = "NoResults";
+            public const string UnderConstruction = "UnderConstruction";
         }
 
         public class Commands

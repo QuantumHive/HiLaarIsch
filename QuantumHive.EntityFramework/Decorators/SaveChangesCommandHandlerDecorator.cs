@@ -1,4 +1,6 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Linq;
 using QuantumHive.Core;
 
 namespace QuantumHive.EntityFramework.Decorators
@@ -20,8 +22,22 @@ namespace QuantumHive.EntityFramework.Decorators
         {
             this.decoratee.Handle(command);
 
-            //TODO: try/catch
-            this.databaseContext.SaveChanges();
+
+            try
+            {
+                this.databaseContext.SaveChanges();
+            }
+            catch (DbEntityValidationException entityValidationException)
+            {
+                var errorMessages = entityValidationException.EntityValidationErrors
+                    .SelectMany(x => x.ValidationErrors)
+                    .Select(x => x.ErrorMessage);
+
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                //TODO: rethrow with validationerror as innerexception + full stacktrace
+                throw;
+            }
         }
     }
 }

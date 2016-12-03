@@ -34,6 +34,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\BooleanExtensions.cs" />
     <Compile Include="IApplicationDeployment.cs" />
     <Compile Include="IAuthenticationManager.cs" />
     <Compile Include="ICommandHandler.cs" />

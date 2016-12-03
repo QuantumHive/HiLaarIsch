@@ -26,6 +26,7 @@ using System.IO;
 using HiLaarIsch.BusinessLayer.CommandHandlers.Customers;
 using QuantumHive.Core.Services;
 using HiLaarIsch.Domain.Services;
+using HiLaarIsch.Filters;
 
 namespace HiLaarIsch
 {
@@ -86,6 +87,7 @@ namespace HiLaarIsch
             BundleConfig.ConfigureAndRegisterBundles();
 
             GlobalFilters.Filters.Add(new RequireHttpsAttribute());
+            GlobalFilters.Filters.Add(new ValidationResultFilter());
         }
 
         private static void RegisterServices(this Container container, HiLaarischSettings settings)

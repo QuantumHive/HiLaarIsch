@@ -12,6 +12,8 @@
     @RenderSection("css", required: false)
 </head>
 <body>
+    @RenderSection("modals", required: false)
+
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
 
@@ -43,6 +45,14 @@
     @Scripts.Render(Bundles.Scripts.JQuery)
     @Scripts.Render(Bundles.Scripts.Bootstrap)
     @RenderSection("scripts", required: false)
+    @if (IsSectionDefined("modals"))
+    {
+        <script>
+            $(function() {
+                $(".modal[data-show='true']").modal("show");
+            });
+        </script>
+    }
 </body>
 
 </html>

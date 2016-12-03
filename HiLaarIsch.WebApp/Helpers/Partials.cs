@@ -15,5 +15,10 @@
             public const string Add = @"~\Views\Shared\Commands\Add.cshtml";
             public const string Back = @"~\Views\Shared\Commands\Back.cshtml";
         }
+
+        public class Modals
+        {
+            public const string Validation = @"~\Views\Shared\Modals\Validation.cshtml";
+        }
     }
 }

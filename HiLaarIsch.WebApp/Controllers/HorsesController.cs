@@ -51,7 +51,7 @@ namespace HiLaarIsch.Controllers
         {
             return this.createHandler.Handle(new CreateModelCommand<HorseModel>(horse),
                 () => this.Redirect("/horses"),
-                e => this.View(horse));
+                _ => this.View(horse));
         }
 
         [HttpGet, Route("edit/{horseId}")]
@@ -67,7 +67,7 @@ namespace HiLaarIsch.Controllers
         {
             return this.updateHandler.Handle(new UpdateModelCommand<HorseModel>(horse, horse.Id),
                 () => this.Redirect("/horses"),
-                e => this.View(horse));
+                _ => this.View(horse));
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 using HiLaarIsch.Components;
 
@@ -8,7 +7,7 @@ namespace HiLaarIsch.Filters
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
     public class AuthorizeRoleAttribute : FilterAttribute, IAuthorizationFilter
     {
-        private Role role;
+        private readonly Role role;
 
         public AuthorizeRoleAttribute(Role role)
         {

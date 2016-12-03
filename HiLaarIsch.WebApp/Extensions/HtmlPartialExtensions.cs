@@ -29,5 +29,10 @@ namespace HiLaarIsch
         {
             return helper.Partial(Partials.Commands.Save);
         }
+
+        public static IHtmlString PartialValidationModal(this HtmlHelper helper)
+        {
+            return helper.Partial(Partials.Modals.Validation);
+        }
     }
 }

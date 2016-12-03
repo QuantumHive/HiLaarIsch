@@ -221,6 +221,7 @@
     <Compile Include="Extensions\HtmlPartialExtensions.cs" />
     <Compile Include="Extensions\SecurityExtensions.cs" />
     <Compile Include="Filters\AuthorizeRoleAttribute.cs" />
+    <Compile Include="Filters\ValidationResultFilterAttribute.cs" />
     <Compile Include="Helpers\VersionManager.cs" />
     <Compile Include="IPromptableMvcCommandHandler.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />
@@ -243,7 +244,7 @@
     <Content Include="HiLaarIsch.ruleset" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Layouts\Mobile.cshtml" />
+    <Content Include="Views\Shared\Layouts\Mobile.cshtml" />
     <Content Include="Views\Shared\NavigationBar.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\New.cshtml" />
@@ -253,7 +254,7 @@
     <Content Include="Views\Shared\Commands\Back.cshtml" />
     <Content Include="Views\Account\Confirm.cshtml" />
     <Content Include="Views\Classes\Index.cshtml" />
-    <Content Include="Views\Layouts\Mobile-No-Authentication.cshtml" />
+    <Content Include="Views\Shared\Layouts\Mobile-No-Authentication.cshtml" />
     <Content Include="Views\Horses\Index.cshtml" />
     <Content Include="Views\Horses\List.cshtml" />
     <Content Include="Views\Shared\NoResults.cshtml" />
@@ -263,6 +264,7 @@
     <Content Include="Views\Shared\Commands\Save.cshtml" />
     <Content Include="Views\Horses\EditorTemplates\HorseModel.cshtml" />
     <Content Include="Views\Horses\Edit.cshtml" />
+    <Content Include="Views\Shared\Modals\Validation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

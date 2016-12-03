@@ -3,7 +3,7 @@ using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Domain;
 using QuantumHive.Core;
 
-namespace HiLaarIsch.BusinessLayer.CommandHandlers
+namespace HiLaarIsch.BusinessLayer.CommandHandlers.Customers
 {
     public class UpdateCustomerCommandHandler : ICommandHandler<UpdateModelCommand<CustomerModel>>
     {

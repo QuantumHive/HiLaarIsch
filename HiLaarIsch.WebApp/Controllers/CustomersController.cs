@@ -55,14 +55,14 @@ namespace HiLaarIsch.Controllers
 
         [HttpPost, Route("new")]
         [ValidateAntiForgeryToken]
-        public ActionResult New(CustomerModel model)
+        public ActionResult New(CustomerModel customer)
         {
             //TODO: refactor to validator class
             //TODO: check if email exists
             var valid = true;
             try
             {
-                var m = new MailAddress(model.Email);
+                var m = new MailAddress(customer.Email);
             }
             catch (FormatException)
             {
@@ -71,16 +71,16 @@ namespace HiLaarIsch.Controllers
 
             if (valid && ModelState.IsValid)
             {
-                this.userManager.Create(model.Email);
-                this.createHandler.Handle(new CreateModelCommand<CustomerModel>(model));
+                this.userManager.Create(customer.Email);
+                this.createHandler.Handle(new CreateModelCommand<CustomerModel>(customer));
 
-                var user = this.userManager.FindByEmail(model.Email);
+                var user = this.userManager.FindByEmail(customer.Email);
                 var mailToken = this.userManager.GenerateEmailConfirmationToken(user.Id);
 
                 var confirmationUrl = this.Url.Action("confirm", "account", new { userId = user.Id, mailToken = mailToken }, this.Request.Url.Scheme);
 
                 var body =
-$@"Beste {model.Firstname},
+$@"Beste {customer.Firstname},
 
 Ten behoeve van Stal van Laar (Manage Arnhem) is er een account voor je aangemaakt.
 Door op de onderstaande activatielink te klikken kun je je account activeren, eenmalig een wachtwoord instellen.
@@ -95,7 +95,7 @@ Dit bericht is verstuurd door een automatisch systeem en antwoorden op deze mail
                 return this.Redirect("/customers");
             }
 
-            return this.View(model);
+            return this.View(customer);
         }
 
         [HttpGet, Route("edit/{customerId}")]

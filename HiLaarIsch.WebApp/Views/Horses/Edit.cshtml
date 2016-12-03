@@ -1,0 +1,10 @@
+﻿@model HorseModel
+    
+<form action="/horses/edit" method="post" autocomplete="off" data-toggle="validator">
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.Id)
+    @Html.EditorForModel()
+    @Html.PartialSave()
+</form>
+
+@section commands { @Html.PartialBackCommand("horses") }

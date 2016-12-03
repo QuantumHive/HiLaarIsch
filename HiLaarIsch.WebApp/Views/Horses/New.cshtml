@@ -1,3 +1,13 @@
-﻿@Html.PartialUnderConstruction()
+﻿@model HorseModel
+
+<form action="/horses/new" method="post" autocomplete="off" data-toggle="validator">
+    @Html.AntiForgeryToken()
+    @Html.EditorForModel()
+    @Html.PartialSave()
+</form>
 
 @section commands { @Html.PartialBackCommand("horses") }
+@section scripts
+{
+    @Scripts.Render(Bundles.Scripts.BootstrapValidator)
+}

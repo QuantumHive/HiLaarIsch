@@ -40,6 +40,7 @@
     <Compile Include="Commands\Users\SetPasswordHashForUserCommand.cs" />
     <Compile Include="DTOs\Customers\CustomerModel.cs" />
     <Compile Include="DTOs\Customers\CustomerView.cs" />
+    <Compile Include="DTOs\Horses\HorseModel.cs" />
     <Compile Include="DTOs\Horses\HorseView.cs" />
     <Compile Include="DTOs\Users\UserModel.cs" />
     <Compile Include="DTOs\Users\UserView.cs" />

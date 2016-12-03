@@ -1,13 +1,10 @@
-﻿@using HiLaarIsch.Contract.DTOs
-@model CustomerModel
+﻿@model CustomerModel
 
 <form action="/customers/edit" method="post" autocomplete="off" data-toggle="validator">
     @Html.AntiForgeryToken()
-
     @Html.HiddenFor(m => m.Id)
     @Html.EditorForModel()
-
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Klant wijzigen</button>
+    @Html.PartialSave()
 </form>
 
 @section commands { @Html.PartialBackCommand("customers") }

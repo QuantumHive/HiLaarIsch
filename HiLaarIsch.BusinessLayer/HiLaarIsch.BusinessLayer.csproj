@@ -34,8 +34,10 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandlers\UpdateCustomerCommandHandler .cs" />
-    <Compile Include="CommandHandlers\CreateNewCustomerCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Customers\UpdateCustomerCommandHandler .cs" />
+    <Compile Include="CommandHandlers\Customers\CreateNewCustomerCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Horses\CreateNewHorseCommandHandler.cs" />
+    <Compile Include="CommandHandlers\Horses\UpdateHorseCommandHandler .cs" />
     <Compile Include="CommandHandlers\Users\ConfirmEmailForUserCommandHandler.cs" />
     <Compile Include="CommandHandlers\Users\CreateNewUserCommandHandler.cs" />
     <Compile Include="CommandHandlers\Users\SetPasswordHashForUserCommandHandler.cs" />
@@ -45,6 +47,7 @@
     <Compile Include="QueryHandlers\Customers\GetAllCustomersQueryHandler.cs" />
     <Compile Include="QueryHandlers\Customers\GetCustomerByIdQueryHandler.cs" />
     <Compile Include="QueryHandlers\Horses\GetAllHorseViewsQueryHandler.cs" />
+    <Compile Include="QueryHandlers\Horses\GetHorseByIdQueryHandler.cs" />
     <Compile Include="QueryHandlers\Users\GetUserByEmailQueryHandler.cs" />
     <Compile Include="QueryHandlers\Users\GetPasswordHashByUserIdQueryHandler.cs" />
     <Compile Include="QueryHandlers\Users\GetUserByIdQueryHandler.cs" />

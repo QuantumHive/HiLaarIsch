@@ -24,5 +24,10 @@ namespace HiLaarIsch
         {
             return helper.Partial(Partials.Shared.UnderConstruction);
         }
+
+        public static IHtmlString PartialSave(this HtmlHelper helper)
+        {
+            return helper.Partial(Partials.Commands.Save);
+        }
     }
 }

@@ -1,12 +1,9 @@
-﻿@using HiLaarIsch.Contract.DTOs
-@model CustomerModel
+﻿@model CustomerModel
 
-<form action="/customers/new" id="customer-form" method="post" autocomplete="off" data-toggle="validator">
+<form action="/customers/new" method="post" autocomplete="off" data-toggle="validator">
     @Html.AntiForgeryToken()
-
     @Html.EditorForModel()
-
-    <button type="submit" class="btn btn-primary btn-lg btn-block">Klant aanmaken</button>
+    @Html.PartialSave()
 </form>
 
 @section commands { @Html.PartialBackCommand("customers") }

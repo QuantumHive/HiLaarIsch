@@ -11,6 +11,7 @@
 
         public class Commands
         {
+            public const string Save = @"~\Views\Shared\Commands\Save.cshtml";
             public const string Add = @"~\Views\Shared\Commands\Add.cshtml";
             public const string Back = @"~\Views\Shared\Commands\Back.cshtml";
         }

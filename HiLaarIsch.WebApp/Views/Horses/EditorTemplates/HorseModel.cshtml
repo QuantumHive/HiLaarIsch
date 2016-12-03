@@ -1,0 +1,6 @@
+﻿@model HorseModel
+
+<div class="form-group">
+    <label for="name" class="control-label">Naam</label>
+    <input name="@nameof(HorseModel.Name)" type="text" class="form-control" id="name" value="@Model.Name" placeholder="Naam van paard" required maxlength="100" data-minlength="2">
+</div>

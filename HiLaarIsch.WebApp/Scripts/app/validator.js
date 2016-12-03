@@ -1,6 +1,6 @@
 ﻿$(function ()
 {
-    $(document).on("invalid.bs.validator", "#customer-form", function (e)
+    $(document).on("invalid.bs.validator", "form", function (e)
     {
         var $element = $(e.relatedTarget);
         if ($element.is(":radio"))
@@ -9,7 +9,7 @@
         }
     });
 
-    $(document).on("valid.bs.validator", "#customer-form", function (e)
+    $(document).on("valid.bs.validator", "form", function (e)
     {
         var $element = $(e.relatedTarget);
         if ($element.is(":radio"))

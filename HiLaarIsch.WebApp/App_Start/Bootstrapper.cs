@@ -17,13 +17,13 @@ using HiLaarIsch.BusinessLayer.QueryHandlers;
 using System.Web.Routing;
 using Microsoft.Owin;
 using System.Web;
-using HiLaarIsch.BusinessLayer.CommandHandlers;
 using QuantumHive.EntityFramework.Decorators;
 using System.Data.Entity;
 using Microsoft.Owin.Security.DataProtection;
 using HiLaarIsch.Contract.DTOs;
 using HiLaarIsch.Services;
 using System.IO;
+using HiLaarIsch.BusinessLayer.CommandHandlers.Customers;
 using QuantumHive.Core.Services;
 using HiLaarIsch.Domain.Services;
 

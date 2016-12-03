@@ -258,6 +258,9 @@
     <Content Include="Views\Customers\List.cshtml" />
     <Content Include="Views\Horses\New.cshtml" />
     <Content Include="Views\Shared\UnderConstruction.cshtml" />
+    <Content Include="Views\Shared\Commands\Save.cshtml" />
+    <Content Include="Views\Horses\EditorTemplates\HorseModel.cshtml" />
+    <Content Include="Views\Horses\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

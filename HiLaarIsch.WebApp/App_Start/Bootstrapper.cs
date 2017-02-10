@@ -87,6 +87,7 @@ namespace HiLaarIsch
 
             GlobalFilters.Filters.Add(new RequireHttpsAttribute());
             GlobalFilters.Filters.Add(new ValidationResultFilter());
+            GlobalFilters.Filters.Add(new GlobalExceptionHandlerFilter());
         }
 
         private static void RegisterServices(this Container container, HiLaarischSettings settings)

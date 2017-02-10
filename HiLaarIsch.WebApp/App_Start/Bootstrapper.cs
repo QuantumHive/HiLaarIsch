@@ -13,7 +13,6 @@ using SimpleInjector.Extensions.LifetimeScoping;
 using System.Configuration;
 using HiLaarIsch.Domain;
 using HiLaarIsch.BusinessLayer.QueryHandlers;
-using System.Web.Routing;
 using Microsoft.Owin;
 using System.Web;
 using QuantumHive.EntityFramework.Decorators;
@@ -25,7 +24,7 @@ using System.IO;
 using HiLaarIsch.BusinessLayer.CommandHandlers.Customers;
 using QuantumHive.Core.Services;
 using HiLaarIsch.Domain.Services;
-using HiLaarIsch.Filters;
+using QuantumHive.Core.Logging;
 
 namespace HiLaarIsch
 {
@@ -74,20 +73,9 @@ namespace HiLaarIsch
             container.RegisterCommandHandlers();
             container.RegisterDataServices(settings.ConnectionString);
             container.RegisterOwinIdentityServices(app);
+            container.RegisterLoggers();
 
             return container;
-        }
-
-        public static void ConfigureMvcServices(IAppBuilder app)
-        {
-            RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            RouteTable.Routes.MapMvcAttributeRoutes();
-
-            BundleConfig.ConfigureAndRegisterBundles();
-
-            GlobalFilters.Filters.Add(new RequireHttpsAttribute());
-            GlobalFilters.Filters.Add(new ValidationResultFilter());
-            GlobalFilters.Filters.Add(new GlobalExceptionHandlerFilter());
         }
 
         private static void RegisterServices(this Container container, HiLaarischSettings settings)
@@ -155,6 +143,11 @@ namespace HiLaarIsch
                 : HttpContext.Current.GetOwinContext().Authentication, Lifestyle.Scoped);
 
             container.Register<ExceptionHandlingMiddleware>();
+        }
+
+        private static void RegisterLoggers(this Container container)
+        {
+            container.RegisterSingleton<ILogger, NullLogger>();
         }
     }
 }

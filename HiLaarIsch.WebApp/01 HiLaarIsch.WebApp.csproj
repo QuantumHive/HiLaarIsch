@@ -211,6 +211,7 @@
   <ItemGroup>
     <Compile Include="App_Start\Bootstrapper.cs" />
     <Compile Include="App_Start\Configuration\BundleConfiguration.cs" />
+    <Compile Include="App_Start\ExceptionHandlingMiddleware.cs" />
     <Compile Include="App_Start\HiLaarischSettings.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -220,9 +221,11 @@
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\HtmlPartialExtensions.cs" />
     <Compile Include="Extensions\SecurityExtensions.cs" />
+    <Compile Include="Extensions\SimpleInjectorExtensions.cs" />
     <Compile Include="Filters\AuthorizeRoleAttribute.cs" />
     <Compile Include="Filters\ValidationResultFilterAttribute.cs" />
     <Compile Include="Helpers\VersionManager.cs" />
+    <Compile Include="IMiddleWare.cs" />
     <Compile Include="IPromptableMvcCommandHandler.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />
     <Compile Include="Services\AuthenticationManager.cs" />

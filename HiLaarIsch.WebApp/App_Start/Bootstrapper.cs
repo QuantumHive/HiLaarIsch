@@ -10,7 +10,6 @@ using SimpleInjector;
 using SimpleInjector.Integration.Web;
 using SimpleInjector.Integration.Web.Mvc;
 using SimpleInjector.Extensions.LifetimeScoping;
-using Microsoft.Owin.Security.Cookies;
 using System.Configuration;
 using HiLaarIsch.Domain;
 using HiLaarIsch.BusinessLayer.QueryHandlers;
@@ -154,12 +153,7 @@ namespace HiLaarIsch
                 ? new OwinContext().Authentication
                 : HttpContext.Current.GetOwinContext().Authentication, Lifestyle.Scoped);
 
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
-            {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/account/login"),
-                //TODO: cookie options
-            });
+            container.Register<ExceptionHandlingMiddleware>();
         }
     }
 }

@@ -1,14 +1,12 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+using QuantumHive.Core;
 using SendGrid;
 using SendGrid.Helpers.Mail;
-using QuantumHive.Core;
 
 namespace HiLaarIsch.Services
 {
     public class SendGridEmailService : IMessageService
     {
-        private const string contentType = @"text/plain";
-
         private readonly IApplicationDeployment environment;
         private readonly HiLaarischSettings.EmailAddress emailAddresses;
         private readonly string apiKey;
@@ -22,20 +20,23 @@ namespace HiLaarIsch.Services
 
         public void SendMessage(Message message)
         {
-            var mail = this.PrepareMail(message);
-
-            dynamic sendgrid = new SendGridAPIClient(apiKey);
-            dynamic response = sendgrid.client.mail.send.post(requestBody: mail.Get());
+            this.SendMailAsync(message).Wait();
         }
 
-        private Mail PrepareMail(Message message)
+        private async Task SendMailAsync(Message message)
         {
-            var from = new Email(this.emailAddresses.From);
-            var destination = this.environment.Phase == ApplicationPhase.Test ? this.emailAddresses.Test : message.Destination;
-            var to = new Email(destination);
-            var content = new Content(contentType, message.Body);
+            var mail = this.PrepareMail(message);
+            var sendgrid = new SendGridClient(apiKey);
+            var response = await sendgrid.SendEmailAsync(mail);
+        }
 
-            return new Mail(from, message.Subject, to, content);
+        private SendGridMessage PrepareMail(Message message)
+        {
+            var from = new EmailAddress(this.emailAddresses.From);
+            var destination = this.environment.Phase == ApplicationPhase.Test ? this.emailAddresses.Test : message.Destination;
+            var to = new EmailAddress(destination);
+
+            return MailHelper.CreateSingleEmail(from, to, message.Subject, plainTextContent: message.Body, htmlContent: message.Body);
         }
     }
 }

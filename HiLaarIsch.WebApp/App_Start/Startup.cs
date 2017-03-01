@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 using System.Web.Routing;
 using HiLaarIsch.Filters;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.DataContracts;
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
@@ -15,17 +18,27 @@ namespace HiLaarIsch
     {
         public void Configuration(IAppBuilder app)
         {
-            var container = Bootstrapper.InitiliazeApplication(app);
-            Startup.ConfigureMvcApplication(container);
+            var telemetry = new TelemetryClient();
+            telemetry.TrackTrace("Initializing Application . . .", SeverityLevel.Verbose);
 
-            app.Use<ExceptionHandlingMiddleware>(container);
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            try
             {
-                AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
-                LoginPath = new PathString("/account/login"),
-                //TODO: cookie options
-            });
+                var container = Bootstrapper.InitiliazeApplication(app);
+                Startup.ConfigureMvcApplication(container);
+
+                app.Use<ExceptionHandlingMiddleware>(container);
+
+                app.UseCookieAuthentication(new CookieAuthenticationOptions
+                {
+                    AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
+                    LoginPath = new PathString("/account/login"),
+                    //TODO: cookie options
+                });
+            }
+            catch (Exception exception)
+            {
+                telemetry.TrackException(exception);
+            }
         }
 
         public static void ConfigureMvcApplication(Container container)

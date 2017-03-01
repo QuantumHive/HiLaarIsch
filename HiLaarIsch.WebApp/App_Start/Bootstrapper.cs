@@ -24,6 +24,7 @@ using System.IO;
 using HiLaarIsch.BusinessLayer.CommandHandlers.Customers;
 using QuantumHive.Core.Services;
 using HiLaarIsch.Domain.Services;
+using Microsoft.ApplicationInsights;
 using QuantumHive.Core.Logging;
 
 namespace HiLaarIsch
@@ -147,7 +148,7 @@ namespace HiLaarIsch
 
         private static void RegisterLoggers(this Container container)
         {
-            container.RegisterSingleton<ILogger, NullLogger>();
+            container.RegisterSingleton<ILogger>(new ApplicationInsightsLogger(new TelemetryClient()));
         }
     }
 }

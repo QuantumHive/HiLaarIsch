@@ -278,6 +278,7 @@
     <Compile Include="Helpers\VersionManager.cs" />
     <Compile Include="IMiddleWare.cs" />
     <Compile Include="IPromptableMvcCommandHandler.cs" />
+    <Compile Include="Services\ApplicationInsightsLogger.cs" />
     <Compile Include="Services\DataProtectorTokenProvider.cs" />
     <Compile Include="Services\AuthenticationManager.cs" />
     <Compile Include="Services\FakeEmailService.cs" />
